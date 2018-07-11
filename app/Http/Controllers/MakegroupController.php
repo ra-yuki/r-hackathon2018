@@ -18,6 +18,11 @@ class MakegroupController extends Controller
     
         public function store(Request $request)
     {
+        // validation handling
+        $this->validate($request, [
+            'name' => ['required', 'max:191', 'regex:/^[0-9a-zA-Z]*$/'],
+        ]);
+        
         // get user input
         $friends = $request->friends;
         $groupName = $request->name;
