@@ -23,15 +23,24 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout.get');
 
 Route::group(['middleware' => ['auth']], function () {
     Route::resource('mypage', 'MypageController', ['only' => ['index']]);
-    Route::resource('events', 'EventsController', ['except' => ['index']]);
+    Route::get('events', 'EventsController@index')->name('events.index');
+    Route::get('events/schedule', 'EventsController@showScheduleGroupEvent')->name('events.showScheduleGroupEvent');
+    Route::get('events/schedule-private', 'EventsController@showSchedulePrivateEvent')->name('events.showSchedulePrivateEvent');
+    Route::post('events/schedule', 'EventsController@scheduleGroupEvent')->name('events.scheduleGroupEvent');
+    Route::post('events/schedule-private', 'EventsController@schedulePrivateEvent')->name('events.schedulePrivateEvent');
     Route::resource('friends', 'FriendsController', ['only' => ['show','store','delete','index']]);
+    Route::get('search', 'SearchController@index')->name('friends.search');
     // Group表示はフレンドの方に含める
-    Route::resource('groups', 'GroupsController', ['only' => ['show','store','delete']]);
+    Route::resource('groups', 'GroupsController', ['only' => ['show','store','delete','index']]);
+    // 友達検索機能のコントローラ
     Route::resource('user', 'UserController');
     Route::resource('makegroup', 'MakegroupController', ['only' => ['index','store', 'destroy']]);
+    Route::get('add/{id}', 'AddFriendController@store')->name('add.get');
+    Route::delete('unfriend/{id}','AddFriendController@destroy')->name('unfriend');
+    //Settingsのコントローラー
+     Route::get('settings', 'SettingsController@index')->name('settings.settings');
+      Route::get('settings/theme', 'SettingsController@changeTheme')->name('settings.changeTheme');
 });
- 
-
 
 Auth::routes();
 

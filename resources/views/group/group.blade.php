@@ -5,8 +5,8 @@
            <div class="col-md-3 col-sm-4 col-xs-12">
                 <div class="panel panel-default">
                     <div>
-                        <!--これどうやって表示するか曖昧だし、リンクルートの使い方微妙-->
-                        {!! link_to_route('groups.show',$group->name, ['id' => $group->id]) !!}<p>{!! nl2br(e($group->name)) !!}</p>{{ $micropost->created_at }}
+                        
+                        {!! link_to_route('groups.show',$group->name, ['id' => $group->id]) !!}<p>{!! nl2br(e($group->name)) !!}</p>{{ $group->created_at }}
                     </div>
                     <div>
                         @if (Auth::user()->id == $group->user_id)
