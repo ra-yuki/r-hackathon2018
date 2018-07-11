@@ -39,7 +39,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="{{ secure_asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ secure_asset(Auth::user()->layout) }}">
 </head>
 <body>
     <div id="app">
