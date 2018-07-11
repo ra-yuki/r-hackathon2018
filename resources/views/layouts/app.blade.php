@@ -39,7 +39,11 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="{{ secure_asset('css/style.css') }}">
+    @if(Auth::check() && Auth::user()->layout != null)
+        <link rel="stylesheet" href="{{ secure_asset(Auth::user()->layout) }}">
+    @else
+        <link rel="stylesheet" href="{{ secure_asset('css/style.css') }}">
+    @endif
 </head>
 <body>
     <div id="app">
