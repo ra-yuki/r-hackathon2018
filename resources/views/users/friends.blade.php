@@ -38,7 +38,17 @@
     </div>
      <div id="group" class="tab-pane fade ">
      <h3>Groups</h3>
-      <?php $groups = \Auth::user()->groups; ?>
+     {{-- ↓↓ 検索フォーム ↓↓ --}}
+
+<form class="form-inline" action="{{route('groups.index')}}">
+  <div class="form-group">
+  <input type="text" name="groupId" value="{{$groupId}}" class="form-control" placeholder="Search groups">
+  </div>
+  <input type="submit" value="Search" class="bt">
+</form>
+
+{{-- ↑↑ 検索フォーム ↑↑ --}}
+      
       @foreach ($groups as $group)
            <div class="col-md-3 col-sm-4 col-xs-12">
                 <div class="panel panel-default">
