@@ -8,10 +8,26 @@ class GroupsController extends Controller
 {
    
    function index(){
-        $users =Group::All;
+        // searching groups...
+        #キーワード受け取り
+        $keyword = (isset($_GET['groupId'])) ? $_GET['groupId'] : null;
+     
+        #もしキーワードがあったら
+        $res = null;
+        if(!empty($keyword))
+        {
+            $res = \Auth::user()->groups()->where('name', 'like', "%$keyword%")->get();
+        }
+        # キーワードないときは全group取得
+        else{
+            $res = \Auth::user()->groups;
+        }
         
-        return view('group.group', [
-            'groups' => $groups,
+        return view('users.friends', [
+         'groupId' => $keyword, 
+         'groups' => $res,
+         'friendId' => '',
+         'friends' => \Auth::user()->friends,
         ]);
       
     }

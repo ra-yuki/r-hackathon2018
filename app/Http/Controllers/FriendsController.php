@@ -25,6 +25,8 @@ class FriendsController extends Controller
         return view('users.friends', [
          'friendId' => $keyword, 
          'friends' => $res,
+         'groupId' => '',
+         'groups' => \Auth::user()->groups,
         ]);
     }
     
