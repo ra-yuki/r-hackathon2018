@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Group;
 class GroupsController extends Controller
 {
    
@@ -16,9 +16,19 @@ class GroupsController extends Controller
       
     }
     
-    function show(){
+    function show($id){
+        // $group = Group::find($id);
+        
+        // return view('group.group_detail', [
+        //     'group' => $group,
+        // ]);
+        
+        $group= Group::find($id);
+        $members = $group->users()->get();
+        
         return view('group.group_detail', [
-            'groups' => $groups,
+            'group' => $group,
+            'members' => $members,
         ]);
     }
    

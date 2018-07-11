@@ -37,6 +37,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('makegroup', 'MakegroupController', ['only' => ['index','store', 'destroy']]);
     Route::get('add/{id}', 'AddFriendController@store')->name('add.get');
     Route::delete('unfriend/{id}','AddFriendController@destroy')->name('unfriend');
+    //Settingsのコントローラー
+     Route::get('settings', 'SettingsController@index')->name('settings.settings');
 });
 
 Auth::routes();
