@@ -64,7 +64,7 @@ class EventsController extends Controller
     }
     
     // can't handle event that goes across with this algorithm
-    function scheduleGroupEvent(Request $request){//$req){
+    function scheduleGroupEvent(Request $request){
         //*-- event you wanna schedule --*//
         $schedulingEvent = new Event();
         $schedulingEvent->dateFrom = $request->dateFrom;
@@ -96,17 +96,18 @@ class EventsController extends Controller
         }
         
         //*-- get all the events of each users --*//
-        // $userEvents = $this->getFakeUsersEvents(5); // this runs fine
-        //totally experimental (weird ppl num, weid event num)
+        // $userEvents = $this->getFakeUsersEvents(5); // this runs fine (for development)
         $userEvents = [];
         $users = Group::find($groupId)->users;
         foreach($users as $user){
+            // get all the events that the user has
             $groups = $user->groups;
-            $events = [];
+            $tmp = [];
             foreach($groups as $group){
-                $event->push($group->events);// @start from here... nah.. 'all:' part is in my way
-                // array_push($userEvents, $group->events);
+                $tmp = array_merge($tmp, $this->collection2Array($group->events));
             }
+            // push the events to an array
+            array_push($userEvents, $tmp);
         }
 
         //*-- get available dates for each users *--//
@@ -153,10 +154,10 @@ class EventsController extends Controller
         ]);
     }
     
-    function collection2Array($collection, $property){
+    function collection2Array($collection){
         $a = [];
         foreach($collection as $item){
-            array_push($a, $item->$property);
+            array_push($a, $item);
         }
         
         return $a;

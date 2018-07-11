@@ -9,9 +9,8 @@ class WelcomeController extends Controller
   
     function index(){
         if (\Auth::check())
-            return view('users.index');
-        
-        else 
-            return view('welcome');
+            return redirect()->route('mypage.index');
+            
+        return view('welcome');
     }
 }
