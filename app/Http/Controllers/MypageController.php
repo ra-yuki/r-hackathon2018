@@ -23,7 +23,7 @@ class MypageController extends Controller
         //*-- get days of the $year/$month with offset --*//
         $days = []; //0 means empty
         $year = (isset($_GET['year'])) ? $_GET['year'] : 2017;
-        $month = (isset($_GET['month'])) ? $_GET['month'] : 2;
+        $month = (isset($_GET['month'])) ? $_GET['month'] : 1;
         $firstDay = date( 'D', (new \DateTime("$year-$month-01"))->getTimestamp() );
         $firstDayNum = CalendarHelper::Day2Num($firstDay);
         // set offset to adjust the day number and string 

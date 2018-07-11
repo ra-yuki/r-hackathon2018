@@ -31,7 +31,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('friends', 'FriendsController', ['only' => ['show','store','delete','index']]);
     Route::get('search', 'SearchController@index')->name('friends.search');
     // Group表示はフレンドの方に含める
-    Route::resource('groups', 'GroupsController', ['only' => ['show','store','delete']]);
+    Route::resource('groups', 'GroupsController', ['only' => ['show','store','delete','index']]);
     // 友達検索機能のコントローラ
     Route::resource('user', 'UserController');
     Route::resource('makegroup', 'MakegroupController', ['only' => ['index','store', 'destroy']]);
