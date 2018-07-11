@@ -30,14 +30,17 @@ class SettingsController extends Controller
            $userId = \Auth::user()->id;
            $table = User::find($userId);
            
-           if($layout == '1'){ // blue
-               $layout = 'css/cool.css';
+           if($layout == '1'){ // ocean
+               $layout = 'css/ocean.css';
            }
            if($layout == '2'){ // cute
                $layout = 'css/cute.css';
            }
            if($layout == '3'){ // happy
                $layout = 'css/happy.css';
+           }
+            if($layout == '4'){ // natural
+               $layout = 'css/natural.css';
            }
            
            $table->layout = $layout;

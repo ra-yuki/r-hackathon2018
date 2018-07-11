@@ -1,13 +1,18 @@
 @charset "UTF-8";
 
 
+	
 
 
 @media screen{ 
 *{
     background-color:#FFD5EC;
-    font-family: 'Candara',sans-serif;
-    color: white;
+    font-family: 'Patrick Hand', cursive;
+    font-family: 'Neucha', cursive;
+    font-family: 'Covered By Your Grace', cursive;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-family: 'Rokkitt', serif;
+    color:	#FF1A6F;
     font-size: 120%;
   　
 }
