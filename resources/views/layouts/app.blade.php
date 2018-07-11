@@ -62,7 +62,8 @@
                 {{-- <a class="navbar-left" href="{{route('events.index')}}" id="toop">View Events <b>|</b></a> --}}
                 <a class="navbar-left" href="{{route('events.showSchedulePrivateEvent')}}" id="toop">+ Private Event <b>|</b></a>
                 <a class="navbar-left" href="{{route('events.showScheduleGroupEvent')}}" id="toop">+ Group Event <b>|</b></a>
-                   
+                 <a class="navbar-left" href="{{route('settings.settings')}}" id="toop">Settings<b>|</b></a>
+                
                     @else
                         
                     @endif
