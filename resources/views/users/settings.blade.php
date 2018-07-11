@@ -9,9 +9,9 @@
   </button>
   <!-- choices -->
   <ul class="dropdown-menu">
-    <li><a href="{{route('settings.settings')}}?layout=1">Cool</a></li>
-    <li><a href="{{route('settings.settings')}}?layout=2">Cute</a></li>
-    <li><a href="{{route('settings.settings')}}?layout=3">Happy</a></li>
+    <li><a href="{{route('settings.changeTheme')}}?layout=1">Cool</a></li>
+    <li><a href="{{route('settings.changeTheme')}}?layout=2">Cute</a></li>
+    <li><a href="{{route('settings.changeTheme')}}?layout=3">Happy</a></li>
   </ul>
 </div>
     </div>

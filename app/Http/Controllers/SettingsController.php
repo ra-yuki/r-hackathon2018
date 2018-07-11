@@ -19,6 +19,12 @@ class SettingsController extends Controller
      */
     public function index()
     {
+       
+        return view('users.settings');
+    }
+    
+    public function changeTheme()
+    {
        if(isset($_GET['layout'])){
            $layout = $_GET['layout'];
            $userId = \Auth::user()->id;
@@ -38,11 +44,6 @@ class SettingsController extends Controller
            $table->save();
        }
        
-        return view('users.settings');
-    }
-    
-    public function settings(){
-        echo "Hey";
-        // return redirect()->back();
+        return redirect()->back();
     }
 }

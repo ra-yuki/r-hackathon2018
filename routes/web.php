@@ -39,6 +39,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::delete('unfriend/{id}','AddFriendController@destroy')->name('unfriend');
     //Settingsのコントローラー
      Route::get('settings', 'SettingsController@index')->name('settings.settings');
+      Route::get('settings/theme', 'SettingsController@changeTheme')->name('settings.changeTheme');
 });
 
 Auth::routes();
