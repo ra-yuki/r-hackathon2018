@@ -47,7 +47,7 @@
                         
                     @if (Auth::check())
                         
-                <a class="navbar-left" href="/mypage" id="toop" class="bt">Medium-Rare </a>
+                <a class="navbar-left" href="/mypage" id="toop" class="bt">Medium-Rare <b>|</b></a>
                 
                     @else
                         
@@ -56,9 +56,12 @@
            <div id="topbar">
                     @if (Auth::check())
                         
-                <a class="navbar-left" href="/user" id="toop">Search </a>
-                <a class="navbar-left" href="/friends" id="toop">Groups/Friends </a>
-                <a class="navbar-left" href="/makegroup" id="toop">Makegroup </a>
+                <a class="navbar-left" href="/user" id="toop">Search <b>|</b></a>
+                <a class="navbar-left" href="/friends" id="toop">Groups/Friends <b>|</b></a>
+                <a class="navbar-left" href="/makegroup" id="toop">Makegroup <b>|</b></a>
+                {{-- <a class="navbar-left" href="{{route('events.index')}}" id="toop">View Events <b>|</b></a> --}}
+                <a class="navbar-left" href="{{route('events.showSchedulePrivateEvent')}}" id="toop">+ Private Event <b>|</b></a>
+                <a class="navbar-left" href="{{route('events.showScheduleGroupEvent')}}" id="toop">+ Group Event <b>|</b></a>
                    
                     @else
                         

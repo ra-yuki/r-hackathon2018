@@ -44,6 +44,11 @@ class Group extends Model
         
     // }
     
+    public function users(){
+        return $this->belongsToMany(User::class, 'user_group', 'groupId', 'userId')->withTimestamps();
+    }
+    
+    // #BUG (weird name)
     public function groups()
     {
         return $this->belongsToMany(User::class, 'user_group', 'userId', 'groupId')->withTimestamps();
@@ -87,4 +92,20 @@ class Group extends Model
     return $this->groups()->where('groupId', $group_id)->exists();
     }
 
+    public function events(){
+        return $this->belongsToMany(Event::class, 'event_group', 'groupId', 'eventId')->withTimestamps();
+    }
+    
+    public function subscribeEvent($eventId){
+        if($this->isSubscribingEvent($eventId)){
+            return false;
+        }
+        
+        $this->events()->attach($eventId);
+        return true;
+    }
+    
+    public function isSubscribingEvent($eventId){
+        return $this->events()->where('eventId', $eventId)->exists();
+    }
 }

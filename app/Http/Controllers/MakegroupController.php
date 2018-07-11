@@ -30,9 +30,11 @@ class MakegroupController extends Controller
         
         // subscribe users to the group
         \Auth::user()->groups()->attach($group->id);
-        foreach($friends as $friend){
-            $friendObj = \App\User::find($friend);
-            $friendObj->groups()->attach($group->id);
+        if(isset($request->friends)){
+            foreach($friends as $friend){
+                $friendObj = \App\User::find($friend);
+                $friendObj->groups()->attach($group->id);
+            }
         }
         
        return redirect()->route('friends.index');

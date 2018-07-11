@@ -2,16 +2,14 @@
 
 @section('content')
     <div class="container">
-        <h1>Schedule Group Event</h1>
+        <h1>Schedule Private Event</h1>
         <div class="col-xs-12">
-                {{Form::open(['route' => 'events.scheduleGroupEvent', 'method' => 'post'])}}
+                {{Form::open(['route' => 'events.schedulePrivateEvent', 'method' => 'post'])}}
                     {{Form::label('title')}}
                     {{Form::text('title')}}
-                    {{Form::label('group ID')}}
-                    {{Form::number('groupId')}}
-                    {{Form::label('date from')}}
+                    {{Form::label('date start')}}
                     {{Form::date('dateFrom')}}
-                    {{Form::label('date to')}}
+                    {{Form::label('date end')}}
                     {{Form::date('dateTo')}}
                     {{Form::label('time start')}}
                     {{Form::time('timeFrom')}}
