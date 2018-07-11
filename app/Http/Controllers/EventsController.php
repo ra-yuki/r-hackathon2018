@@ -7,6 +7,7 @@ use App\Event;
 use App\Group;
 use App\Libraries\Vec2;
 use App\Libraries\OctopathHelper;
+use App\Libraries\Config;
 
 ///////////////////////////////////////////////////////////
 //*-- go for it strategy from midnight me;) --*//
@@ -56,7 +57,15 @@ class EventsController extends Controller
         $event->save();
         
         // sub to the $event
-        \Auth::user()->groups()->where('name', 'self')->first()->subscribeEvent($event->id);
+        //create private group if not exists
+        if(\Auth::user()->groups()->where('name', Config::PRIVATE_GROUP)->first() == null){
+            $g = new Group();
+            $g->name = Config::PRIVATE_GROUP;
+            $g->visibility = false;
+            $g->save();
+            \Auth::user()->groups()->attach($g->id);
+        }
+        \Auth::user()->groups()->where('name', Config::PRIVATE_GROUP)->first()->subscribeEvent($event->id);
         
         return view('events.result-create-private', [
             'result' => $event,
