@@ -19,14 +19,14 @@ class FriendsController extends Controller
         }
         # キーワードないときは全友達取得
         else{
-            $res = \Auth::user()->friends;
+            $res = \Auth::user()->allFriends();
         }
         
         return view('users.friends', [
          'friendId' => $keyword, 
          'friends' => $res,
          'groupId' => '',
-         'groups' => \Auth::user()->groups,
+         'groups' => \Auth::user()->groups()->where('visibility', '1')->get(),
         ]);
     }
     
