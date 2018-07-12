@@ -16,11 +16,14 @@ class GroupsController extends Controller
         $res = null;
         if(!empty($keyword))
         {
-            $res = \Auth::user()->groups()->where('name', 'like', "%$keyword%")->get();
+            $res = \Auth::user()->groups()->where([
+                ['name', 'like', "%$keyword%"],
+                ['visibility' , '=', '1'],
+            ])->get();
         }
         # キーワードないときは全group取得
         else{
-            $res = \Auth::user()->groups;
+            $res = \Auth::user()->groups()->where('visibility', '1')->get();
         }
         
         return view('users.friends', [
