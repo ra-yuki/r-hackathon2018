@@ -23,11 +23,14 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout.get');
 
 Route::group(['middleware' => ['auth']], function () {
     Route::resource('mypage', 'MypageController', ['only' => ['index']]);
-    Route::get('events', 'EventsController@index')->name('events.index');
+    
+    //*-- eventsController --*//
     Route::get('events/schedule', 'EventsController@showScheduleGroupEvent')->name('events.showScheduleGroupEvent');
     Route::get('events/schedule-private', 'EventsController@showSchedulePrivateEvent')->name('events.showSchedulePrivateEvent');
     Route::post('events/schedule', 'EventsController@scheduleGroupEvent')->name('events.scheduleGroupEvent');
     Route::post('events/schedule-private', 'EventsController@schedulePrivateEvent')->name('events.schedulePrivateEvent');
+    Route::resource('events', 'EventsController', ['only' => ['index', 'show']]);
+    
     Route::resource('friends', 'FriendsController', ['only' => ['show','store','delete','index']]);
     Route::get('search', 'SearchController@index')->name('friends.search');
     // Group表示はフレンドの方に含める

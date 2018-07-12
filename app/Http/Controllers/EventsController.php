@@ -38,6 +38,18 @@ class EventsController extends Controller
         ]);
     }
     
+    function show($id){
+        $event = Event::find($id);
+        $eventOtherOptions = Event::where([
+            ['eventPath', '=', $event->eventPath],
+            ['id', '<>', $event->id],
+        ])->get();
+        return view('events.show', [
+            'event' => $event,
+            'eventOtherOptions' => $eventOtherOptions,
+        ]);
+    }
+    
     function showScheduleGroupEvent(){
         return view('events.create');
     }

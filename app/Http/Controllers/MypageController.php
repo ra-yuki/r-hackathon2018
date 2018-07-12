@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Libraries\CalendarHelper;
 
+use App\Event;
+
 class MypageController extends Controller
 {
    
@@ -22,8 +24,8 @@ class MypageController extends Controller
     {
         //*-- get days of the $year/$month with offset --*//
         $days = []; //0 means empty
-        $year = (isset($_GET['year'])) ? $_GET['year'] : 2017;
-        $month = (isset($_GET['month'])) ? $_GET['month'] : 1;
+        $year = (isset($_GET['year'])) ? $_GET['year'] : (new \DateTime())->format('Y');
+        $month = (isset($_GET['month'])) ? $_GET['month'] : (new \DateTime())->format('m');
         $firstDay = date( 'D', (new \DateTime("$year-$month-01"))->getTimestamp() );
         $firstDayNum = CalendarHelper::Day2Num($firstDay);
         // set offset to adjust the day number and string 
@@ -38,11 +40,28 @@ class MypageController extends Controller
             $datetime->add(new \DateInterval("P1D"));
         }
         
-        return view('users.index', [
+        //*-- get relevant events --*//
+        $yearMonthPair = (new \DateTime("$year-$month-01"))->format('Y-m');
+        $events = Event::where('dateTimeFromSelf', 'like', "%$yearMonthPair%")->orderBy('dateTimeFromSelf')->get();
+        
+        // data to parse
+        $date = new \DateTime("$year-$month-01");
+        $dateNext = (clone $date)->add(new \DateInterval("P1M"));
+        $datePrev = (clone $date)->sub(new \DateInterval("P1M"));
+        $data = [
             'year' => $year,
             'month' => $month,
             'days' => $days,
-        ]);
+            'yearNext' => $dateNext->format('Y'),
+            'yearPrev' => $datePrev->format('Y'),
+            'monthNext' => $dateNext->format('m'),
+            'monthPrev' => $datePrev->format('m'),
+            
+            'events' => $events,
+        ];
+        
+        // render
+        return view('users.index', $data);
     }
 
 }
