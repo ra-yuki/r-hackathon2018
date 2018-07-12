@@ -1,18 +1,20 @@
+
 @extends('layouts.app')
 
 @section('content')
 
-
 {{-- display friends and groups --}}
+
+
 <div class="container">
 
-  <ul class="nav nav-tabs">
+  <ul class="nav nav-tabs" id="tab">
     <li class="active"><a data-toggle="tab" href="#friend">Friends</a></li>
     <li><a data-toggle="tab" href="#group">Groups</a></li>
   </ul>
 
   <div class="tab-content">
-      <div id="friend" class="tab-pane fade in active">
+      <div id="friend" class="tab-pane fade in active tabContents">
       <h3>Friends</h3>
       {{-- ↓↓ 検索フォーム ↓↓ --}}
 
@@ -32,13 +34,11 @@
         </div>
         @endforeach
     
-    
-   
-        
-    </div>
-     <div id="group" class="tab-pane fade ">
+     </div>
+     <div id="group" class="tab-pane fade tabContents">
      <h3>Groups</h3>
-     {{-- ↓↓ 検索フォーム ↓↓ --}}
+  {{--   
+   ↓↓ 検索フォーム ↓↓ 
 
 <form class="form-inline" action="{{route('groups.index')}}">
   <div class="form-group">
@@ -47,7 +47,8 @@
   <input type="submit" value="Search" class="bt">
 </form>
 
-{{-- ↑↑ 検索フォーム ↑↑ --}}
+ ↑↑ 検索フォーム ↑↑ 
+--}}
       
       @foreach ($groups as $group)
            <div class="col-md-3 col-sm-4 col-xs-12">
@@ -66,4 +67,5 @@
   </div>
 </div>
 
-@endsection
+@endsection 
+
