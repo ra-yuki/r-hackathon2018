@@ -50,19 +50,18 @@
     @yield('head-plus')
 </head>
 <body>
-    <div id="app">
+
+     @include('commons.navbar')
+     
+        <div id="app">
+            @if (Auth::check())
+                        <a class="navbar-left" href="/mypage" id="toop" class="bt">Medium-Rare <b>|</b></a>
+            @else
+            @endif
+        </div>
         
-                        
-                    @if (Auth::check())
-                        
-                <a class="navbar-left" href="/mypage" id="toop" class="bt">Medium-Rare <b>|</b></a>
-                
-                    @else
-                        
-                    @endif
-            </div>    
-           <div id="topbar">
-                    @if (Auth::check())
+        <div id="topbar">
+            @if (Auth::check())
                         
                 <a class="navbar-left" href="/user" id="toop">Search <b>|</b></a>
                 <a class="navbar-left" href="/friends" id="toop">Groups/Friends <b>|</b></a>
@@ -70,33 +69,23 @@
                 {{-- <a class="navbar-left" href="{{route('events.index')}}" id="toop">View Events <b>|</b></a> --}}
                 <a class="navbar-left" href="{{route('events.showSchedulePrivateEvent')}}" id="toop">+ Private Event <b>|</b></a>
                 <a class="navbar-left" href="{{route('events.showScheduleGroupEvent')}}" id="toop">+ Group Event <b>|</b></a>
-                 <a class="navbar-left" href="{{route('settings.settings')}}" id="toop">Settings<b>|</b></a>
-                
-                    @else
-                        
-                    @endif
+                <a class="navbar-left" href="{{route('settings.settings')}}" id="toop">Settings<b>|</b></a>
+            @else
+            @endif
  
         <main class="py-4">
             @yield('content')
         </main>
-    </div>
-    
-                     @if (Auth::check())
-                        
-                 <a href="{{ route('logout.get') }}" class="bt"><div id="a">Log out</div></a>
-                
-                    @else
-                        
-                    @endif
-                    
-                    
-     @if (Auth::check())
-                        
-                 @include('commons.footer')
-                
-                    @else
-                        
-                    @endif
+        </div>
+            @if (Auth::check())
+                <a href="{{ route('logout.get') }}" class="bt"><div id="a">Log out</div></a>
+            @else
+            @endif
+            
+            @if (Auth::check())
+                @include('commons.footer')
+            @else
+            @endif
       
            
 </body>
