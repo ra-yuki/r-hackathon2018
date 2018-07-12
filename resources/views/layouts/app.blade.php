@@ -46,6 +46,8 @@
     @else
         <link rel="stylesheet" href="{{ secure_asset('css/style.css') }}">
     @endif
+    
+    @yield('head-plus')
 </head>
 <body>
     <div id="app">
