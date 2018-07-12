@@ -5,10 +5,11 @@
 
 @media screen{ 
 *{
-    background-color:#CCCCCC;
-    font-family: 'Candara',sans-serif;
-    color: white;
-    font-size: 120%;
+    background-color:white;
+    font-family: 'Quicksand', sans-serif;
+    color: black;
+    font-size: 100%;
+    font-size:30px;
   　
 }
 #topall{

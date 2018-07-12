@@ -16,6 +16,6 @@
     <li><a href="{{route('settings.changeTheme')}}?layout=4">Natural</a></li>
   </ul>
 </div>
-<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+
     </div>
 @endsection
