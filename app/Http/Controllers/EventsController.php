@@ -113,10 +113,13 @@ class EventsController extends Controller
     
     public function showRescheduleGroupEvent($id){
         $event = Event::find($id);
+        $groupSelected = Group::find($event->groups()->first()->id);
+        $groups = \Auth::user()->groups()->where('visibility', '1')->get();
         
         return view('events.create', [
             'event' => $event,
-            'groupId' => $event->groups[0]->id,
+            'groupSelected' => $groupSelected,
+            'groups' => $groups,
         ]);
     }
     
