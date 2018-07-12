@@ -10,6 +10,6 @@
         <input type="checkbox" name="friends[]" value={{$friend->id}}> {{$friend->name}} <br> 
     @endforeach
     <input type="submit" name="Create">
-{!! Form::close() !!}}
+{!! Form::close() !!}
 
 @endsection
