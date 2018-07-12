@@ -44,6 +44,20 @@ class MypageController extends Controller
         $yearMonthPair = (new \DateTime("$year-$month-01"))->format('Y-m');
         $events = Event::where('dateTimeFromSelf', 'like', "%$yearMonthPair%")->orderBy('dateTimeFromSelf')->get();
         
+        //*-- get unfixed events --*//
+        $eventsUnfixed = Event::where('fixed', '0')->orderBy('dateTimeFromSelf')->get();
+        $eventsUnfixedCleaned = []; //make events' eventPath unique
+        foreach($eventsUnfixed as $e){
+            $count = 0;
+            foreach($eventsUnfixedCleaned as $eCleaned){
+                if($e->eventPath != $eCleaned->eventPath) continue;
+                $count++;
+            }
+            if($count == 0){
+                array_push($eventsUnfixedCleaned, $e);
+            }
+        }
+        
         // data to parse
         $date = new \DateTime("$year-$month-01");
         $dateNext = (clone $date)->add(new \DateInterval("P1M"));
@@ -58,6 +72,7 @@ class MypageController extends Controller
             'monthPrev' => $datePrev->format('m'),
             
             'events' => $events,
+            'eventsUnfixed' => $eventsUnfixedCleaned,
         ];
         
         // render

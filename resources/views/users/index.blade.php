@@ -18,5 +18,11 @@
             'days' => $days,
         ])
     </div>
+    <div class="col-xs-12">
+        <h1>Unfixed Events</h1>
+        @include('commons.unfixedEvents', [
+            'events' => $eventsUnfixed,
+        ])
+    </div>
 </div>
 @endsection

@@ -14,7 +14,7 @@
     @else {!! link_to_route('events.showRescheduleGroupEvent', 'Reschedule', ['id'=>$event->id],['class'=>'btn btn-primary']) !!}
     @endif
     {!! Form::open(['route' => ['events.destroy', $event->id], 'method' => 'delete']) !!}
-        <button class="btn btn-primary">Delete</button>
+        <button class="btn btn-danger">Delete</button>
     {!! Form::close() !!}
     
     @if(!$event->fixed)
