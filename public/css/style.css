@@ -5,10 +5,11 @@
 
 @media screen{ 
 *{
-    background-color:#CCCCCC;
-    font-family: 'Candara',sans-serif;
-    color: white;
-    font-size: 120%;
+    background-color:white;
+    font-family: 'Quicksand', sans-serif;
+    color: black;
+    font-size: 100%;
+    font-size:30px;
   　
 }
 #topall{
@@ -65,7 +66,7 @@ border-top: 2px solid white;
 border-bottom: 2px solid white;
 text-decoration: none;
 font-weight: bold;
-color: white;
+color: black;
 /*margin-left: 450px;*/
 /*margin-top: 150px;*/
 /*margin-bottom: 100px;*/
@@ -76,7 +77,7 @@ position: absolute;
 top: -7px;
 width: 2px;
 height: calc(100% + 14px);
-background-color: white;
+background-color: black;
 transition: .3s;
 
 }
@@ -107,7 +108,7 @@ border-top: 2px solid white;
 border-bottom: 2px solid white;
 text-decoration: none;
 font-weight: bold;
-color: white;
+color: black;
 /*margin-left:150px;*/
 }
 #b:before, #b:after {
@@ -116,7 +117,7 @@ position: absolute;
 top: -7px;
 width: 2px;
 height: calc(100% + 14px);
-background-color: white;
+background-color: black;
 transition: .3s;
 
 }

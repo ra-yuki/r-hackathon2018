@@ -16,9 +16,6 @@
     <li><a href="{{route('settings.changeTheme')}}?layout=4">Natural</a></li>
   </ul>
 </div>
-<link href="https://fonts.googleapis.com/css?family=Cabin+Sketch|Covered+By+Your+Grace|Julius+Sans+One|Neucha|Patrick+Hand|Roboto+Condensed|Rokkitt" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Covered+By+Your+Grace|Neucha|Patrick+Hand" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Covered+By+Your+Grace|Neucha|Patrick+Hand|Roboto+Condensed|Rokkitt" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Covered+By+Your+Grace|Julius+Sans+One|Neucha|Patrick+Hand|Roboto+Condensed|Rokkitt" rel="stylesheet">
+
     </div>
 @endsection

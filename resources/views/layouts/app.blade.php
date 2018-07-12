@@ -76,16 +76,28 @@
         <main class="py-4">
             @yield('content')
         </main>
-        </div>
-            @if (Auth::check())
-                <a href="{{ route('logout.get') }}" class="bt"><div id="a">Log out</div></a>
-            @else
-            @endif
-            
-            @if (Auth::check())
-                @include('commons.footer')
-            @else
-            @endif
+
+    </div>
+    
+                     @if (Auth::check())
+                        
+                 <a href="{{ route('logout.get') }}" class="bt"><div id="a">Log out</div></a>
+                
+                    @else
+                        
+                    @endif
+                    
+                    
+     @if (Auth::check())
+                        
+                 @include('commons.footer')
+                
+                    @else
+                        
+                    @endif
+                    
+                    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+>>>>>>> 1319f2307e746c2a1baaa890b18596329c90a1ed
       
            
 </body>
