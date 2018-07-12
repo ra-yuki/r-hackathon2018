@@ -1,4 +1,3 @@
-
 @extends('layouts.app')
 
 @section('content')
@@ -14,7 +13,7 @@
   </ul>
 
   <div class="tab-content">
-      <div id="friend" class="tab-pane fade in active tabContents">
+      <div id="friend" class="tab-pane fade in active">
       <h3>Friends</h3>
       {{-- ↓↓ 検索フォーム ↓↓ --}}
 
@@ -35,7 +34,7 @@
         @endforeach
     
      </div>
-     <div id="group" class="tab-pane fade tabContents">
+     <div id="group" class="tab-pane fade">
      <h3>Groups</h3>
   {{--   
    ↓↓ 検索フォーム ↓↓ 
@@ -67,5 +66,4 @@
   </div>
 </div>
 
-@endsection 
-
+@endsection
