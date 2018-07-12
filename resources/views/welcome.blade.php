@@ -32,12 +32,40 @@
             </div>
             
         </div>
-        <a href="#" id="what" class="col-xs-12">What is CALENDER?</a>
+        <!--<a href="#" id="what" class="col-xs-12">What is CALENDER?</a>-->
+        
+        <a href="#tools" id="what">what is calendar?</a>
       
         
     </div>
+    <div id="carouselExampleIndicators" class="carousel slide" id="slide" data-ride="carousel" data-interval="false">
+  <div class="carousel-indicators">
+     <div data-target="#carouselExampleIndicators" data-slide-to="0" class="active">&nbsp;&nbsp;&nbsp;&nbsp; Calendar</div>
+    <div data-target="#carouselExampleIndicators" data-slide-to="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Share &nbsp;&nbsp; </div>
+    <div data-target="#carouselExampleIndicators" data-slide-to="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Memo &nbsp;</div>
+  </div>
+  
+  <a id="tools"＞タイトル></a>
+  <h1 class="carousel-inner__carousel-item__carousel-item">You can manage your life with this!!</h1>
+  
+  
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+       
+       　<img src="{{secure_asset('images/page1.PNG')}}" alt="m" >
+    </div>
+    <div class="carousel-item">
+　　　
+　　　<img src="{{secure_asset('images/page2.PNG')}}" alt="m" width="1270px" height="600px">
+    </div>
+    <div class="carousel-item">
+     　<img src="{{secure_asset('images/page3.PNG')}}" alt="m" width="1270px" height="600px">
+    </div>
+  </div>
+ 
+</section>
 
-  @include('commons.footer')
+  <!--@include('commons.footer')-->
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>

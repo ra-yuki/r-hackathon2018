@@ -10,6 +10,12 @@
             <li>END | {{$event->dateTimeToSelf}}</li>
         </ul>
     </div>
+    @if($event->fixed) {!! link_to_route('events.edit', 'Edit', ['id'=>$event->id],['class'=>'btn btn-primary']) !!}
+    @else {!! link_to_route('events.showRescheduleGroupEvent', 'Reschedule', ['id'=>$event->id],['class'=>'btn btn-primary']) !!}
+    @endif
+    {!! Form::open(['route' => ['events.destroy', $event->id], 'method' => 'delete']) !!}
+        <button class="btn btn-primary">Delete</button>
+    {!! Form::close() !!}
     
     @if(!$event->fixed)
         <div class="col-xs-12">
@@ -20,7 +26,7 @@
                 @endforeach
             </div>
                 <div class="col-xs-12">
-                <a class="btn btn-danger" href="#">Fix</a>
+                {!! link_to_route('events.fix', 'Fix', ['id'=>$event->id],['class'=>'btn btn-danger']) !!}
             </div>
         </div>
     @endif

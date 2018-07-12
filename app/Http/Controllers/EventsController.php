@@ -50,8 +50,69 @@ class EventsController extends Controller
         ]);
     }
     
+    function fix($id){
+        // fix the event of the date
+        $event = Event::find($id);
+        $event->fixed = true;
+        $event->save();
+        
+        // delete other options of the $event
+        Event::where([
+            ['eventPath', '=', $event->eventPath],
+            ['id', '<>', $event->id],
+        ])->delete();
+        
+        return redirect()->back();
+    }
+    
+    public function edit($id)
+    {
+        $event = Event::find($id);
+        
+        return view ('events.edit', [
+            'event' => $event,
+        ]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $event = Event::find($id);
+        $event->dateTimeFromSelf = $request->dateFrom. " ". $request->timeFrom;
+        $event->dateTimeToSelf = $request->dateTo. " ". $request->timeTo;
+        $event->title = $request->title;
+        $event->save();
+        
+        return redirect()->route('events.show', ['id' => $event->id]);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $event = Event::find($id);
+        // delete all the $event with the same event path
+        Event::where([
+            ['eventPath', '=', $event->eventPath],
+        ])->delete();
+        
+        return redirect()->route('mypage.index');
+    }
+    
     function showScheduleGroupEvent(){
         return view('events.create');
+    }
+    
+    public function showRescheduleGroupEvent($id){
+        $event = Event::find($id);
+        
+        return view('events.create', [
+            'event' => $event,
+            'groupId' => $event->groups[0]->id,
+        ]);
     }
     
     function showSchedulePrivateEvent(){
@@ -79,9 +140,21 @@ class EventsController extends Controller
         }
         \Auth::user()->groups()->where('name', Config::PRIVATE_GROUP)->first()->subscribeEvent($event->id);
         
-        return view('events.result-create-private', [
-            'result' => $event,
-        ]);
+        // return view('events.result-create-private', [
+        //     'result' => $event,
+        // ]);
+        return redirect()->route('mypage.index');
+    }
+    
+    function rescheduleGroupEvent(Request $request, $id){
+        $event = Event::find($id);
+        Event::where([
+            ['eventPath', '=', $event->eventPath],
+        ])->delete();
+        
+        $this->scheduleGroupEvent($request);
+        
+        return redirect()->route('mypage.index');
     }
     
     // can't handle event that goes across with this algorithm
@@ -168,11 +241,12 @@ class EventsController extends Controller
         }
         
         //*-- parse to view --*//
-        return view('events.result-create', [
-            'result' => $schedulableDateTimes,
-            'max' => $maxJoinable,
-            'threshold' => $threshold,
-        ]);
+        // return view('events.result-create', [
+        //     'result' => $schedulableDateTimes,
+        //     'max' => $maxJoinable,
+        //     'threshold' => $threshold,
+        // ]);
+        return redirect()->route('mypage.index');
     }
     
     function collection2Array($collection){

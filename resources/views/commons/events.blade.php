@@ -11,5 +11,7 @@ foreach($events as $e){
 
 @foreach($eventsMatched as $e)
     <?php $classBtnColor = ($e->fixed) ? 'btn-success' : 'btn-default' ; ?>
-    {!! link_to_route('events.show', $e->title, ['id' => $e->id], ['class' => "btn btn-block $classBtnColor"]) !!}
+    <?php $from = explode(':', explode(' ', $e->dateTimeFromSelf)[1])[0]; ?>
+    <?php $to = explode(':', explode(' ', $e->dateTimeToSelf)[1])[0]; ?>
+    {!! link_to_route('events.show', $e->title. " ". $from. "-". $to, ['id' => $e->id], ['class' => "btn btn-block $classBtnColor"]) !!}
 @endforeach

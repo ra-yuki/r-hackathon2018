@@ -5,7 +5,7 @@
 
 @media screen{ 
 *{
-  
+    background-image: url("/images/sea.jpg");
     background-color:#E0FFFF;
     font-family: 'Patrick Hand', cursive;
     font-family: 'Neucha', cursive;

@@ -6,6 +6,7 @@
 
 @media screen{ 
 *{
+    background-image: url("/images/balloon.jpg");
     background-color:#000055;
     font-family: 'Patrick Hand', cursive;
     font-family: 'Neucha', cursive;
