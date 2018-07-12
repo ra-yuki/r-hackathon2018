@@ -21,7 +21,6 @@
                             <option value="{{$g->id}}">{{$g->name}}</option>
                         @endforeach
                     </select>
-
                     {{Form::label('date from')}}
                     {{Form::date('dateFrom')}}
                     {{Form::label('date to')}}
@@ -37,8 +36,17 @@
                 {{Form::open(['route' => ['events.rescheduleGroupEvent', $event->id], 'method' => 'post'])}}
                     {{Form::label('title')}}
                     {{Form::text('title', $event->title)}}
-                    {{Form::label('group ID')}}
-                    {{Form::number('groupId', $groupId)}}
+                    <select name="groupId" class="selectpicker" data-live-search="true" title="select group">
+                        @foreach($groups as $g)
+                            @if($g->id == $groupSelected->id)
+                                <option value="{{$g->id}}" selected>
+                            @else
+                                <option value="{{$g->id}}">
+                            @endif
+                                    {{$g->name}}
+                                </option>
+                        @endforeach
+                    </select>
                     {{Form::label('date from')}}
                     {{Form::date('dateFrom', $event->dateFrom)}}
                     {{Form::label('date to')}}
