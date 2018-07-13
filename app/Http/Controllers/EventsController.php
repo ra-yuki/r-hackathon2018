@@ -102,6 +102,49 @@ class EventsController extends Controller
         return redirect()->route('mypage.index');
     }
     
+    public function showHub($eventPath){
+        $events = Event::where('eventPath', $eventPath)->orderBy('dateTimeFromSelf')->get();
+        $groupJoined = $events[0]->groups[0];
+        $users = $groupJoined->users;
+        
+        //*-- timestamped events dateTimeFromSelf and To --*//
+        $eventsFromToTimestamp = [];
+        foreach($events as $e){
+            $eventsFromToTimestamp[$e->dateTimeFromSelf] = (new \DateTime($e->dateTimeFromSelf))->getTimestamp();
+            $eventsFromToTimestamp[$e->dateTimeToSelf] = (new \DateTime($e->dateTimeToSelf))->getTimestamp();
+        }
+        
+        //*-- get user events EXCL. events with $eventPath --*//
+        $userEvents = [];
+        foreach($users as $user){
+            // get all the events that the user has
+            $groups = $user->groups;
+            $tmp = [];
+            foreach($groups as $group){
+                $eventsExclSelf = $group->events()->where('eventPath', '<>', $eventPath)->get();
+                $tmp = array_merge($tmp, $this->collection2Array($eventsExclSelf));
+            }
+            // push the events to an array
+            $userEvents[$user->id] = $tmp;
+        }
+        
+        //*-- get available dates for each users *--//
+        $availableDatesPerUser = [];
+        foreach($userEvents as $key => $userEvent){
+            $res = $this->getAvailableDates($userEvent, $events);
+            $availableDatesPerUser[$key] = $res;
+        }
+        
+        // parse data to renderer
+        return view('events.hub', [
+            'events' => $events,
+            'group' => $groupJoined,
+            'users' => $users,
+            'availableDates' => $availableDatesPerUser,
+            'eventsFromToTimestamp' => $eventsFromToTimestamp,
+        ]);
+    }
+    
     function showScheduleGroupEvent(){
         // get groups
         $groups = \Auth::user()->groups()->where('visibility', '1')->get();

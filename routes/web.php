@@ -32,6 +32,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('events/{id}/fix', 'EventsController@fix')->name('events.fix');
     Route::get('events/{id}/reschedule', 'EventsController@showRescheduleGroupEvent')->name('events.showRescheduleGroupEvent');
     Route::post('events/{id}/reschedule', 'EventsController@rescheduleGroupEvent')->name('events.rescheduleGroupEvent');
+    Route::get('events/{eventPath}/hub', 'EventsController@showHub')->name('evnets.showHub');
     Route::resource('events', 'EventsController', ['only' => ['index', 'show', 'edit', 'update', 'destroy']]);
     
     Route::resource('friends', 'FriendsController', ['only' => ['show','store','delete','index']]);

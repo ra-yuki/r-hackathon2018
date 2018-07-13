@@ -19,7 +19,7 @@ class FriendsController extends Controller
         }
         # キーワードないときは全友達取得
         else{
-            $res = \Auth::user()->allFriends();
+            $res = \Auth::user()->friends;
         }
         
         return view('users.friends', [
@@ -44,12 +44,14 @@ class FriendsController extends Controller
     public function store(Request $request, $id)
     {
         \Auth::user()->friend($id);
+        User::find($id)->friend(\Auth::user()->id);
         return redirect()->back();
     }
 
     public function delete($id)
     {
         \Auth::user()->unfiend($id);
+        User::find($id)->unfriend(\Auth::user()->id);
         return redirect()->back();
     }
     
