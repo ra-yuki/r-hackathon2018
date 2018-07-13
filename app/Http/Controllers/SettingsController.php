@@ -42,8 +42,8 @@ class SettingsController extends Controller
             if($layout == '4'){ // beige
                $layout = 'css/beige.css';
            }
-           if($layout == '5'){ // aqua
-               $layout = 'css/aqua.css';
+           if($layout == '5'){ // navy
+               $layout = 'css/navy.css';
            }
            if($layout == '6'){ // flower
                $layout = 'css/flower.css';
