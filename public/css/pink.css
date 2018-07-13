@@ -6,8 +6,7 @@
 
 @media screen{ 
 *{
-    
-    background-color:#FFC0CB;
+    background-color:#FFBEDA;
     font-family: 'Quicksand', sans-serif;
     color:white;
     font-size: 100%;
@@ -59,6 +58,10 @@ transform : translate(-50%,-50%);
 .ml1 .line2 { bottom: 0; }
 
 
+
+.p{
+    text-align: center;
+}
  
 #what{
      text-align: center;

@@ -11,8 +11,14 @@
     font-family: 'Quicksand', sans-serif;
     color:white;
     font-size: 100%;
-    font-size:30px;
+  
   　
+}
+
+
+.navbar-default {
+background-color:pink;
+border-color:pink;
 }
 #topall{
 position: absolute;

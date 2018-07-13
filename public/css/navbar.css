@@ -8,3 +8,75 @@
     border-bottom-color: transparent;
     
 }
+
+
+.nav3 ul {
+	/*font-size: 0;*/
+	/*box-sizing: border-box;*/
+	width: 100%;
+	/*padding: 4px;*/
+	/*list-style: none;*/
+	/*text-align: center;*/
+}
+.nav3 li {
+	/*font-size: 24px;*/
+	/*margin: 0 8px;*/
+	/*display: inline-block;*/
+}
+.nav3 li a {
+	/*text-decoration: none;*/
+	/*padding-bottom: 3px;*/
+	/*color: #000;*/
+	/*display: block;*/
+	/*position: relative;*/
+}
+
+.nav3 li a:after {
+	content: '';
+	width: 0;
+	bottom: 0;
+	transition: all 0.3s ease;
+	border-bottom: 3px solid #000;
+	display: block;
+}
+.nav3 li a:hover:after {
+	width: 100%;
+	border-bottom: 3px solid #000;
+}
+
+.navbar-default {
+background-color:white;
+border-color:white;
+}
+
+.navbar-default .navbar-nav > li > a {
+color:black;
+}
+
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+color: #CCCCCC;
+background-color: transparent;
+}
+
+ /*navbar ドロップダウン(子)のボックスカラー */
+.dropdown-menu {
+background-color: white;
+border: 1px solid black;
+border: 1px solid black(0, 0, 0, .15);
+-webkit-box-shadow: 0 6px 12px rgba(94, 136, 129, 0.35);
+box-shadow: 0 6px 12px rgba(94, 136, 129, 0.35);
+}
+
+.dropdown-menu>li>a:focus,
+.dropdown-menu>li>a:hover {
+color: #CCCCCC;
+background-color: white;
+}
+
+.navbar-default .navbar-nav>.open>a,
+.navbar-default .navbar-nav>.open>a:focus,
+.navbar-default .navbar-nav>.open>a:hover {
+color: #3e6962;
+background-color: white;
+}
