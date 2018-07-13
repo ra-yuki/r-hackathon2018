@@ -20,11 +20,11 @@
 
 
                 <div class="row">
-                    <div class="col-xs-2 col-xs-offset-1 col-sm-3 col-sm-offset-3 col-lg-4 col-lg-offset-2">
+                    <div class="col-xs-2 col-xs-offset-1 col-sm-3 col-sm-offset-3 col-lg-2 col-lg-offset-4">
                         <a href="{{ route('signup.get') }}" id="a" class="col-xs-12">Sign Up</a>
                     </div>
                       
-                    <div class="col-xs-2 col-xs-offset-1 col-sm3 col-lg-4">  
+                    <div class="col-xs-2 col-xs-offset-1 col-sm3 col-lg-2">  
                         <a href="{{ route('login') }}" id="b" class="col-xs-12">Log In</a>
                     </div>
 
@@ -72,5 +72,6 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
-<script src="{{ secure_asset('js/test.js') }}"></script>     
+<script src="{{ secure_asset('js/test.js') }}"></script>   
+<link href="https://fonts.googleapis.com/css?family=Ubuntu+Condensed" rel="stylesheet">
 @endsection

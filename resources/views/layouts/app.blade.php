@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport"content="width=device-width, initial-scale=1">
     
    
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -40,7 +40,6 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     @if(Auth::check() && Auth::user()->layout != null)
         <link rel="stylesheet" href="{{ secure_asset(Auth::user()->layout) }}">
     @else
@@ -51,41 +50,42 @@
 </head>
 <body>
 
-     @include('commons.navbar')
+    @include('commons.navbar')
      
-        <div id="app">
-            @if (Auth::check())
-                        <a class="navbar-left" href="/mypage" id="toop" class="bt">Medium-Rare <b>|</b></a>
-            @else
-            @endif
-        </div>
+    <!--    <div id="app">-->
+    <!--        @if (Auth::check())-->
+    <!--                    <a class="navbar-left" href="/mypage" id="toop" class="bt">Medium-Rare <b>|</b></a>-->
+    <!--        @else-->
+    <!--        @endif-->
+    <!--    </div>-->
         
-        <div id="topbar">
-            @if (Auth::check())
+    <!--  <div id="topbar">-->
+    <!--        @if (Auth::check())-->
                         
-                <a class="navbar-left" href="/user" id="toop">Search <b>|</b></a>
-                <a class="navbar-left" href="/friends" id="toop">Groups/Friends <b>|</b></a>
-                <a class="navbar-left" href="/makegroup" id="toop">Makegroup <b>|</b></a>
-                {{-- <a class="navbar-left" href="{{route('events.index')}}" id="toop">View Events <b>|</b></a> --}}
-                <a class="navbar-left" href="{{route('events.showSchedulePrivateEvent')}}" id="toop">+ Private Event <b>|</b></a>
-                <a class="navbar-left" href="{{route('events.showScheduleGroupEvent')}}" id="toop">+ Group Event <b>|</b></a>
-                <a class="navbar-left" href="{{route('settings.settings')}}" id="toop">Settings<b>|</b></a>
-            @else
-            @endif
+    <!--            <a class="navbar-left" href="/user" id="toop">Search <b>|</b></a>-->
+    <!--            <a class="navbar-left" href="/friends" id="toop">Groups/Friends <b>|</b></a>-->
+    <!--            <a class="navbar-left" href="/makegroup" id="toop">Makegroup <b>|</b></a>-->
+    <!--            {{-- <a class="navbar-left" href="{{route('events.index')}}" id="toop">View Events <b>|</b></a> --}}-->
+    <!--            <a class="navbar-left" href="{{route('events.showSchedulePrivateEvent')}}" id="toop">+ Private Event <b>|</b></a>-->
+    <!--            <a class="navbar-left" href="{{route('events.showScheduleGroupEvent')}}" id="toop">+ Group Event <b>|</b></a>-->
+    <!--            <a class="navbar-left" href="{{route('settings.settings')}}" id="toop">Settings<b>|</b></a>-->
+    <!--        @else-->
+    <!--        @endif-->
  
-        <main class="py-4">
-            @yield('content')
-        </main>
+        
+    <!--</div> -->
 
-    </div>
-    
-                     @if (Auth::check())
+            <main class="py-4">
+            @yield('content')
+            </main>
+
+                 <!--    @if (Auth::check())-->
                         
-                 <a href="{{ route('logout.get') }}" class="bt"><div id="a">Log out</div></a>
+                 <!--<a href="{{ route('logout.get') }}" class="bt"><div id="a">Log out</div></a>-->
                 
-                    @else
+                 <!--   @else-->
                         
-                    @endif
+                 <!--   @endif-->
                     
                     
      @if (Auth::check())
@@ -97,7 +97,5 @@
                     @endif
                     
                     <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
-
-           
 </body>
 </html>
