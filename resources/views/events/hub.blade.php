@@ -36,6 +36,6 @@
     </table>
 </div>
 
-{{dd($availableDates)}}
+{{dd($usersAvailability)}}
 
 @endsection

@@ -121,28 +121,47 @@ class EventsController extends Controller
             $groups = $user->groups;
             $tmp = [];
             foreach($groups as $group){
-                $eventsExclSelf = $group->events()->where('eventPath', '<>', $eventPath)->get();
+                $eventsExclSelf = $group->events;//()->where('eventPath', '<>', $eventPath)->get();
                 $tmp = array_merge($tmp, $this->collection2Array($eventsExclSelf));
             }
             // push the events to an array
             $userEvents[$user->id] = $tmp;
         }
         
+        echo("events count: ". count($events)."<br>");
+        
         //*-- get available dates for each users *--//
         $availableDatesPerUser = [];
         foreach($userEvents as $key => $userEvent){
+            echo("userEvent count: ". count($userEvent)."<br>");
             $res = $this->getAvailableDates($userEvent, $events);
             $availableDatesPerUser[$key] = $res;
         }
         
+        // get availability of users of rach event days
+        $usersAvailability = [];
+        foreach($events as $e){
+            foreach($users as $u){
+                $isOk = true;
+                foreach($availableDatesPerUser[$u->id] as $availableFromTo){
+                    $isOk = ($availableFromTo['from'] == $eventsFromToTimestamp[$e->dateTimeFromSelf]) ? true : false;
+                    if(!$isOk) break;
+                }
+                
+                if($isOk) $usersAvailability[$e->id][$u->id] = true;
+                else $usersAvailability[$e->id][$u->id] = false;
+            }
+        }
+        
         // parse data to renderer
-        return view('events.hub', [
-            'events' => $events,
-            'group' => $groupJoined,
-            'users' => $users,
-            'availableDates' => $availableDatesPerUser,
-            'eventsFromToTimestamp' => $eventsFromToTimestamp,
-        ]);
+        // return view('events.hub', [
+        //     'events' => $events,
+        //     'group' => $groupJoined,
+        //     'users' => $users,
+        //     'availableDates' => $availableDatesPerUser,
+        //     'eventsFromToTimestamp' => $eventsFromToTimestamp,
+        //     'usersAvailability' => $usersAvailability,
+        // ]);
     }
     
     function showScheduleGroupEvent(){
@@ -335,7 +354,9 @@ class EventsController extends Controller
         // array for available dates
         $availableDates = [];
         
+        echo "entering foreach(schedulingEvents as sEvent)<br>";
         foreach($schedulingEvents as $sEvent){
+            echo "inside start of foreach(schedulingEvents as sEvent)<br>";
             $collided = false;
             // get timestamped sEvent
             $sEventFromTimestamp = (new \DateTime($sEvent->dateFrom . " " . $sEvent->timeFrom))->getTimestamp();
@@ -345,9 +366,14 @@ class EventsController extends Controller
                 $uEventFromTimestamp = (new \DateTime($uEvent->dateTimeFromSelf))->getTimestamp();
                 $uEventToTimestamp = (new \DateTime($uEvent->dateTimeToSelf))->getTimestamp();
                 // detect collisions
+                echo "sEvent: "; var_dump($sEvent->title);
+                echo "uEvent: ";var_dump($uEvent->title);
                 $res = $this->collideLines(new Vec2($sEventFromTimestamp, $sEventToTimestamp), new Vec2($uEventFromTimestamp, $uEventToTimestamp));
+                var_dump($res);
+                echo "<br>---<br>";
                 if($res){ $collided = true; break; }
             }
+            echo"<br>NEXT<br>";
             
             // if not collided, schedulable!
             if(!$collided){
