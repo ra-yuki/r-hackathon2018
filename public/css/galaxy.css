@@ -1,19 +1,22 @@
 @charset "UTF-8";
 
 
-	
 
 
 @media screen{ 
 *{
     
-    background-color:#FF69A3;
-    font-family: 'Quicksand', sans-serif;
+    background-image: url("/images/galaxy.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    font-family: 'Orbitron', sans-serif;
     color:white;
-    font-size: 100%;
-    font-size:30px;
+    font-size: 120%;
   　
 }
+
 #topall{
 position: absolute;
 top: 50%;
@@ -59,6 +62,10 @@ transform : translate(-50%,-50%);
 .ml1 .line2 { bottom: 0; }
 
 
+
+.p{
+    text-align: center;
+}
  
 #what{
      text-align: center;
