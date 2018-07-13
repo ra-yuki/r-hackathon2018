@@ -22,20 +22,25 @@
             @foreach($users as $u)
                 <tr>
                     <td>{{$u->name}}</td>
-                    {{-- @foreach($events as $e)
-                            @if($availableDates[$u->id]['from'] == $eventsFromToTimestamp[$e->dateTimeFromSelf])
-                                <td>O</td>
-                            @else
-                                <td>X</td>
-                            @endif
-                    @endforeach --}}
+                    @foreach($events as $e)
+                        {{--@if($availableDates[$u->id]['from'] == $eventsFromToTimestamp[$e->dateTimeFromSelf])
+                            <td>O</td>
+                        @else
+                            <td>X</td>
+                        @endif--}}
+                        <td>O</td>
+                    @endforeach
                 </tr>
+            @endforeach
+            
+            <th scope="col"></th>
+            @foreach($events as $e)
+                <th scope="col"><a class="btn btn-danger">fix</a></th>
             @endforeach
         <tbody>
         </tbody>
     </table>
 </div>
 
-{{dd($usersAvailability)}}
 
 @endsection

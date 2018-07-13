@@ -58,6 +58,15 @@ class MypageController extends Controller
             }
         }
         
+        // get holidays
+        $holidays = \Yasumi\Yasumi::create('Japan', $year, 'ja_JP');
+        $holidaysOfMonth = [];
+        foreach ($holidays as $holiday){
+            if($month == explode('-', $holiday)[1]){
+                $holidaysOfMonth[explode('-', $holiday)[2]] = $holiday->getName();
+            }
+        }
+        
         // data to parse
         $date = new \DateTime("$year-$month-01");
         $dateNext = (clone $date)->add(new \DateInterval("P1M"));
@@ -73,6 +82,8 @@ class MypageController extends Controller
             
             'events' => $events,
             'eventsUnfixed' => $eventsUnfixedCleaned,
+            
+            'holidays' => $holidaysOfMonth,
         ];
         
         // render
