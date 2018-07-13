@@ -40,7 +40,6 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     @if(Auth::check() && Auth::user()->layout != null)
         <link rel="stylesheet" href="{{ secure_asset(Auth::user()->layout) }}">
     @else
