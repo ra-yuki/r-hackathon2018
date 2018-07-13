@@ -97,8 +97,7 @@
                     @endif
                     
                     <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
->>>>>>> 1319f2307e746c2a1baaa890b18596329c90a1ed
-      
+
            
 </body>
 </html>
