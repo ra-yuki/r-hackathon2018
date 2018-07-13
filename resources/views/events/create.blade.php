@@ -1,5 +1,6 @@
 <?php $exists = isset($event) ?>
 @extends('layouts.app')
+<link href="{{ asset('css/create.css') }}" rel="stylesheet">
 
 @section('head-plus')
     <!-- Latest compiled and minified CSS -->
@@ -9,28 +10,60 @@
 @endsection
 
 @section('content')
-    <div class="container">
+    <div class="container" id="all">
         <h1>Schedule Group Event</h1>
-        <div class="col-xs-12">
+        <div class="col-xs-12" >
             @if(!$exists)
                 {{Form::open(['route' => 'events.scheduleGroupEvent', 'method' => 'post'])}}
+                    <div class="row">
                     {{Form::label('title')}}
+                    </div>
+                    <div class="row">
                     {{Form::text('title')}}
+                    </div>
+                    
+                    <div class="row">
+                    {{Form::label('Group Select') }}
+                    </div>
+                    <div class="row">
                     <select name="groupId" class="selectpicker" data-live-search="true" title="select group">
                         @foreach($groups as $g)
                             <option value="{{$g->id}}">{{$g->name}}</option>
                         @endforeach
                     </select>
+                    </div>
+                    
+                    <div class=row>
                     {{Form::label('date from')}}
+                    </div>
+                    <div class="row">
                     {{Form::date('dateFrom')}}
+                    </div>
+                    
+                    <div class=row>
                     {{Form::label('date to')}}
+                    </div>
+                    <div class="row">
                     {{Form::date('dateTo')}}
+                    </div>
+                    
+                    <div class=row>
                     {{Form::label('time start')}}
+                    </div>
+                    <div class="row">
                     {{Form::time('timeFrom')}}
+                    </div>
+                    
+                    <div class=row>
                     {{Form::label('time end')}}
+                    </div>
+                    <div class="row">
                     {{Form::time('timeTo')}}
-        
+                    </div>
+                    
+                    <div class=row>
                     {{Form::submit('schedule')}}
+                    </div>
                 {{Form::close()}}
             @else
                 {{Form::open(['route' => ['events.rescheduleGroupEvent', $event->id], 'method' => 'post'])}}
