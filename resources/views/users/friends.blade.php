@@ -21,8 +21,13 @@
   <div class="form-group">
   <input type="text" name="friendId" value="{{$friendId}}" class="form-control" placeholder="Search Friends">
   </div>
-  <input type="submit" value="Search" class="bt">
+
+ 
+  <input type="image" src="images/megane2.png" alt="虫眼鏡">
+
 </form>
+
+
 
 {{-- ↑↑ 検索フォーム ↑↑ --}}
         @foreach ($friends as $friend)

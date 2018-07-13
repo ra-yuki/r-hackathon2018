@@ -42,13 +42,5 @@
 
     </div>
     
-    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Prata" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Comfortaa|Yanone+Kaffeesatz" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Comfortaa|Gloria+Hallelujah|Yanone+Kaffeesatz" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=ABeeZee" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Gaegu" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
+
 @endsection

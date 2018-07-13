@@ -4,9 +4,9 @@
 
 <div id="wrapper-top" class="container">
     <h1>
-        <a href="{{route('mypage.index')}}?year={{$yearPrev}}&month={{$monthPrev}}" class="btn btn-primary"><</a>
+        <a href="{{route('mypage.index')}}?year={{$yearPrev}}&month={{$monthPrev}}" class="btn btn-link"><</a>
         {{$year}}/{{$month}}
-        <a href="{{route('mypage.index')}}?year={{$yearNext}}&month={{$monthNext}}" class="btn btn-primary">></a>
+        <a href="{{route('mypage.index')}}?year={{$yearNext}}&month={{$monthNext}}" class="btn btn-link">></a>
     </h1>
     
     <div id="tableWrapper-top" class="col-xs-12">
