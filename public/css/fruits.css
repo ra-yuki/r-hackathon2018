@@ -5,12 +5,19 @@
 
 @media screen{ 
 *{
-    background-image: url("/images/sea.jpg");
-    background-color:#E0FFFF;
-    font-family: 'Quicksand', sans-serif;
-    color:#000077;
+    
+    background-image: url("/images/fruits.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    font-family: 'ABeeZee', sans-serif;
+    color:white;
     font-size: 120%;
   　
+}
+#navbar{
+    background-color: white;
 }
 #topall{
 position: absolute;
