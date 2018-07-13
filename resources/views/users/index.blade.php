@@ -14,6 +14,7 @@
             'year' => $year,
             'month' => $month,
             'days' => $days,
+            'holidays' => $holidays,
         ])
     </div>
     <div class="col-xs-12">

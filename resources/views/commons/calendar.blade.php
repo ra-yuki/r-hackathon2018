@@ -31,6 +31,7 @@
                 @endif
                 
                 {{-- real day --}}
+                <?php $name = ""; ?>
                 {{-- set text color --}}
                 @if(($daysInWeek*$i + $j + 2) % 7 == 0)
                     <?php $classText = "text-primary"; ?>
@@ -39,9 +40,16 @@
                 @else
                     <?php $classText = ""; ?>
                 @endif
+                <?php 
+                    if(isset( $holidays[$days[$daysInWeek*$i + $j]] )){
+                        $classText = "text-danger";
+                        $name = $holidays[$days[$daysInWeek*$i + $j]];;
+                    }
+                ?>
                 {{-- render --}}
                 <td>
                     <p class="{{$classText}}">{{ $days[$daysInWeek*$i + $j] }}</p>
+                    <small class="{{$classText}}">{{$name}}</small>
                     {{-- render events --}}
                     @include('commons.events', [
                         'year' => $year,
