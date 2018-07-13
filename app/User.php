@@ -39,6 +39,10 @@ class User extends Authenticatable
         return $this->belongsToMany(User::class, 'user_friend', 'userId', 'friendId')->withTimestamps();
     }
     
+    public function friendeds(){
+        return $this->belongsToMany(User::class, 'user_friend','friendId' ,'userId')->withTimestamps();
+    }
+    
     public function groups(){
         return $this->belongsToMany(Group::class, 'user_group', 'userId', 'groupId')->withTimestamps();
     }

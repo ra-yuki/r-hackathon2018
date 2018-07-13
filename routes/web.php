@@ -29,7 +29,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('events/schedule-private', 'EventsController@showSchedulePrivateEvent')->name('events.showSchedulePrivateEvent');
     Route::post('events/schedule', 'EventsController@scheduleGroupEvent')->name('events.scheduleGroupEvent');
     Route::post('events/schedule-private', 'EventsController@schedulePrivateEvent')->name('events.schedulePrivateEvent');
-    Route::resource('events', 'EventsController', ['only' => ['index', 'show']]);
+    Route::get('events/{id}/fix', 'EventsController@fix')->name('events.fix');
+    Route::get('events/{id}/reschedule', 'EventsController@showRescheduleGroupEvent')->name('events.showRescheduleGroupEvent');
+    Route::post('events/{id}/reschedule', 'EventsController@rescheduleGroupEvent')->name('events.rescheduleGroupEvent');
+    Route::get('events/{eventPath}/hub', 'EventsController@showHub')->name('evnets.showHub');
+    Route::resource('events', 'EventsController', ['only' => ['index', 'show', 'edit', 'update', 'destroy']]);
     
     Route::resource('friends', 'FriendsController', ['only' => ['show','store','delete','index']]);
     Route::get('search', 'SearchController@index')->name('friends.search');
@@ -42,7 +46,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::delete('unfriend/{id}','AddFriendController@destroy')->name('unfriend');
     //Settingsのコントローラー
      Route::get('settings', 'SettingsController@index')->name('settings.settings');
-      Route::get('settings/theme', 'SettingsController@changeTheme')->name('settings.changeTheme');
+     Route::get('settings/theme', 'SettingsController@changeTheme')->name('settings.changeTheme');
+     //Profileのコントローラー
+     Route::resource('profile', 'ProfileController',  ['only' => ['show']]);
+    //  Route::get('profile', 'ProfileController@show');
 });
 
 Auth::routes();

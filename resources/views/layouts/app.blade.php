@@ -3,14 +3,15 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport"content="width=device-width, initial-scale=1">
     
-    <!-- Bootstrap -->
+   
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="./jquery.min.js"></script>
-
+    
+  
 
     <!-- CSRF Token -->
 <!--    <meta name="csrf-token" content="{{ csrf_token() }}">-->
@@ -26,7 +27,7 @@
 <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>-->
 
 
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
 
 
     <title>{{ config('app.name', 'Laravel') }}</title>
@@ -39,52 +40,52 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     @if(Auth::check() && Auth::user()->layout != null)
         <link rel="stylesheet" href="{{ secure_asset(Auth::user()->layout) }}">
     @else
         <link rel="stylesheet" href="{{ secure_asset('css/style.css') }}">
     @endif
+    
+    @yield('head-plus')
 </head>
 <body>
-    <div id="app">
+
+    @include('commons.navbar')
+     
+    <!--    <div id="app">-->
+    <!--        @if (Auth::check())-->
+    <!--                    <a class="navbar-left" href="/mypage" id="toop" class="bt">Medium-Rare <b>|</b></a>-->
+    <!--        @else-->
+    <!--        @endif-->
+    <!--    </div>-->
         
+    <!--  <div id="topbar">-->
+    <!--        @if (Auth::check())-->
                         
-                    @if (Auth::check())
-                        
-                <a class="navbar-left" href="/mypage" id="toop" class="bt">Medium-Rare <b>|</b></a>
-                
-                    @else
-                        
-                    @endif
-            </div>    
-           <div id="topbar">
-                    @if (Auth::check())
-                        
-                <a class="navbar-left" href="/user" id="toop">Search <b>|</b></a>
-                <a class="navbar-left" href="/friends" id="toop">Groups/Friends <b>|</b></a>
-                <a class="navbar-left" href="/makegroup" id="toop">Makegroup <b>|</b></a>
-                {{-- <a class="navbar-left" href="{{route('events.index')}}" id="toop">View Events <b>|</b></a> --}}
-                <a class="navbar-left" href="{{route('events.showSchedulePrivateEvent')}}" id="toop">+ Private Event <b>|</b></a>
-                <a class="navbar-left" href="{{route('events.showScheduleGroupEvent')}}" id="toop">+ Group Event <b>|</b></a>
-                 <a class="navbar-left" href="{{route('settings.settings')}}" id="toop">Settings<b>|</b></a>
-                
-                    @else
-                        
-                    @endif
+    <!--            <a class="navbar-left" href="/user" id="toop">Search <b>|</b></a>-->
+    <!--            <a class="navbar-left" href="/friends" id="toop">Groups/Friends <b>|</b></a>-->
+    <!--            <a class="navbar-left" href="/makegroup" id="toop">Makegroup <b>|</b></a>-->
+    <!--            {{-- <a class="navbar-left" href="{{route('events.index')}}" id="toop">View Events <b>|</b></a> --}}-->
+    <!--            <a class="navbar-left" href="{{route('events.showSchedulePrivateEvent')}}" id="toop">+ Private Event <b>|</b></a>-->
+    <!--            <a class="navbar-left" href="{{route('events.showScheduleGroupEvent')}}" id="toop">+ Group Event <b>|</b></a>-->
+    <!--            <a class="navbar-left" href="{{route('settings.settings')}}" id="toop">Settings<b>|</b></a>-->
+    <!--        @else-->
+    <!--        @endif-->
  
-        <main class="py-4">
+        
+    <!--</div> -->
+
+            <main class="py-4">
             @yield('content')
-        </main>
-    </div>
-    
-                     @if (Auth::check())
+            </main>
+
+                 <!--    @if (Auth::check())-->
                         
-                 <a href="{{ route('logout.get') }}" class="bt"><div id="a">Log out</div></a>
+                 <!--<a href="{{ route('logout.get') }}" class="bt"><div id="a">Log out</div></a>-->
                 
-                    @else
+                 <!--   @else-->
                         
-                    @endif
+                 <!--   @endif-->
                     
                     
      @if (Auth::check())
@@ -94,7 +95,15 @@
                     @else
                         
                     @endif
-      
-           
+                    
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Prata" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa|Yanone+Kaffeesatz" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa|Gloria+Hallelujah|Yanone+Kaffeesatz" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=ABeeZee" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Gaegu" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
 </body>
 </html>

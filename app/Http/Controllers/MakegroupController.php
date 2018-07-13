@@ -8,9 +8,10 @@ class MakegroupController extends Controller
 {
         public function index()
     { 
-        $friends=\Auth::user()->friends;
+        $friends = \Auth::user()->friends;
+        
         return view('group.makegroup', [
-            'friends' => $friends
+            'friends' => $friends,
         ]);
         
     }

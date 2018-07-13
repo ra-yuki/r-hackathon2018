@@ -26,7 +26,7 @@ class FriendsController extends Controller
          'friendId' => $keyword, 
          'friends' => $res,
          'groupId' => '',
-         'groups' => \Auth::user()->groups,
+         'groups' => \Auth::user()->groups()->where('visibility', '1')->get(),
         ]);
     }
     
@@ -44,12 +44,14 @@ class FriendsController extends Controller
     public function store(Request $request, $id)
     {
         \Auth::user()->friend($id);
+        User::find($id)->friend(\Auth::user()->id);
         return redirect()->back();
     }
 
     public function delete($id)
     {
         \Auth::user()->unfiend($id);
+        User::find($id)->unfriend(\Auth::user()->id);
         return redirect()->back();
     }
     
