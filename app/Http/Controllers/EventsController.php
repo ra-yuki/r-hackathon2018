@@ -361,26 +361,30 @@ class EventsController extends Controller
             // get timestamped sEvent
             $sEventFromTimestamp = (new \DateTime($sEvent->dateFrom . " " . $sEvent->timeFrom))->getTimestamp();
             $sEventToTimestamp = (new \DateTime($sEvent->dateTo . " " . $sEvent->timeTo))->getTimestamp();
+            //$dateDiff2Search = $dateFrom2Search->diff($dateTo2Search)->days;
             foreach($userEvents as $uEvent){
                 // get timestamped uEvent
                 $uEventFromTimestamp = (new \DateTime($uEvent->dateTimeFromSelf))->getTimestamp();
                 $uEventToTimestamp = (new \DateTime($uEvent->dateTimeToSelf))->getTimestamp();
                 // detect collisions
-                echo "sEvent: "; var_dump($sEvent->title);
-                echo "uEvent: ";var_dump($uEvent->title);
+                echo "sEvent: $sEvent->title | $sEventFromTimestamp(".date('y-m-d H:i:s', $sEventFromTimestamp).") - $sEventToTimestamp(".date('y-m-d H:i:s', $sEventToTimestamp).")<br>";
+                echo "sEvent: $uEvent->title | $uEventFromTimestamp(".date('y-m-d H:i:s', $uEventFromTimestamp).") - $uEventToTimestamp(".date('y-m-d H:i:s', $uEventToTimestamp).")<br>";
                 $res = $this->collideLines(new Vec2($sEventFromTimestamp, $sEventToTimestamp), new Vec2($uEventFromTimestamp, $uEventToTimestamp));
                 var_dump($res);
                 echo "<br>---<br>";
-                if($res){ $collided = true; break; }
+                if($res){ $collided = true; echo "<br>collided: true<br>"; break; }
             }
-            echo"<br>NEXT<br>";
-            
+
             // if not collided, schedulable!
             if(!$collided){
                 $from = (new \DateTime($sEvent->dateFrom . " " . $sEvent->timeFrom))->getTimestamp();
                 $to = (new \DateTime($sEvent->dateTo . " " . $sEvent->timeTo))->getTimestamp();
                 array_push($availableDates, ['from'=>$from, 'to'=>$to]);
+                
+                echo "collided: false";
             }
+            
+            echo("userEvents count: ". count($userEvents)."<br>");
         }
         
         return $availableDates; //return as timestamped form
