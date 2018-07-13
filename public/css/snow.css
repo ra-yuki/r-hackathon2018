@@ -5,12 +5,20 @@
 
 @media screen{ 
 *{
-    background-color:black;
-    font-family: 'Ubuntu Condensed', sans-serif;
-    color: black;
-    font-size: 100%;
-    font-size:30px;
+    
+    background-image: url("/images/snow.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-family: 'Comfortaa', cursive;
+    color:white;
+    font-size: 120%;
   　
+}
+#navbar{
+    background-color: white;
 }
 #topall{
 position: absolute;
@@ -31,7 +39,7 @@ transform : translate(-50%,-50%);
 .ml1 .letter {
   display: inline-block;
   line-height: 1em;
-  color:black;
+  color:white;
   
 }
 
@@ -49,7 +57,7 @@ transform : translate(-50%,-50%);
   left: 0;
   height: 3px;
   width: 100%;
-  background-color: black;
+  background-color: #fff;
   transform-origin: 0 0;
 }
 
@@ -72,44 +80,6 @@ transform : translate(-50%,-50%);
 
 #foot{
   margin-left: 35px;
-}
-.carousel-indicators .active:hover{
-   background-color:unset;
-   opacity:1;
-  transition: 0.3s;
-   
- }
- 
-
-.carousel-indicators .active{
-   background-color:unset;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-    -ms-flex-align: center;
-    align-items: center;
-    max-width: 960px;
-    margin: 0,350px,0,200px ;
-}
-
-.carousel-indicators {
-   background-color:unset;
-    bottom: -199px;
-   margin-left: 200px;
-   margin-right: 270px;
-   
-}
-
-.pb-4, .py-4 {
-    padding-bottom: 7.5rem!important;
-}
-.btn btn-primary {
-    color: white;
-    background-color: #333;
-    border-color:#333 ;
 }
 
 }
@@ -262,40 +232,8 @@ height: 100%;
      margin-top:10px;
  }
 
- .carousel-indicators .active:hover{
-   background-color:unset;
-   opacity:1;
-  transition: 0.3s;
-   
- }
- 
-
-.carousel-indicators .active{
-   background-color:unset;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-    -ms-flex-align: center;
-    align-items: center;
-    max-width: 960px;
-    margin: 0,350px,0,200px ;
-}
-
-.carousel-indicators {
-   background-color:unset;
-   bottom: -199px;
-   margin-left: 200px;
-   margin-right: 270px;
-   
-}
-
-.pb-4, .py-4 {
-    padding-bottom: 7.5rem!important;
-} 
-
+  
+  
 }
 
 @media (max-width:1199 px) and (min-width: 768px) { 
@@ -446,44 +384,7 @@ height: 100%;
      margin-top:10px;
  }
 
- .carousel-indicators .active:hover{
-   background-color:unset;
-   opacity:1;
-  transition: 0.3s;
   
-   
- }
- 
-
-.carousel-indicators .active{
-   background-color:unset;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-    -ms-flex-align: center;
-    align-items: center;
-    max-width: 960px;
-    margin: 0,350px,0,200px ;
+  
 }
 
-.carousel-indicators {
-   background-color:unset;
-   bottom: -199px;
-   margin-left: 200px;
-   margin-right: 270px;
-      
-   
-}
-
-.pb-4, .py-4 {
-    padding-bottom: 7.5rem!important;
-} 
-.btn btn-primary {
-    color: white;
-    background-color: #333;
-    border-color:#333 ;
-}
-}
