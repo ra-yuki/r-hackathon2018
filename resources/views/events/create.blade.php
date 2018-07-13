@@ -61,7 +61,7 @@
                     {{Form::time('timeTo')}}
                     </div>
                     
-                    <div class=row>
+                    <div class="row col-xs-2 col-xs-offset-5">
                     {{Form::submit('schedule')}}
                     </div>
                 {{Form::close()}}
