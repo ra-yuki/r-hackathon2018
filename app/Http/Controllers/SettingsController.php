@@ -42,6 +42,16 @@ class SettingsController extends Controller
             if($layout == '4'){ // natural
                $layout = 'css/natural.css';
            }
+           if($layout == '5'){ // erika
+               $layout = 'css/erika.css';
+           }
+           if($layout == '6'){ // mihana
+               $layout = 'css/mihan.css';
+           }if($layout == '7'){ // miyu
+               $layout = 'css//miyu.css';
+           }if($layout == '8'){ // so
+               $layout = 'css/so.css';
+           }
            
            $table->layout = $layout;
            $table->save();

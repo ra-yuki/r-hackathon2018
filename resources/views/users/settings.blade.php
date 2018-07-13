@@ -14,6 +14,10 @@
     <li><a href="{{route('settings.changeTheme')}}?layout=2">Cute</a></li>
     <li><a href="{{route('settings.changeTheme')}}?layout=3">Happy</a></li>
     <li><a href="{{route('settings.changeTheme')}}?layout=4">Natural</a></li>
+     <li><a href="{{route('settings.changeTheme')}}?layout=4">Erika</a></li> 
+     <li><a href="{{route('settings.changeTheme')}}?layout=4">Mihan</a></li>
+      <li><a href="{{route('settings.changeTheme')}}?layout=4">Miyu</a></li>
+       <li><a href="{{route('settings.changeTheme')}}?layout=4">So</a></li>
   </ul>
 </div>
 
