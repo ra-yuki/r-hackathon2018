@@ -15,7 +15,7 @@
     <li><a href="{{route('settings.changeTheme')}}?layout=2">black</a></li>
     <li><a href="{{route('settings.changeTheme')}}?layout=3">pink</a></li>
     <li><a href="{{route('settings.changeTheme')}}?layout=4">beige</a></li>
-     <li><a href="{{route('settings.changeTheme')}}?layout=5">aqua</a></li> 
+    <li><a href="{{route('settings.changeTheme')}}?layout=5">navy</a></li> 
  
   </ul>
 </div>
@@ -44,7 +44,7 @@
     
     <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Prata" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Comfortaa|Yanone+Kaffeesatz" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Comfortaa|Gloria+Hallelujah|Yanone+Kaffeesatz" rel="stylesheet">
