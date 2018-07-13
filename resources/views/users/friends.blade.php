@@ -22,6 +22,7 @@
   <input type="text" name="friendId" value="{{$friendId}}" class="form-control" placeholder="Search Friends">
   </div>
   <input type="submit" value="Search" class="bt">
+    <span class="glyphicon glyphicon-ok form-control-feedback"></span>
 </form>
 
 {{-- ↑↑ 検索フォーム ↑↑ --}}
