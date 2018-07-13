@@ -74,6 +74,16 @@ transform : translate(-50%,-50%);
 #foot{
   margin-left: 35px;
 }
+.btn-primary {
+    color: #fff;
+    background-color: #CCCCCC;
+    border-color: #CCCCCC;
+}
+.btn-primary:hover {
+    color: #fff;
+    background-color: #999999;
+    border-color: #999999;
+}
 
 }
 
@@ -225,7 +235,11 @@ height: 100%;
      margin-top:10px;
  }
 
-  
+.btn-primary {
+    color: #fff;
+    background-color: #CCCCCC;
+    border-color: #CCCCCC;
+}
   
 }
 
@@ -377,7 +391,11 @@ height: 100%;
      margin-top:10px;
  }
 
-  
+ .btn-primary {
+    color: #fff;
+    background-color: #CCCCCC;
+    border-color: #CCCCCC;
+}
   
 }
 
