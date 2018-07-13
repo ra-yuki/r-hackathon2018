@@ -21,8 +21,10 @@
   <div class="form-group">
   <input type="text" name="friendId" value="{{$friendId}}" class="form-control" placeholder="Search Friends">
   </div>
+
  
   <input type="image" src="images/megane2.png" alt="虫眼鏡">
+
 </form>
 
 

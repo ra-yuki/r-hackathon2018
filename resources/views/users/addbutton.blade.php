@@ -3,6 +3,7 @@
 
     {!! Form::open(['route' => ['unfriend', $user->id], 'method' => 'delete']) !!}
         {!! Form::submit('Unfriend', ['class' => "btn btn-danger"]) !!}
+        
     {!! Form::close() !!}
  
     @else
