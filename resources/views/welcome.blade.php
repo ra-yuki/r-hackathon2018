@@ -16,7 +16,7 @@
                     </span>
                 </h1>
                 
-                <p class="p">Everyone's schedules on one calender</p>
+                <p class="p">Adjust Your Schedule, quicker than ever</p>
 
 
                 <div class="row">
@@ -32,9 +32,12 @@
             </div>
             
         </div>
-        <!--<a href="#" id="what" class="col-xs-12">What is CALENDER?</a>-->
-        
-        <a href="#tools" id="what">what is calendar?</a>
+    <!--<a href="#" id="what" class="col-xs-12">What is CALENDER?</a>-->
+     <div class="top__scroll-box">
+  	<a id="what" class="top__scroll" href="#tools">What is CALENDER?</a>
+	</div>
+					
+				
       
         
     </div>
