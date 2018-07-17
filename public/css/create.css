@@ -1,9 +1,17 @@
 #all{
    vertical-align:middle;
+   color:black;
    
    
 }
 
-#but{
-    background-color:pink;
+
+
+/*.waku{*/
+/*    padding:0;*/
+/*    margin:0;*/
+/*}*/
+
+.wakuwaku{
+    margin-left:15px;
 }
