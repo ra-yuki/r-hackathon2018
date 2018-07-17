@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 use App\Event;
+use App\Libraries\GeneralHelper;
 
 class User extends Authenticatable
 {
@@ -42,12 +43,6 @@ class User extends Authenticatable
     public function friendeds(){
         return $this->belongsToMany(User::class, 'user_friend','friendId' ,'userId')->withTimestamps();
     }
-    
-    public function groups(){
-        return $this->belongsToMany(Group::class, 'user_group', 'userId', 'groupId')->withTimestamps();
-    }
-
-
 
     // public function followers()
     // {
@@ -68,6 +63,8 @@ class User extends Authenticatable
         } else {
         // follow if not following
         $this->friends()->attach($userId);
+        // friend back
+        User::find($userId)->friends()->attach($this->id);
         return true;
         }
     }
@@ -95,6 +92,60 @@ class User extends Authenticatable
         return $this->friends()->where('friendId', $userId)->exists();
     }
     
+    //*-- regarding images table --*//
+    public function images(){
+        return $this->hasMany('App\Image', 'userId');
+    }
+    
+    public function image(){
+        return $this->hasOne('App\Image', 'userId');
+    }
+    
+    //*-- groups table stuffs --*//
+    public function groups(){
+        return $this->belongsToMany(Group::class, 'user_group', 'userId', 'groupId')->withTimestamps();
+    }
+    
+    //*-- other helper functions --*//
+    
+    // param $exceptions: Event array
+    // return $res: Array
+    //      ex. [Event, ...]
+    public function getEventsAll($exceptions = null){
+        $res = [];// array to return
+        
+        // get where clause template
+        $wheres = [];
+        if(isset($exceptions)){
+            foreach($exceptions as $exception){
+                $where = ['eventPath', '<>', $exception->eventPath];
+                array_push($wheres, $where);
+            }
+        }
+        
+        $groups = $this->groups;
+        foreach($groups as $g){
+            $events = isset($exceptions) ? $g->events()->where($wheres)->get() : $g->events;
+            $res = array_merge($res, GeneralHelper::collection2Array($events));
+        }
+        
+        return $res;
+    }
+    
+    public function getEventsAllAsCollection($exceptions = null){
+        return collect($this->getEventsAll($exceptions));
+    }
+    
+    public function getEventsAllAsTimestamps($exceptions = null){
+        $events = $this->getEventsAll($exceptions);
+        
+        $c = count($events);
+        for($i=0; $i<$c; $i++){
+            $events[$i] = Event::eventDateTimeSelf2Timestamps($events[$i]);
+        }
+        
+        return $events;
+    }
 }
 
 

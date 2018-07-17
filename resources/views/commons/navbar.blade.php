@@ -24,8 +24,8 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Add Plans <span class="caret"></span></a>
           <ul class="dropdown-menu" id="dp">
-            <li><a class="navbar-left" href="{{route('events.showSchedulePrivateEvent')}}" >Private Event </a></li>
-            <li><a class="navbar-left" href="{{route('events.showScheduleGroupEvent')}}">Group Event </a></li>
+            <li><a class="navbar-left" href="{{route('events.showScheduleInPrivate')}}" >Private Event </a></li>
+            <li><a class="navbar-left" href="{{route('events.showScheduleWithGroup')}}">Group Event </a></li>
           </ul>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Friends<span class="caret"></span></a>

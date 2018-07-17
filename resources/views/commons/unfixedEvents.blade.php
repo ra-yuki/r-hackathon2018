@@ -10,7 +10,7 @@
     @if($today == $dateEvent)
         <div class="row">
             <div class="col-xs-4">
-                {!! link_to_route('events.show', $events[$i]->title, ['id' => $events[$i]->id], ['class' => '']) !!}
+                {!! link_to_route('events.showHub', $events[$i]->title, ['eventPath' => $events[$i]->eventPath], ['class' => '']) !!}
             </div>
         </div>
     @endif
@@ -32,13 +32,13 @@
         <p>{{$yearMonthPair}}</p>
         <div class="row">
             <div class="col-xs-4">
-                {!! link_to_route('events.show', $events[$i]->title, ['id' => $events[$i]->id], ['class' => '']) !!}
+                {!! link_to_route('events.showHub', $events[$i]->title, ['eventPath' => $events[$i]->eventPath], ['class' => '']) !!}
             </div>
         </div>
     @else
         <div class="row">
             <div class="col-xs-4">
-                {!! link_to_route('events.show', $events[$i]->title, ['id' => $events[$i]->id], ['class' => '']) !!}
+                {!! link_to_route('events.showHub', $events[$i]->title, ['eventPath' => $events[$i]->eventPath], ['class' => '']) !!}
             </div>
         </div>
     @endif
