@@ -42,10 +42,15 @@ class MypageController extends Controller
         
         //*-- get relevant events --*//
         $yearMonthPair = (new \DateTime("$year-$month-01"))->format('Y-m');
-        $events = Event::where('dateTimeFromSelf', 'like', "%$yearMonthPair%")->orderBy('dateTimeFromSelf')->get();
-        
+        $events = \Auth::user()->getEventsAllAsCollection()->reject(function($value, $key) use ($yearMonthPair) {
+                return mb_strpos($value->dateTimeFromSelf, $yearMonthPair);
+            })->sortBy('dateTimeFromSelf');
+
         //*-- get unfixed events --*//
-        $eventsUnfixed = Event::where('fixed', '0')->orderBy('dateTimeFromSelf')->get();
+        $eventsUnfixed = \Auth::user()->getEventsAllAsCollection()->reject(function($value, $key){
+                return ($value->fixed == true);
+            })->sortBy('dateTimeFromSelf');
+
         $eventsUnfixedCleaned = []; //make events' eventPath unique
         foreach($eventsUnfixed as $e){
             $count = 0;

@@ -108,4 +108,13 @@ class Group extends Model
     public function isSubscribingEvent($eventId){
         return $this->events()->where('eventId', $eventId)->exists();
     }
+    
+    //*-- regarding images table --*//
+    public function images(){
+        return $this->hasMany('App\Image', 'groupId');
+    }
+    
+    public function image(){
+        return $this->hasOne('App\Image', 'groupId');
+    }
 }

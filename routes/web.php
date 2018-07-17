@@ -25,14 +25,14 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('mypage', 'MypageController', ['only' => ['index']]);
     
     //*-- eventsController --*//
-    Route::get('events/schedule', 'EventsController@showScheduleGroupEvent')->name('events.showScheduleGroupEvent');
-    Route::get('events/schedule-private', 'EventsController@showSchedulePrivateEvent')->name('events.showSchedulePrivateEvent');
-    Route::post('events/schedule', 'EventsController@scheduleGroupEvent')->name('events.scheduleGroupEvent');
-    Route::post('events/schedule-private', 'EventsController@schedulePrivateEvent')->name('events.schedulePrivateEvent');
+    Route::get('events/schedule', 'EventsController@showScheduleWithGroup')->name('events.showScheduleWithGroup');
+    Route::get('events/schedule-private', 'EventsController@showScheduleInPrivate')->name('events.showScheduleInPrivate');
+    Route::post('events/schedule', 'EventsController@scheduleWithGroup')->name('events.scheduleWithGroup');
+    Route::post('events/schedule-private', 'EventsController@scheduleInPrivate')->name('events.scheduleInPrivate');
+    Route::get('events/{eventPath}/hub', 'EventsController@showHub')->name('events.showHub');
     Route::get('events/{id}/fix', 'EventsController@fix')->name('events.fix');
-    Route::get('events/{id}/reschedule', 'EventsController@showRescheduleGroupEvent')->name('events.showRescheduleGroupEvent');
-    Route::post('events/{id}/reschedule', 'EventsController@rescheduleGroupEvent')->name('events.rescheduleGroupEvent');
-    Route::get('events/{eventPath}/hub', 'EventsController@showHub')->name('evnets.showHub');
+    Route::get('events/{id}/reschedule', 'EventsController@showRescheduleWithGroup')->name('events.showRescheduleWithGroup');
+    Route::post('events/{id}/reschedule', 'EventsController@rescheduleWithGroup')->name('events.rescheduleWithGroup');
     Route::resource('events', 'EventsController', ['only' => ['index', 'show', 'edit', 'update', 'destroy']]);
     
     Route::resource('friends', 'FriendsController', ['only' => ['show','store','delete','index']]);
@@ -48,8 +48,10 @@ Route::group(['middleware' => ['auth']], function () {
      Route::get('settings', 'SettingsController@index')->name('settings.settings');
      Route::get('settings/theme', 'SettingsController@changeTheme')->name('settings.changeTheme');
      //Profileのコントローラー
-     Route::resource('profile', 'ProfileController',  ['only' => ['show']]);
-    //  Route::get('profile', 'ProfileController@show');
+     Route::resource('profile', 'ProfileController',  ['only' => ['index', 'show']]);
+     //@added_yukiholi
+    Route::post('profile/upload', 'ProfileController@uploadImage')->name('profile.uploadImage');
+    //@endadded_yukiholi
 });
 
 Auth::routes();

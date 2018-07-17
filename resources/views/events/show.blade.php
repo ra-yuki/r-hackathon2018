@@ -11,24 +11,15 @@
         </ul>
     </div>
     @if($event->fixed) {!! link_to_route('events.edit', 'Edit', ['id'=>$event->id],['class'=>'btn btn-primary']) !!}
-    @else {!! link_to_route('events.showRescheduleGroupEvent', 'Reschedule', ['id'=>$event->id],['class'=>'btn btn-primary']) !!}
+    @else {!! link_to_route('events.showRescheduleWithGroup', 'Reschedule', ['id'=>$event->id],['class'=>'btn btn-primary']) !!}
     @endif
     {!! Form::open(['route' => ['events.destroy', $event->id], 'method' => 'delete']) !!}
         <button class="btn btn-danger">Delete</button>
     {!! Form::close() !!}
     
     @if(!$event->fixed)
-        <div class="col-xs-12">
-            <h1>Other dates available</h1>
-            <div class="col-xs-12">
-                @foreach($eventOtherOptions as $eo)
-                    {!! link_to_route('events.show', $eo->dateTimeFromSelf . " ~ " . $eo->dateTimeToSelf, ['id' => $eo->id], ['class' => "btn btn-block btn-warning"]) !!}
-                @endforeach
-            </div>
-                <div class="col-xs-12">
-                {!! link_to_route('events.fix', 'Fix', ['id'=>$event->id],['class'=>'btn btn-danger']) !!}
-            </div>
-        </div>
+        {!! link_to_route('events.showHub', 'See Other Options', ['eventPath'=>$event->eventPath],['class'=>'btn btn-warning']) !!}
+        {!! link_to_route('events.fix', 'Fix', ['id'=>$event->id],['class'=>'btn btn-danger']) !!}
     @endif
 </div>
 @endsection

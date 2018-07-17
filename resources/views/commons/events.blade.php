@@ -10,8 +10,15 @@ foreach($events as $e){
 ?>
 
 @foreach($eventsMatched as $e)
-    <?php $classBtnColor = ($e->fixed) ? 'btn-success' : 'btn-default' ; ?>
+    <?php
+        // formatting
+        $classBtnColor = ($e->fixed) ? 'btn-success' : 'btn-default' ;
+        $timeFromSplit = explode(':', explode(' ', $e->dateTimeFromSelf)[1]);
+        $timeToSplit = explode(':', explode(' ', $e->dateTimeToSelf)[1]);
+        $timeFrom = $timeFromSplit[0]. ":". $timeFromSplit[1];
+        $timeTo = $timeToSplit[0]. ":". $timeToSplit[1];
+    ?>
     <?php $from = explode(':', explode(' ', $e->dateTimeFromSelf)[1])[0]; ?>
     <?php $to = explode(':', explode(' ', $e->dateTimeToSelf)[1])[0]; ?>
-    {!! link_to_route('events.show', $e->title. " ". $from. "-". $to, ['id' => $e->id], ['class' => "btn btn-block $classBtnColor"]) !!}
+    {!! link_to_route('events.show', $e->title. " ". $timeFrom. "-". $timeTo, ['id' => $e->id], ['class' => "btn btn-block $classBtnColor"]) !!}
 @endforeach

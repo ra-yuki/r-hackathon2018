@@ -7,7 +7,7 @@
         <h1>Schedule Private Event</h1>
         <div class="col-xs-12">
 
-                {{Form::open(['route' => 'events.schedulePrivateEvent', 'method' => 'post'])}}
+                {{Form::open(['route' => 'events.scheduleInPrivate', 'method' => 'post'])}}
                     
                     <div class="row">
                     {{Form::label('title')}}
