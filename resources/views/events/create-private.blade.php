@@ -9,52 +9,65 @@
 
                 {{Form::open(['route' => 'events.scheduleInPrivate', 'method' => 'post'])}}
                     
-                    <div class="row">
+                    <div class="row ">
                     {{Form::label('title')}}
                     </div>
                     <div class="row">
-                    {{Form::text('title')}}
+                    {{Form::text('title',null,['class' => 'maru'])}}
                     </div>
                     
+                    <p></p>
                     <div class="row">
                     {{Form::label('date start')}}
                     </div>
                     <div class="row">
-                    {{Form::date('dateFrom')}}
+                    {{Form::date('dateFrom',null,['class' => 'maru'])}}
                     </div>
                     
+                    <p></p>
                     <div class="row">
                     {{Form::label('date end')}}
-                    </div><div class="row">
-                    {{Form::date('dateTo')}}
+                    </div>
+                    <div class="row">
+                    {{Form::date('dateTo',null,['class' => 'maru'])}}
                     </div>
                     
+                    <p></p>
                     <div class="row">
                     {{Form::label('time start')}}
-                    </div><div class="row">
-                    {{Form::time('timeFrom')}}
+                    </div>
+                    <div class="row">
+                    <div class="input-group clockpicker col-xs-5 col-sm-3 col-md-2 col-lg-2 " data-placement="right" data-align="top" data-autoclose="true">
+                        <input type="text" class="form-control" value="00:00">
+                        <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-time"></span>
+                        </span>
+                    </div>
+                    <script type="text/javascript">
+                    $('.clockpicker').clockpicker();
+                    </script>
                      </div>
               
-                    
+                    <p></p>
                     <div class="row">
                     {{Form::label('time end')}}
                     </div><div class="row">
-                    {{Form::time('timeTo')}}
+                    <div class="input-group clockpicker col-xs-5 col-sm-3 col-md-2 col-lg-2" data-placement="right" data-align="top" data-autoclose="true">
+                        <input type="text" class="form-control" value="00:00">
+                        <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-time"></span>
+                        </span>
                     </div>
                     
+                    <script type="text/javascript">
+                    $('.clockpicker').clockpicker();
+                    </script>
+                    </div>
                     <div class="row col-xs-2 col-xs-offset-5">
                     {{Form::submit('schedule')}}
                     </div>
                     
-                    <div class="input-group clockpicker" data-placement="left" data-align="top" data-autoclose="true">
-    <input type="text" class="form-control" value="13:14">
-    <span class="input-group-addon">
-        <span class="glyphicon glyphicon-time"></span>
-    </span>
-</div>
-<script type="text/javascript">
-$('.clockpicker').clockpicker();
-</script>
+                   
                 
                 {{Form::close()}}
                 
