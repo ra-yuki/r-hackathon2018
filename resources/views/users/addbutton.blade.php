@@ -1,3 +1,6 @@
+
+
+
 @if (Auth::id() != $user->id)
     @if (Auth::user()->is_friend($user->id))
 
@@ -11,8 +14,9 @@
  
     {!! Form::open(['route' => ['add.get', $user->id], 'method' => 'get']) !!}
         <!--{!! Form::submit('Add', ['class' => "btn btn-success btn-xs"]) !!}-->
-        <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-plus"></span> Add</button>
-     
+       <button class="btn btn-default" type="submit" id:"red"> <span class="
+glyphicon glyphicon-search"></span> Unfriend</button>
+       
     {!! Form::close() !!}
    
     @endif

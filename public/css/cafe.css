@@ -13,9 +13,11 @@
     background-size: cover;
     font-family: 'Gaegu', cursive;
     color:white;
-    font-size: 1o0%;
+    font-size: 100%;
   　
 }
+
+
 #navbar{
     background-color: white;
 }
@@ -80,7 +82,9 @@ transform : translate(-50%,-50%);
 #foot{
   margin-left: 35px;
 }
-
+.glyphicon glyphicon-plus{
+  background-color: transparent;
+} 
 }
 
 @media (max-width: 767px) { 
@@ -231,7 +235,10 @@ height: 100%;
      margin-top:10px;
  }
 
-  
+.glyphicon-minus:before {
+    content: "\2212";
+    background-color: transparent;
+}
   
 }
 
@@ -383,7 +390,9 @@ height: 100%;
      margin-top:10px;
  }
 
-  
+ .glyphicon glyphicon-plus{
+  background-color: transparent;
+}  
   
 }
 

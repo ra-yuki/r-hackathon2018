@@ -4,6 +4,17 @@
 
 
 @media screen{ 
+
+.glyphicon-search{
+    background-color: white;
+    color:black;
+
+}
+
+#red{
+    background-color:red;
+}
+
 *{
     background-color:white;
     font-family: 'Ubuntu Condensed', sans-serif;
@@ -64,7 +75,7 @@ transform : translate(-50%,-50%);
  
 #what{
      text-align: center;
-     color:white;
+     color:#ccc;
      margin-top: 10px;
      margin-left:20px;
      
@@ -121,6 +132,10 @@ transform : translate(-50%,-50%);
     background-color: #999999;
     border-color: #999999;
 }
+
+
+
+
 }
 
 @media (max-width: 767px) { 
