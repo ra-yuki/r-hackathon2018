@@ -10,7 +10,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="./jquery.min.js"></script>
-    
+    <link rel="stylesheet" href ="{{ secure_asset('css/bootstrap-clockpicker.min.css') }}">
+    <script src="{{ secure_asset('js/bootstrap-clockpicker.min.js') }}"></script>
   
 
     <!-- CSRF Token -->
@@ -39,6 +40,8 @@
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
 
+
+    <link href="{{ asset('css/navbar.css') }}" rel="stylesheet">
     <!-- Styles -->
     @if(Auth::check() && Auth::user()->layout != null)
         <link rel="stylesheet" href="{{ secure_asset(Auth::user()->layout) }}">
