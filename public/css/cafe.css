@@ -13,13 +13,20 @@
     background-size: cover;
     font-family: 'Gaegu', cursive;
     color:white;
+<<<<<<< HEAD
     font-size: 100%;
+=======
+    font-size: 110%;
+>>>>>>> 76b57ce636b0b93ad652d8832c4621f49a08d125
   　
 }
 
 
 #navbar{
     background-color: white;
+}
+.navbar-default .navbar-nav > li > a {
+color:white;
 }
 #topall{
 position: absolute;
