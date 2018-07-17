@@ -34,6 +34,8 @@
                     </div><div class="row">
                     {{Form::time('timeFrom')}}
                      </div>
+              
+                    
                     <div class="row">
                     {{Form::label('time end')}}
                     </div><div class="row">
@@ -43,9 +45,21 @@
                     <div class="row col-xs-2 col-xs-offset-5">
                     {{Form::submit('schedule')}}
                     </div>
+                    
+                    <div class="input-group clockpicker" data-placement="left" data-align="top" data-autoclose="true">
+    <input type="text" class="form-control" value="13:14">
+    <span class="input-group-addon">
+        <span class="glyphicon glyphicon-time"></span>
+    </span>
+</div>
+<script type="text/javascript">
+$('.clockpicker').clockpicker();
+</script>
                 
                 {{Form::close()}}
                 
         </div>
     </div>
+    
+    
 @endsection
