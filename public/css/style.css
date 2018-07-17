@@ -11,6 +11,7 @@
 
 }
 
+
 #red{
     background-color:red;
 }
@@ -34,8 +35,9 @@ transform : translate(-50%,-50%);
 
 .ml1 {
   font-weight: 900;
-  font-size: 3.5em;
+  font-size: 28em;
   text-align: center;
+
   
 }
 
@@ -43,6 +45,7 @@ transform : translate(-50%,-50%);
   display: inline-block;
   line-height: 1em;
   color:black;
+  font-size: 100px;
   
 }
 
@@ -53,6 +56,7 @@ transform : translate(-50%,-50%);
   padding-right: 0.05em;
   padding-bottom: 0.15em;
 }
+
 
 .ml1 .line {
   opacity: 0;
@@ -67,18 +71,35 @@ transform : translate(-50%,-50%);
 .ml1 .line1 { top: 0; }
 .ml1 .line2 { bottom: 0; }
 
+/*sign up*/
+#a{
+  color:black;
+  margin-bottom: 50px;
+}
+/*log in*/
+#b{
+  color:black; 
+  margin-bottom: 50px;
+    
+}
+
 
 
 .p{
     text-align: center;
 }
- 
+/*what is calendar*/ 
 #what{
      text-align: center;
      color:#ccc;
-     margin-top: 10px;
-     margin-left:20px;
+     margin-left: 500px;
+     margin-bottom: 50px;
      
+ }
+ .carousel-inner__carousel-item__carousel-item{
+     color: black;
+     margin-left: 450px;
+     margin-top: 50px;
  }
 
 #foot{

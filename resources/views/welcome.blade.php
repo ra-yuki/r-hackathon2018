@@ -48,7 +48,7 @@
     <div data-target="#carouselExampleIndicators" data-slide-to="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Memo &nbsp;</div>
   </div>
   
-  <a id="tools"＞タイトル></a>
+ 
   <h1 class="carousel-inner__carousel-item__carousel-item">You can manage your life with this!!</h1>
   
   
