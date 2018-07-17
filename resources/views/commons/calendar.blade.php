@@ -1,13 +1,18 @@
 <table class="table table-bordered">
     <thead>
         <tr>
-            <th scope="col">Mon</th>
-            <th scope="col">Tue</th>
-            <th scope="col">Wed</th>
-            <th scope="col">Thu</th>
-            <th scope="col">Fri</th>
-            <th scope="col" class="text-primary">Sat</th>
-            <th scope="col" class="text-danger">Sun</th>
+            @for($i=0; $i<7; $i++)
+                <th scope="col" class=
+                @if($i == 5)
+                    "text-primary">
+                @elseif($i == 6)
+                    "text-danger">
+                @else
+                    >
+                @endif
+                    {{jddayofweek($i, 2)}}
+                </th>
+            @endfor
         </tr>
     </thead>
     <tbody>
@@ -33,21 +38,29 @@
                 {{-- real day --}}
                 <?php $name = ""; ?>
                 {{-- set text color --}}
-                @if(($daysInWeek*$i + $j + 2) % 7 == 0)
+                @if(($daysInWeek*$i + $j + 2) % 7 == 0) {{-- Satday --}}
                     <?php $classText = "text-primary"; ?>
-                @elseif(($daysInWeek*$i + $j + 1) % 7 == 0)
+                @elseif(($daysInWeek*$i + $j + 1) % 7 == 0) {{-- Sunday --}}
                     <?php $classText = "text-danger"; ?>
                 @else
                     <?php $classText = ""; ?>
                 @endif
-                <?php 
+                <?php // special holidays
                     if(isset( $holidays[$days[$daysInWeek*$i + $j]] )){
                         $classText = "text-danger";
                         $name = $holidays[$days[$daysInWeek*$i + $j]];;
                     }
                 ?>
+                
+                {{-- style background color of today --}}
+                @if( $days[$daysInWeek*$i + $j] == (new \DateTime())->format('d') && $month == (new \DateTime())->format('m') && $year == (new \DateTime())->format('Y'))
+                    <?php $classTd = "success"; ?>
+                @else
+                    <?php $classTd = ""; ?>
+                @endif
+                
                 {{-- render --}}
-                <td>
+                <td class="{{$classTd}}">
                     <p class="{{$classText}}">{{ $days[$daysInWeek*$i + $j] }}</p>
                     <small class="{{$classText}}">{{$name}}</small>
                     {{-- render events --}}

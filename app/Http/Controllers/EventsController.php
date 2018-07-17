@@ -62,7 +62,7 @@ class EventsController extends Controller
             ['id', '<>', $event->id],
         ])->delete();
         
-        return redirect()->back();
+        return redirect()->route('events.show', ['id' => $id]);
     }
     
     public function edit($id)
@@ -104,67 +104,31 @@ class EventsController extends Controller
     
     public function showHub($eventPath){
         $events = Event::where('eventPath', $eventPath)->orderBy('dateTimeFromSelf')->get();
-        $groupJoined = $events[0]->groups[0];
-        $users = $groupJoined->users;
         
-        //*-- timestamped events dateTimeFromSelf and To --*//
-        $eventsFromToTimestamp = [];
-        foreach($events as $e){
-            $eventsFromToTimestamp[$e->dateTimeFromSelf] = (new \DateTime($e->dateTimeFromSelf))->getTimestamp();
-            $eventsFromToTimestamp[$e->dateTimeToSelf] = (new \DateTime($e->dateTimeToSelf))->getTimestamp();
-        }
+        $plan = $events[0];
+        $group = $plan->groups[0];
+        $users = $group->users;
+        $schedulables = Event::getSchedulablesWithGroup($plan, $group, $events);
         
-        //*-- get user events EXCL. events with $eventPath --*//
-        $userEvents = [];
-        foreach($users as $user){
-            // get all the events that the user has
-            $groups = $user->groups;
-            $tmp = [];
-            foreach($groups as $group){
-                $eventsExclSelf = $group->events()->where('eventPath', '<>', $eventPath)->get();
-                $tmp = array_merge($tmp, $this->collection2Array($eventsExclSelf));
-            }
-            // push the events to an array
-            $userEvents[$user->id] = $tmp;
-        }
+        $retrieved = Event::retrieveFromSchedulables($schedulables, clone $events);
+        $fetched = Event::fetchAvailables($retrieved, clone $events);
         
-        // echo("events count: ". count($events)."<br>");
+        \Debugbar::info('$schedulables');
+        \Debugbar::info($schedulables);
+        \Debugbar::info('$retrieved');
+        \Debugbar::info($retrieved);
+        \Debugbar::info('$fetched');
+        \Debugbar::info($fetched);
+        \Debugbar::info('$events');
+        \Debugbar::info($events);
         
-        //*-- get available dates for each users *--//
-        $availableDatesPerUser = [];
-        foreach($userEvents as $key => $userEvent){
-            // echo("userEvent count: ". count($userEvent)."<br>");
-            $res = $this->getAvailableDates_($userEvent, $events);
-            $availableDatesPerUser[$key] = $res;
-        }
-        
-        // get availability of users of rach event days
-        $usersAvailability = [];
-        foreach($events as $e){
-            foreach($users as $u){
-                $isOk = true;
-                foreach($availableDatesPerUser[$u->id] as $availableFromTo){
-                    $isOk = ($availableFromTo['from'] == $eventsFromToTimestamp[$e->dateTimeFromSelf]) ? true : false;
-                    if(!$isOk) break;
-                }
-                
-                if($isOk) $usersAvailability[$e->id][$u->id] = true;
-                else $usersAvailability[$e->id][$u->id] = false;
-            }
-        }
-        
-        //parse data to renderer
         return view('events.hub', [
-            'events' => $events,
-            'group' => $groupJoined,
+            'events' => $fetched,
             'users' => $users,
-            'availableDates' => $availableDatesPerUser,
-            'eventsFromToTimestamp' => $eventsFromToTimestamp,
-            'usersAvailability' => $usersAvailability,
         ]);
     }
     
-    function showScheduleGroupEvent(){
+    function showScheduleWithGroup(){
         // get groups
         $groups = \Auth::user()->groups()->where('visibility', '1')->get();
         
@@ -173,7 +137,7 @@ class EventsController extends Controller
         ]);
     }
     
-    public function showRescheduleGroupEvent($id){
+    public function showRescheduleWithGroup($id){
         $event = Event::find($id);
         $groupSelected = Group::find($event->groups()->first()->id);
         $groups = \Auth::user()->groups()->where('visibility', '1')->get();
@@ -185,11 +149,11 @@ class EventsController extends Controller
         ]);
     }
     
-    function showSchedulePrivateEvent(){
+    function showScheduleInPrivate(){
         return view('events.create-private');
     }
     
-    function schedulePrivateEvent(Request $request){
+    function scheduleInPrivate(Request $request){
         // add to events table
         $event = new Event();
         $event->dateTimeFromSelf = $request->dateFrom. " ". $request->timeFrom;
@@ -201,260 +165,63 @@ class EventsController extends Controller
         
         // sub to the $event
         //create private group if not exists
-        if(\Auth::user()->groups()->where('name', Config::PRIVATE_GROUP)->first() == null){
+        if(\Auth::user()->groups()->where('name', Config::getPrivateGroupName())->first() == null){
             $g = new Group();
-            $g->name = Config::PRIVATE_GROUP;
+            $g->name = Config::getPrivateGroupName();
             $g->visibility = false;
             $g->save();
             \Auth::user()->groups()->attach($g->id);
         }
-        \Auth::user()->groups()->where('name', Config::PRIVATE_GROUP)->first()->subscribeEvent($event->id);
+        \Auth::user()->groups()->where('name', Config::getPrivateGroupName())->first()->subscribeEvent($event->id);
         
-        // return view('events.result-create-private', [
-        //     'result' => $event,
-        // ]);
         return redirect()->route('mypage.index');
     }
     
-    function rescheduleGroupEvent(Request $request, $id){
+    function scheduleWithGroup(Request $request){
+        // convert request to event obj
+        $plan = Event::request2Event($request);
+        // exception handling
+        if(!$plan) return false;
+        
+        \Debugbar::info('$plan');
+        \Debugbar::info($plan);
+        
+        // get group obj
+        $group = Group::find($request->groupId);
+        
+        \Debugbar::info('$group');
+        \Debugbar::info($group);
+        
+        // schedule and get the result
+        $schedulables = Event::getBestSchedulablesWithGroup($plan, $group);
+        // exception handling
+        if(!$schedulables) return false;
+        
+        \Debugbar::info('$schedulables');
+        \Debugbar::info($schedulables);
+        
+        //save to db
+        $res = Event::saveSchedulablesWithGroup($plan, $group, $request, $schedulables);
+        if(!$res) return false;
+        
+        \Debugbar::info('$res');
+        \Debugbar::info($res);
+        
+        return redirect()->route('events.showHub', ['eventPath' => $res]);
+    }
+    
+    function rescheduleWithGroup(Request $request, $id){
         $event = Event::find($id);
+        \Debugbar::info('$event');
+        \Debugbar::info($event);
         Event::where([
             ['eventPath', '=', $event->eventPath],
         ])->delete();
         
-        $this->scheduleGroupEvent($request);
-        
-        return redirect()->route('mypage.index');
-    }
-    
-    // can't handle event that goes across with this algorithm
-    function scheduleGroupEvent(Request $request){
-        //*-- event you wanna schedule --*//
-        $schedulingEvent = new Event();
-        $schedulingEvent->dateFrom = $request->dateFrom;
-        $schedulingEvent->dateTo = $request->dateTo;
-        $schedulingEvent->timeFrom = $request->timeFrom;
-        $schedulingEvent->timeTo = $request->timeTo;
-        $schedulingEvent->title = $request->title;
-        $schedulingEvent->fixed = false;
-        $schedulingEvent->eventPath = OctopathHelper::generate_octopath();
-        $groupId = $request->groupId;
-        
-        // split each day&time options to an array
-        $schedulingEvents = [];
-        $formattedFrom = new \DateTime($schedulingEvent->dateFrom);
-        $formattedTo = new \DateTime($schedulingEvent->dateTo);
-        $daysDiff = $formattedFrom->diff($formattedTo)->days;
-        for($i=0; $i<$daysDiff+1; $i++){
-            $schedulingEvent_ = clone $schedulingEvent;
-            $tmp = new \DateTime($schedulingEvent_->dateFrom);
-            $tmp->add(new \DateInterval("P".$i."D")); //add 1 day
-            $schedulingEvent_->dateFrom = $tmp->format('Y-m-d');
-            
-            $event = new Event();
-            $event->dateFrom = $schedulingEvent_->dateFrom;
-            $event->dateTo = $schedulingEvent_->dateFrom;
-            $event->timeFrom = $schedulingEvent_->timeFrom;
-            $event->timeTo = $schedulingEvent_->timeTo;
-            array_push($schedulingEvents, $event);
-        }
-        
-        //*-- get all the events of each users --*//
-        // $userEvents = $this->getFakeUsersEvents(5); // this runs fine (for development)
-        $userEvents = [];
-        $users = Group::find($groupId)->users;
-        foreach($users as $user){
-            // get all the events that the user has
-            $groups = $user->groups;
-            $tmp = [];
-            foreach($groups as $group){
-                $tmp = array_merge($tmp, $this->collection2Array($group->events));
-            }
-            // push the events to an array
-            array_push($userEvents, $tmp);
-        }
-
-        //*-- get available dates for each users *--//
-        $availableDatesPerUser = [];
-        foreach($userEvents as $key => $userEvent){
-            $res = $this->getAvailableDates($userEvent, $schedulingEvents);
-            $availableDatesPerUser[$key] = $res;
-        }
-        
-        //*-- get the common available dates --*//
-        $res = $this->getCommonAvailableDates($availableDatesPerUser, $schedulingEvents);
-        
-        //*-- get the most emptied date(s) --*//
-        $userNum = count($users);
-        $threshold = round($userNum * 0.5);
-        $maxJoinable = max($res);
-        $schedulableDateTimes = [];
-        if($maxJoinable >= $threshold){ //if more than minimum required ppl ($threshold), can make it happen!
-            foreach($res as $key => $val){ //get $maxJoinable dates and parse to an array ($schedulableDateTimes)
-                if($val == $maxJoinable)
-                    $schedulableDateTimes[$key] = $val;
-            }
-        }
-        else {// too few ppl -> no schedulable dates
-            $schedulableDateTimes = null;
-        }
-        
-        //*-- add available dates to events table --*//
-        foreach($schedulableDateTimes as $key => $val){
-            $schedulingEvent_ = clone $schedulingEvent;
-            $schedulingEvent_->dateTimeFromSelf = explode(',', $key)[0];
-            $schedulingEvent_->dateTimeToSelf = explode(',', $key)[1];
-            $schedulingEvent_->save();
-            // sub to the $event
-            $group = Group::find($groupId);
-            $group->subscribeEvent($schedulingEvent_->id);
-        }
-        
-        //*-- parse to view --*//
-        // return view('events.result-create', [
-        //     'result' => $schedulableDateTimes,
-        //     'max' => $maxJoinable,
-        //     'threshold' => $threshold,
-        // ]);
-        return redirect()->route('mypage.index');
-    }
-    
-    function collection2Array($collection){
-        $a = [];
-        foreach($collection as $item){
-            array_push($a, $item);
-        }
-        
-        return $a;
-    }
-    
-    //compare available dates of each users
-    function getCommonAvailableDates($availableDatesPerUser, $schedulingEvents){
-        $res = [];
-        //iterate events we wanna schedule
-        foreach($schedulingEvents as $se){
-            $seFrom = new \DateTime($se->dateFrom . " " . $se->timeFrom);
-            $seTo = new \DateTime($se->dateTo . " " . $se->timeTo);
-            //iterate each user
-            foreach($availableDatesPerUser as $ae){
-                //iterate available dates the user has
-                foreach($ae as $fromTo){
-                    if($seFrom->getTimestamp() == $fromTo['from']){
-                        $key = $seFrom->format('Y-m-d H:i:s'). ",". $seTo->format('Y-m-d H:i:s');
-                        $res[$key] = (isset($res[$key])) ? $res[$key]+1 : 1;
-                    }
-                }
-            }
-        }
-        
-        return $res;
-    }
-    
-    function getAvailableDates($userEvents, $schedulingEvents){
-        // array for available dates
-        $availableDates = [];
-        
-        foreach($schedulingEvents as $sEvent){
-            $collided = 0;
-            // get timestamped sEvent
-            $sEventFromTimestamp = (new \DateTime($sEvent->dateFrom . " " . $sEvent->timeFrom))->getTimestamp();
-            $sEventToTimestamp = (new \DateTime($sEvent->dateTo . " " . $sEvent->timeTo))->getTimestamp();
-
-            foreach($userEvents as $uEvent){
-                // get timestamped uEvent
-                $uEventFromTimestamp = (new \DateTime($uEvent->dateTimeFromSelf))->getTimestamp();
-                $uEventToTimestamp = (new \DateTime($uEvent->dateTimeToSelf))->getTimestamp();
-                // detect collisions
-                $res = $this->collideLines(new Vec2($sEventFromTimestamp, $sEventToTimestamp), new Vec2($uEventFromTimestamp, $uEventToTimestamp));
-                if($res){ $collided++;}
-            }
-
-            // if not collided, schedulable!
-            if($collided == 0){
-                $from = (new \DateTime($sEvent->dateFrom . " " . $sEvent->timeFrom))->getTimestamp();
-                $to = (new \DateTime($sEvent->dateTo . " " . $sEvent->timeTo))->getTimestamp();
-                array_push($availableDates, ['from'=>$from, 'to'=>$to]);
-            }
-            
-        }
-        
-        return $availableDates; //return as timestamped form
-    }
-    
-    function getAvailableDates_($userEvents, $schedulingEvents){
-        // array for available dates
-        $availableDates = [];
-        
-        foreach($schedulingEvents as $sEvent){
-            // echo "inside start of foreach(schedulingEvents as sEvent)<br>";
-            $collided = 0;
-            // get timestamped sEvent
-            // $sEventFromTimestamp = (new \DateTime($sEvent->dateFrom . " " . $sEvent->timeFrom))->getTimestamp();
-            // $sEventToTimestamp = (new \DateTime($sEvent->dateTo . " " . $sEvent->timeTo))->getTimestamp();
-            //@messing on friday
-            $sEventFrom = new \DateTime($sEvent->dateFrom);
-            $sEventTo = new \DateTime($sEvent->dateTo);
-            $dateDiff2Search = $sEventFrom->diff($sEventTo)->days;
-            for($i=0; $i<$dateDiff2Search; $i++){
-                $sEventFrom_ = clone $sEventFrom;
-                $sEventFrom_->add(new \DateInterval("P".$i."D"));
-                $sEventFromTimestamp = (new \DateTime($sEventFrom_->format('Y-m-d') . " " . $sEvent->timeFrom))->getTimestamp();
-                $sEventToTimestamp =  (new \DateTime($sEventFrom_->format('Y-m-d') . " " . $sEvent->timeTo))->getTimestamp();
-            
-            foreach($userEvents as $uEvent){
-                // get timestamped uEvent
-                $uEventFromTimestamp = (new \DateTime($uEvent->dateTimeFromSelf))->getTimestamp();
-                $uEventToTimestamp = (new \DateTime($uEvent->dateTimeToSelf))->getTimestamp();
-                // detect collisions
-                // echo "sEvent: $sEvent->title | $sEventFromTimestamp(".date('y-m-d H:i:s', $sEventFromTimestamp).") - $sEventToTimestamp(".date('y-m-d H:i:s', $sEventToTimestamp).")<br>";
-                // echo "uEvent: $uEvent->title | $uEventFromTimestamp(".date('y-m-d H:i:s', $uEventFromTimestamp).") - $uEventToTimestamp(".date('y-m-d H:i:s', $uEventToTimestamp).")<br>";
-                $res = $this->collideLines(new Vec2($sEventFromTimestamp, $sEventToTimestamp), new Vec2($uEventFromTimestamp, $uEventToTimestamp));
-                // var_dump($res);
-                // echo "<br>---<br>";
-                if($res){ $collided++; echo "<br>collided: true<br>";}
-                // echo "<h1>end of foreach</h1>";
-            }
-            // echo "<h1>|end of for|</h1>";
-            }
-
-            // if not collided, schedulable!
-            if($collided == 0){
-                $from = (new \DateTime($sEvent->dateFrom . " " . $sEvent->timeFrom))->getTimestamp();
-                $to = (new \DateTime($sEvent->dateTo . " " . $sEvent->timeTo))->getTimestamp();
-                array_push($availableDates, ['from'=>$from, 'to'=>$to]);
-                
-                // echo "collided: false";
-            }
-            
-            // echo("userEvents count: ". count($userEvents)."<br>");
-        }
-        
-        // echo "<h1>|end of get available dates|</h1>";
-        return $availableDates; //return as timestamped form
-    }
-    
-    function collideLines(Vec2 $line, Vec2 $line2){
-        $cond = $line->x < $line2->y;
-        $cond2 = $line->y > $line2->x;
-        if($cond && $cond2){
-            return true;
-        }
-        return false;
+        return $this->scheduleWithGroup($request);
     }
     
     //*-- #DEBUG --*//
-    function generateEvent(Request $request){
-        $table = new Event();
-
-        $table->dateTimeFromSelf = $request->dateFrom + " " + $request->timeFrom;
-        $table->dateTimeToSelf = $request->dateTo + " " + $request->timeTo;
-        $table->title = $request->title;
-        $table->fixed = true;
-        $table->eventPath = OctopathHelper::generate_octopath();
-
-        $table->save();
-    }
-    
     function generateEventFromArg($dateTimeFrom, $dateTimeTo, $title){
         $table = new Event();
         
@@ -466,20 +233,9 @@ class EventsController extends Controller
 
         $table->save();
     }
-    
-    function getFakeUsersEvents($num){
-        if($num < 0) $num = 1;
-        
-        $users = [];
-        for($i=0; $i<$num; $i++){
-            $tmp = Event::all();
-            $users[$i+3] = $tmp;
-        }
-        
-        return $users;
-    }
 }
 
+// old alrogithms
     // // can't handle event that goes across with this algorithm
     // function scheduleEvents(Request $request){
     //     //event you wanna insert from input form
@@ -567,4 +323,303 @@ class EventsController extends Controller
         
     //     //if length of event to event2 is smaller than length of event and event2, intersected!
     //     return $bothActualTimeLength - $bothShortestTimeLength < 0;
+    // }
+    
+    // can't handle event that goes across with this algorithm
+    // function scheduleGroupEvent(Request $request){
+    //     //*-- 1. event you wanna schedule --*//
+    //     $schedulingEvent = new Event();
+    //     $schedulingEvent->dateFrom = $request->dateFrom;
+    //     $schedulingEvent->dateTo = $request->dateTo;
+    //     $schedulingEvent->timeFrom = $request->timeFrom;
+    //     $schedulingEvent->timeTo = $request->timeTo;
+    //     $schedulingEvent->title = $request->title;
+    //     $schedulingEvent->fixed = false;
+    //     $schedulingEvent->eventPath = OctopathHelper::generate_octopath();
+    //     $groupId = $request->groupId;
+        
+    //     \Debugbar::info('1. get request data');
+    //     \Debugbar::info($schedulingEvent);
+        
+    //     // 2. split each day&time options to an array
+    //     $schedulingEvents = [];
+    //     // get count of options
+    //     $formattedFrom = new \DateTime($schedulingEvent->dateFrom);
+    //     $formattedTo = new \DateTime($schedulingEvent->dateTo);
+    //     $daysDiff = $formattedFrom->diff($formattedTo)->days;
+    //     for($i=0; $i<$daysDiff+1; $i++){
+    //         $schedulingEvent_ = clone $schedulingEvent;
+    //         $tmp = new \DateTime($schedulingEvent_->dateFrom);
+    //         $tmp->add(new \DateInterval("P".$i."D")); //add $i days
+    //         $schedulingEvent_->dateFrom = $tmp->format('Y-m-d');
+            
+    //         $event = new Event();
+    //         $event->dateFrom = $schedulingEvent_->dateFrom;
+    //         $event->dateTo = $schedulingEvent_->dateFrom;
+    //         $event->timeFrom = $schedulingEvent_->timeFrom;
+    //         $event->timeTo = $schedulingEvent_->timeTo;
+    //         array_push($schedulingEvents, $event);
+    //     }
+        
+    //     \Debugbar::info('2. create (time)from - to pair for each (date)from - to');
+    //     \Debugbar::info($schedulingEvents);
+        
+    //     //*-- 3. get all the events of each users --*//
+    //     // $userEvents = $this->getFakeUsersEvents(5); // this runs fine (for development)
+    //     $userEvents = [];
+    //     $users = Group::find($groupId)->users;
+    //     foreach($users as $user){
+    //         // get all the events that the user has
+    //         $groups = $user->groups;
+    //         $tmp = [];
+    //         foreach($groups as $group){
+    //             $tmp = array_merge($tmp, $this->collection2Array($group->events));
+    //         }
+    //         // push the events to an array
+    //         array_push($userEvents, $tmp);
+    //     }
+        
+    //     \Debugbar::info('3. get each user events of the group');
+    //     \Debugbar::info($userEvents);
+
+    //     //*-- 4. get available dates for each users *--//
+    //     $availableDatesPerUser = [];
+    //     foreach($userEvents as $key => $userEvent){
+    //         $res = $this->getAvailableDates($userEvent, $schedulingEvents);
+    //         $availableDatesPerUser[$key] = $res;
+    //     }
+        
+    //     \Debugbar::info('4. get available dates for each users');
+    //     \Debugbar::info($availableDatesPerUser);
+        
+    //     //*-- 5. get the common available dates --*//
+    //     $res = $this->getCommonAvailableDates($availableDatesPerUser, $schedulingEvents);
+        
+    //     \Debugbar::info('5. get the common available dates among users');
+    //     \Debugbar::info($res);
+        
+    //     //*-- 6. get the most emptied date(s) --*//
+    //     $userNum = count($users);
+    //     $threshold = round($userNum * 0.5);
+    //     $maxJoinable = max($res);
+    //     $schedulableDateTimes = [];
+    //     if($maxJoinable >= $threshold){ //if more than minimum required ppl ($threshold), can make it happen!
+    //         foreach($res as $key => $val){ //get $maxJoinable dates and parse to an array ($schedulableDateTimes)
+    //             if($val == $maxJoinable)
+    //                 $schedulableDateTimes[$key] = $val;
+    //         }
+    //     }
+    //     else {// too few ppl -> no schedulable dates
+    //         $schedulableDateTimes = null;
+    //     }
+        
+    //     \Debugbar::info('6. get the most emptied date(s)');
+    //     \Debugbar::info($schedulableDateTimes);
+        
+    //     //*-- 7. add available dates to events table --*//
+    //     foreach($schedulableDateTimes as $key => $val){
+    //         $schedulingEvent_ = clone $schedulingEvent;
+    //         $schedulingEvent_->dateTimeFromSelf = explode(',', $key)[0];
+    //         $schedulingEvent_->dateTimeToSelf = explode(',', $key)[1];
+    //         $saved = $schedulingEvent_->save();
+    //         // sub to the $event
+    //         $group = Group::find($groupId);
+    //         $group->subscribeEvent($schedulingEvent_->id);
+    //     }
+        
+    //     \Debugbar::info('7. save (6.) to DB');
+    //     \Debugbar::info($saved);
+        
+    //     //*-- 8. parse to view --*//
+    //     // return view('events.result-create', [
+    //     //     'result' => $schedulableDateTimes,
+    //     //     'max' => $maxJoinable,
+    //     //     'threshold' => $threshold,
+    //     // ]);
+    //     // return redirect()->route('mypage.index');
+    //     \Debugbar::info('8. view');
+    //     return view ('tmp.after-group-event-creation');
+    // }
+    
+    // function collection2Array($collection){
+    //     $a = [];
+    //     foreach($collection as $item){
+    //         array_push($a, $item);
+    //     }
+        
+    //     return $a;
+    // }
+    
+    // //compare available dates of each users
+    // function getCommonAvailableDates($availableDatesPerUser, $schedulingEvents){
+    //     $res = [];
+    //     //iterate events we wanna schedule
+    //     foreach($schedulingEvents as $se){
+    //         $seFrom = new \DateTime($se->dateFrom . " " . $se->timeFrom);
+    //         $seTo = new \DateTime($se->dateTo . " " . $se->timeTo);
+    //         //iterate each user
+    //         foreach($availableDatesPerUser as $ae){
+    //             //iterate available dates the user has
+    //             foreach($ae as $fromTo){
+    //                 if($seFrom->getTimestamp() == $fromTo['from']){
+    //                     $key = $seFrom->format('Y-m-d H:i:s'). ",". $seTo->format('Y-m-d H:i:s');
+    //                     $res[$key] = (isset($res[$key])) ? $res[$key]+1 : 1;
+    //                 }
+    //             }
+    //         }
+    //     }
+        
+    //     return $res;
+    // }
+    
+    // function getAvailableDates($userEvents, $schedulingEvents){
+    //     // array for available dates
+    //     $availableDates = [];
+        
+    //     foreach($schedulingEvents as $sEvent){
+    //         $collided = 0;
+    //         // get timestamped sEvent
+    //         $sEventFromTimestamp = (new \DateTime($sEvent->dateFrom . " " . $sEvent->timeFrom))->getTimestamp();
+    //         $sEventToTimestamp = (new \DateTime($sEvent->dateTo . " " . $sEvent->timeTo))->getTimestamp();
+
+    //         foreach($userEvents as $uEvent){
+    //             // get timestamped uEvent
+    //             $uEventFromTimestamp = (new \DateTime($uEvent->dateTimeFromSelf))->getTimestamp();
+    //             $uEventToTimestamp = (new \DateTime($uEvent->dateTimeToSelf))->getTimestamp();
+    //             // detect collisions
+    //             $res = $this->collideLines(new Vec2($sEventFromTimestamp, $sEventToTimestamp), new Vec2($uEventFromTimestamp, $uEventToTimestamp));
+    //             if($res){ $collided++;}
+    //         }
+
+    //         // if not collided, schedulable!
+    //         if($collided == 0){
+    //             $from = (new \DateTime($sEvent->dateFrom . " " . $sEvent->timeFrom))->getTimestamp();
+    //             $to = (new \DateTime($sEvent->dateTo . " " . $sEvent->timeTo))->getTimestamp();
+    //             array_push($availableDates, ['from'=>$from, 'to'=>$to]);
+    //         }
+            
+    //     }
+        
+    //     return $availableDates; //return as timestamped form
+    // }
+    
+    // function getAvailableDates_($userEvents, $schedulingEvents){
+    //     // array for available dates
+    //     $availableDates = [];
+        
+    //     foreach($schedulingEvents as $sEvent){
+    //         // echo "inside start of foreach(schedulingEvents as sEvent)<br>";
+    //         $collided = 0;
+    //         // get timestamped sEvent
+    //         // $sEventFromTimestamp = (new \DateTime($sEvent->dateFrom . " " . $sEvent->timeFrom))->getTimestamp();
+    //         // $sEventToTimestamp = (new \DateTime($sEvent->dateTo . " " . $sEvent->timeTo))->getTimestamp();
+    //         //@messing on friday
+    //         $sEventFrom = new \DateTime($sEvent->dateFrom);
+    //         $sEventTo = new \DateTime($sEvent->dateTo);
+    //         $dateDiff2Search = $sEventFrom->diff($sEventTo)->days;
+    //         for($i=0; $i<$dateDiff2Search; $i++){
+    //             $sEventFrom_ = clone $sEventFrom;
+    //             $sEventFrom_->add(new \DateInterval("P".$i."D"));
+    //             $sEventFromTimestamp = (new \DateTime($sEventFrom_->format('Y-m-d') . " " . $sEvent->timeFrom))->getTimestamp();
+    //             $sEventToTimestamp =  (new \DateTime($sEventFrom_->format('Y-m-d') . " " . $sEvent->timeTo))->getTimestamp();
+            
+    //         foreach($userEvents as $uEvent){
+    //             // get timestamped uEvent
+    //             $uEventFromTimestamp = (new \DateTime($uEvent->dateTimeFromSelf))->getTimestamp();
+    //             $uEventToTimestamp = (new \DateTime($uEvent->dateTimeToSelf))->getTimestamp();
+    //             // detect collisions
+    //             // echo "sEvent: $sEvent->title | $sEventFromTimestamp(".date('y-m-d H:i:s', $sEventFromTimestamp).") - $sEventToTimestamp(".date('y-m-d H:i:s', $sEventToTimestamp).")<br>";
+    //             // echo "uEvent: $uEvent->title | $uEventFromTimestamp(".date('y-m-d H:i:s', $uEventFromTimestamp).") - $uEventToTimestamp(".date('y-m-d H:i:s', $uEventToTimestamp).")<br>";
+    //             $res = $this->collideLines(new Vec2($sEventFromTimestamp, $sEventToTimestamp), new Vec2($uEventFromTimestamp, $uEventToTimestamp));
+    //             // var_dump($res);
+    //             // echo "<br>---<br>";
+    //             if($res){ $collided++; echo "<br>collided: true<br>";}
+    //             // echo "<h1>end of foreach</h1>";
+    //         }
+    //         // echo "<h1>|end of for|</h1>";
+    //         }
+
+    //         // if not collided, schedulable!
+    //         if($collided == 0){
+    //             $from = (new \DateTime($sEvent->dateFrom . " " . $sEvent->timeFrom))->getTimestamp();
+    //             $to = (new \DateTime($sEvent->dateTo . " " . $sEvent->timeTo))->getTimestamp();
+    //             array_push($availableDates, ['from'=>$from, 'to'=>$to]);
+                
+    //             // echo "collided: false";
+    //         }
+            
+    //         // echo("userEvents count: ". count($userEvents)."<br>");
+    //     }
+        
+    //     // echo "<h1>|end of get available dates|</h1>";
+    //     return $availableDates; //return as timestamped form
+    // }
+    
+    // function collideLines(Vec2 $line, Vec2 $line2){
+    //     $cond = $line->x < $line2->y;
+    //     $cond2 = $line->y > $line2->x;
+    //     if($cond && $cond2){
+    //         return true;
+    //     }
+    //     return false;
+    // }
+    
+    // public function showHub_($eventPath){
+    //     $events = Event::where('eventPath', $eventPath)->orderBy('dateTimeFromSelf')->get();
+    //     $groupJoined = $events[0]->groups[0];
+    //     $users = $groupJoined->users;
+        
+    //     //*-- timestamped events dateTimeFromSelf and To --*//
+    //     $eventsFromToTimestamp = [];
+    //     foreach($events as $e){
+    //         $eventsFromToTimestamp[$e->dateTimeFromSelf] = (new \DateTime($e->dateTimeFromSelf))->getTimestamp();
+    //         $eventsFromToTimestamp[$e->dateTimeToSelf] = (new \DateTime($e->dateTimeToSelf))->getTimestamp();
+    //     }
+        
+    //     //*-- get user events EXCL. events with $eventPath --*//
+    //     $userEvents = [];
+    //     foreach($users as $user){
+    //         // get all the events that the user has
+    //         $groups = $user->groups;
+    //         $tmp = [];
+    //         foreach($groups as $group){
+    //             $eventsExclSelf = $group->events()->where('eventPath', '<>', $eventPath)->get();
+    //             $tmp = array_merge($tmp, $this->collection2Array($eventsExclSelf));
+    //         }
+    //         // push the events to an array
+    //         $userEvents[$user->id] = $tmp;
+    //     }
+        
+    //     //*-- get available dates for each users *--//
+    //     $availableDatesPerUser = [];
+    //     foreach($userEvents as $key => $userEvent){
+    //         // echo("userEvent count: ". count($userEvent)."<br>");
+    //         $res = $this->getAvailableDates_($userEvent, $events);
+    //         $availableDatesPerUser[$key] = $res;
+    //     }
+        
+    //     // get availability of users of rach event days
+    //     $usersAvailability = [];
+    //     foreach($events as $e){
+    //         foreach($users as $u){
+    //             $isOk = true;
+    //             foreach($availableDatesPerUser[$u->id] as $availableFromTo){
+    //                 $isOk = ($availableFromTo['from'] == $eventsFromToTimestamp[$e->dateTimeFromSelf]) ? true : false;
+    //                 if(!$isOk) break;
+    //             }
+                
+    //             if($isOk) $usersAvailability[$e->id][$u->id] = true;
+    //             else $usersAvailability[$e->id][$u->id] = false;
+    //         }
+    //     }
+        
+    //     //parse data to renderer
+    //     return view('events.hub', [
+    //         'events' => $events,
+    //         'group' => $groupJoined,
+    //         'users' => $users,
+    //         'availableDates' => $availableDatesPerUser,
+    //         'eventsFromToTimestamp' => $eventsFromToTimestamp,
+    //         'usersAvailability' => $usersAvailability,
+    //     ]);
     // }
