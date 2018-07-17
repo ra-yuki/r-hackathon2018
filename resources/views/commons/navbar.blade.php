@@ -1,4 +1,4 @@
-<link href="{{ asset('css/navbar.css') }}" rel="stylesheet">
+
 
 <header>
 @if (Auth::check())
