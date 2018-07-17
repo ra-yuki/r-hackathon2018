@@ -38,7 +38,6 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Settings <span class="caret"></span></a>
           <ul class="dropdown-menu" id="dp">
             <li><a class="navbar-left" href="{{ route('profile.show', ['id' => Auth::user()->id]) }}">Profile </a></li>
-            
             <li><a class="navbar-left" href="{{route('settings.settings')}}" >Layouts</a></li>
             <li><a href="{{ route('logout.get') }}">Log out</a></li>
           </ul>

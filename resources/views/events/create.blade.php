@@ -12,20 +12,24 @@
 @section('content')
     <div class="container" id="all">
         <h1>Schedule Group Event</h1>
-        <div class="col-xs-12" >
+        <div class="col-xs-12　" >
             @if(!$exists)
                 {{Form::open(['route' => 'events.scheduleWithGroup', 'method' => 'post'])}}
-                    <div class="row">
-                    {{Form::label('title')}}
-                    </div>
-                    <div class="row">
-                    {{Form::text('title')}}
-                    </div>
+                    
+                        <div class="row">
+                            {{Form::label('title')}}
+                        </div>
+                        <div class="row col-xs-5 col-sm-3 col-md-2 col-lg-2"　>
+                           {{Form::text('title',null,['class' => 'form-control'])}}
+                        </div>
+                   
                     
                     <div class="row">
+                        <br><br>
                     {{Form::label('Group Select') }}
                     </div>
                     <div class="row">
+                        
                     <select name="groupId" class="selectpicker" data-live-search="true" title="select group">
                         @foreach($groups as $g)
                             <option value="{{$g->id}}">{{$g->name}}</option>
@@ -33,32 +37,51 @@
                     </select>
                     </div>
                     
-                    <div class=row>
+                    <div class="row col-xs-5 col-sm-3 col-md-2 col-lg-2">
+                    <br><br>
                     {{Form::label('date from')}}
-                    </div>
-                    <div class="row">
-                    {{Form::date('dateFrom')}}
+                    
                     </div>
                     
-                    <div class=row>
+                    <div class="row col-xs-5 col-sm-3 col-md-2 col-lg-2">
+                    {{Form::date('dateFrom',null,['class' => 'form-control'])}}
+                    </div>
+                    
+                    <div class="row col-xs-5 col-sm-3 col-md-2 col-lg-2">
                     {{Form::label('date to')}}
                     </div>
-                    <div class="row">
-                    {{Form::date('dateTo')}}
+                    <div class="row col-xs-5 col-sm-3 col-md-2 col-lg-2">
+                    {{Form::date('dateTo',null,['class' => 'form-control'])}}
                     </div>
                     
-                    <div class=row>
+                    <div class=>
                     {{Form::label('time start')}}
                     </div>
                     <div class="row">
-                    {{Form::time('timeFrom')}}
+                        <div class="input-group clockpicker col-xs-5 col-sm-3 col-md-2 col-lg-2" data-placement="right" data-align="top" data-autoclose="true">
+                            <input type="text" class="form-control" value="00:00">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-time"></span>
+                                </span>
+                        </div>
+                        <script type="text/javascript">
+                            $('.clockpicker').clockpicker();
+                        </script>
                     </div>
                     
                     <div class=row>
                     {{Form::label('time end')}}
                     </div>
                     <div class="row">
-                    {{Form::time('timeTo')}}
+                        <div class="input-group clockpicker  col-xs-5 col-sm-3 col-md-2 col-lg-2" data-placement="right" data-align="top" data-autoclose="true">
+                            <input type="text" class="form-control" value="00:00">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-time"></span>
+                                </span>
+                        </div>
+                        <script type="text/javascript">
+                            $('.clockpicker').clockpicker();
+                        </script>
                     </div>
                     
                     <div class="row col-xs-2 col-xs-offset-5">

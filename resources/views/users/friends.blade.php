@@ -24,6 +24,9 @@
 
  
   <input type="image" src="images/megane2.png" alt="虫眼鏡">
+  <!--<div class="input-group"><input placeholder="検索" class="form-control form-text" type="text" id="edit-keys" name="keys" value="" size="40" maxlength="255"><span class="input-group-btn"><button type="submit" class="btn btn-default"><span class="icon glyphicon glyphicon-search" aria-hidden="true"></span>-->
+　　<!--</button></span></div>-->
+  
 
 </form>
 
