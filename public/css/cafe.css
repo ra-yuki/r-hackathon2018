@@ -13,11 +13,14 @@
     background-size: cover;
     font-family: 'Gaegu', cursive;
     color:white;
-    font-size: 1o0%;
+    font-size: 110%;
   　
 }
 #navbar{
     background-color: white;
+}
+.navbar-default .navbar-nav > li > a {
+color:white;
 }
 #topall{
 position: absolute;
