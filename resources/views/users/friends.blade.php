@@ -33,7 +33,7 @@
         @foreach ($friends as $friend)
         <div class="col-md-3 col-sm-4 col-xs-12">
             <div class="panel panel-default">
-                <div>{!! link_to_route('friends.show',$friend->name, ['id' => $friend->id]) !!}</div>
+                <div class>{!! link_to_route('friends.show',$friend->name, ['id' => $friend->id]) !!}</div>
             </div>
         </div>
         @endforeach
