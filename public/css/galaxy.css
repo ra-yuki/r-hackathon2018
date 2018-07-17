@@ -17,6 +17,10 @@
   　
 }
 
+.navbar-default .navbar-nav > li > a {
+color:white;
+}
+
 #topall{
 position: absolute;
 top: 50%;
@@ -137,7 +141,7 @@ transform : translate(-50%,-50%);
 #a {
 display: inline-block;
 position: relative;
-/*width: 100px;*/
+width: 100px;
 padding: 0.5em;
 text-align: center;
 border-top: 2px solid white;
@@ -148,8 +152,8 @@ color: white;
 margin:0 auto;
 
 
-/*margin-top: 150px;*/
-/*margin-bottom: 100px;*/
+margin-top: 150px;
+margin-bottom: 100px;
 }
 #a:before, #a:after {
 content: '';
@@ -181,7 +185,7 @@ height: 100%;
 #b {
 display: inline-block;
 position: relative;
-/*width: 100px;*/
+width: 100px;
 padding: 0.5em;
 text-align: center;
 border-top: 2px solid white;
@@ -289,7 +293,7 @@ transform : translate(-50%,-50%);
 #a {
 display: inline-block;
 position: relative;
-/*width: 100px;*/
+width: 100px;
 padding: 0.5em;
 text-align: center;
 border-top: 2px solid white;
@@ -300,8 +304,8 @@ color: white;
 margin:0 auto;
 
 
-/*margin-top: 150px;*/
-/*margin-bottom: 100px;*/
+margin-top: 150px;
+margin-bottom: 100px;
 }
 #a:before, #a:after {
 content: '';
@@ -333,7 +337,7 @@ height: 100%;
 #b {
 display: inline-block;
 position: relative;
-/*width: 100px;*/
+width: 100px;
 padding: 0.5em;
 text-align: center;
 border-top: 2px solid white;

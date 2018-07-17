@@ -15,7 +15,7 @@
 </form>
 
 <!--↑↑ 検索フォーム ↑↑-->
- 
+
 
 @if (count($SearchResult) > 0)
 <ul class="media-list">
@@ -32,6 +32,7 @@
             </div>
         </div>
     </li>
+
 @endforeach
 </ul>
 
