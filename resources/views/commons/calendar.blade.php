@@ -4,11 +4,11 @@
             @for($i=0; $i<7; $i++)
                 <th scope="col" class=
                 @if($i == 5)
-                    "text-primary">
+                    "text-primary ">
                 @elseif($i == 6)
-                    "text-danger">
+                    "text-danger ">
                 @else
-                    >
+                    "">
                 @endif
                     {{jddayofweek($i, 2)}}
                 </th>
@@ -31,7 +31,7 @@
                 
                 {{-- empty day --}}
                 @if($days[$daysInWeek*$i + $j] == 0)
-                    <td>-</td>
+                    <td class="">-</td>
                     @continue;
                 @endif
                 
@@ -54,13 +54,13 @@
                 
                 {{-- style background color of today --}}
                 @if( $days[$daysInWeek*$i + $j] == (new \DateTime())->format('d') && $month == (new \DateTime())->format('m') && $year == (new \DateTime())->format('Y'))
-                    <?php $classTd = "success"; ?>
+                    <?php $classTd = "today"; ?>
                 @else
                     <?php $classTd = ""; ?>
                 @endif
                 
                 {{-- render --}}
-                <td class="{{$classTd}}">
+                <td class="{{$classTd}} ">
                     <p class="{{$classText}}">{{ $days[$daysInWeek*$i + $j] }}</p>
                     <small class="{{$classText}}">{{$name}}</small>
                     {{-- render events --}}

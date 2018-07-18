@@ -13,8 +13,11 @@
 }
 
 #form-passwd {
-  /*margin: 0;*/
-  /*padding: 0;*/
+  /*margin-bottom: 20px;*/
+}
+
+#form-confirm {
+  margin-top: 20px;
 }
 
 .card-header{
