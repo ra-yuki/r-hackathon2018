@@ -1,0 +1,29 @@
+/*.calendar-size{*/
+/*    table-layout: fixed;*/
+/*}*/
+td{
+    word-wrap:break-word;
+}
+
+table{
+    table-layout: fixed;
+}
+
+.event{
+    background-color:#D9E5FF;
+    margin-bottom:5px;
+    padding:2px 5px ;
+    border-radius:4px;
+    
+}
+
+.today{
+    background-color: #eee;
+}
+
+.group-event{
+    background-color:#E6E6FA;
+    margin-bottom:5px;
+    padding:2px 5px ;
+    border-radius:4px;
+}

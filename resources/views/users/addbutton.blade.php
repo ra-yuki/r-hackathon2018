@@ -15,7 +15,7 @@
     {!! Form::open(['route' => ['add.get', $user->id], 'method' => 'get']) !!}
         <!--{!! Form::submit('Add', ['class' => "btn btn-success btn-xs"]) !!}-->
        <button class="btn btn-default" type="submit" id:"red"> <span class="
-glyphicon glyphicon-search"></span> Unfriend</button>
+glyphicon glyphicon-search"></span> Friend</button>
        
     {!! Form::close() !!}
    
