@@ -7,13 +7,15 @@
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
     <link href="{{ asset('css/create.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/commons/buttons.css') }}" rel="stylesheet">
 
 @endsection
 
 @section('content')
     <div class="container" id="all">
-        <h1>Schedule Group Event</h1>
-        <div class="col-xs-12　" >
+        <h1>Schedule Group Event</h1><br>
+        
+        <div class="col-xs-12" >
             @if(!$exists)
                 {{Form::open(['route' => 'events.scheduleWithGroup', 'method' => 'post'])}}
                     
@@ -25,6 +27,7 @@
                                {{Form::text('title',null,['class' => 'form-control'])}}
                             </div>
                         </div>
+                        <p></p>
                    
                     
                     <div class="row">
@@ -40,6 +43,7 @@
                     </div>
                     </div>
                     
+                    <p></p>
                     <div class="row">
                         {{Form::label('date from')}}
                     </div>
@@ -49,6 +53,7 @@
                         </div>
                     </div>
                     
+                    <p></p>
                     <div class="row">
                         
                             {{Form::label('date to')}}
@@ -59,13 +64,15 @@
                             {{Form::date('dateTo',null,['class' => 'form-control'])}}
                         </div>
                     </div>
-                    
+                
+                    <p></p>
                     <div class="row">
                         {{Form::label('time start')}}
                     </div>
                     <div class="row">
+                        
                         <div class="input-group clockpicker col-xs-5 col-sm-3 col-md-2 col-lg-2 wakuwaku" data-placement="right" data-align="top" data-autoclose="true">
-                            <input type="text" class="form-control" value="00:00">
+                            <input type="time" class="form-control" value="00:00" name="timeFrom">
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-time"></span>
                                 </span>
@@ -75,12 +82,14 @@
                         </script>
                     </div>
                     
+                    <p></p>
                     <div class="row">
                         {{Form::label('time end')}}
                     </div>
                     <div class="row">
+                        
                         <div class="input-group clockpicker  col-xs-5 col-sm-3 col-md-2 col-lg-2 wakuwaku" data-placement="right" data-align="top" data-autoclose="true">
-                            <input type="text" class="form-control" value="00:00">
+                            <input type="time" class="form-control" value="00:00" name="timeTo">
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-time"></span>
                                 </span>
@@ -90,8 +99,9 @@
                         </script>
                     </div>
                     
-                    <div class="row col-xs-2 col-xs-offset-5">
-                    {{Form::submit('schedule')}}
+                    <p></p>
+                    <div class="row col-xs-2 col-xs-offset-3">
+                    <button class="btn btn-grey">Schedule</button>
                     </div>
                 {{Form::close()}}
             @else

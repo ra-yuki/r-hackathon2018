@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@section('head-plus')
+    <link rel="stylesheet" href ="{{ secure_asset('css/calendar.css') }}">
+@endsection
 @section('content')
 
 <div id="wrapper-top" class="container">
