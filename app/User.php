@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 use App\Event;
 use App\Libraries\GeneralHelper;
+use App\Link;
 
 class User extends Authenticatable
 {
@@ -104,6 +105,29 @@ class User extends Authenticatable
     //*-- groups table stuffs --*//
     public function groups(){
         return $this->belongsToMany(Group::class, 'user_group', 'userId', 'groupId')->withTimestamps();
+    }
+    
+    //*-- links table stuffs --*//
+    public function links(){
+        return $this->belongsToMany(Link::class, 'user_link', 'linkId', 'userId')->withTimestamps();
+    }
+    
+    public function poll($linkId){
+        // exception handling
+        if($this->is_polled($linkid)) return false;
+        
+        $this->links()->attach($linkId);
+    }
+    
+    public function unpoll($linkId){
+        // exception handling
+        if(!$this->is_polled($linkId)) return false;
+        
+        $this->links()->detach($linkId);
+    }
+    
+    public function is_polled($linkId){
+        return $this->links()->where('linkId', $linkId)->exists();
     }
     
     //*-- other helper functions --*//

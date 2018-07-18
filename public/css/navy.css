@@ -9,10 +9,33 @@
     background-color:#000055;
     font-family: 'Quicksand', sans-serif;
     color:white;
-    font-size: 100%;
-    font-size:30px;
+    font-size: 110%;
+    
   　
 }
+
+.dropdown-menu {
+background-color: #000055;
+border: 1px solid black;
+border: 1px solid black(0, 0, 0, .15);
+-webkit-box-shadow: 0 6px 12px rgba(94, 136, 129, 0.35);
+box-shadow: 0 6px 12px rgba(94, 136, 129, 0.35);
+}
+
+
+.navbar-default .navbar-nav > li > a {
+color:white;
+font-size: 75%;
+}
+
+.navbar-default .navbar-nav>.open>a,
+.navbar-default .navbar-nav>.open>a:focus,
+.navbar-default .navbar-nav>.open>a:hover {
+color: white;
+background-color: #000055;
+}
+
+
 #topall{
 position: absolute;
 top: 50%;
@@ -80,7 +103,7 @@ transform : translate(-50%,-50%);
 @media (max-width: 767px) { 
 
 *{
-    background-color:#CCCCCC;
+    background-color:#000055;
     font-family: 'Candara',sans-serif;
     color: white;
     font-size: 100%;
@@ -232,7 +255,7 @@ height: 100%;
 @media (max-width:1199 px) and (min-width: 768px) { 
 
 *{
-    background-color:#CCCCCC;
+    background-color:#000055;
     font-family: 'Candara',sans-serif;
     color: white;
     font-size: 100%;
