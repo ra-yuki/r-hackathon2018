@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 use App\Image;
 use App\Group;
+use App\Poll;
 use App\Libraries\Vec2;
 use App\Libraries\GeneralHelper;
 use App\Libraries\Config;
@@ -33,6 +34,13 @@ class Event extends Model
     function image(){
         $images = Image::where('eventPath', $this->eventPath)->first();
         return $images;
+    }
+    
+    //////////////////////////////////////////////////
+    //*-- polls table stuff --*//
+    //////////////////////////////////////////////////
+    public function polls(){
+        return Poll::where('eventPath', $this->eventPath)->get();
     }
     
     //////////////////////////////////////////////////

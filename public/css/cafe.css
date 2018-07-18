@@ -13,11 +13,20 @@
     background-size: cover;
     font-family: 'Gaegu', cursive;
     color:white;
-    font-size: 1o0%;
+<<<<<<< HEAD
+    font-size: 100%;
+=======
+    font-size: 110%;
+>>>>>>> 76b57ce636b0b93ad652d8832c4621f49a08d125
   　
 }
+
+
 #navbar{
     background-color: white;
+}
+.navbar-default .navbar-nav > li > a {
+color:white;
 }
 #topall{
 position: absolute;
@@ -80,7 +89,9 @@ transform : translate(-50%,-50%);
 #foot{
   margin-left: 35px;
 }
-
+.glyphicon glyphicon-plus{
+  background-color: transparent;
+} 
 }
 
 @media (max-width: 767px) { 
@@ -231,7 +242,10 @@ height: 100%;
      margin-top:10px;
  }
 
-  
+.glyphicon-minus:before {
+    content: "\2212";
+    background-color: transparent;
+}
   
 }
 
@@ -383,7 +397,9 @@ height: 100%;
      margin-top:10px;
  }
 
-  
+ .glyphicon glyphicon-plus{
+  background-color: transparent;
+}  
   
 }
 
