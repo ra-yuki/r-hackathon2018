@@ -44,9 +44,9 @@
     <link href="{{ asset('css/navbar.css') }}" rel="stylesheet">
     <!-- Styles -->
     @if(Auth::check() && Auth::user()->layout != null)
-        <link rel="stylesheet" href="{{ secure_asset(Auth::user()->layout) }}">
+        {{-- <link rel="stylesheet" href="{{ secure_asset(Auth::user()->layout) }}"> --}}
     @else
-        <link rel="stylesheet" href="{{ secure_asset('css/style.css') }}">
+        {{-- <link rel="stylesheet" href="{{ secure_asset('css/style.css') }}"> --}}
     @endif
     
     @yield('head-plus')

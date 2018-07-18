@@ -1,12 +1,29 @@
 @charset "UTF-8";
 
+#not-a-member a {
+  font-size: 15px;
+}
+
+#login-txt {
+  margin: 20px 0;
+}
+
+#form-name {
+  margin-bottom: 20px;
+}
+
+#form-passwd {
+  /*margin: 0;*/
+  /*padding: 0;*/
+}
+
 .card-header{
   text-align:center;
 }
 
-*{
-font-family: 'Varela Round';
-color: #aaaaaa;
+#wrapper h1, p, div, small {
+  font-family: 'Ubuntu Condensed', sans-serif;
+  color: #aaaaaa;
 }
 
 #name{
@@ -19,16 +36,16 @@ color: #aaaaaa;
 }
 
 #password{
-    -webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,0);
+  -webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,0);
   box-shadow:inset 0 1px 1px rgba(0,0,0,0);
   border-color:transparent;
   border-bottom-color:#EEEEEE;
   border-bottom-width:4px;
 }
 
-#user{
-  margin-left:400px;
-}
+/*#user{*/
+/*  margin-left:400px;*/
+/*}*/
 
 #password-confirm{
   -webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,0);
