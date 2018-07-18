@@ -31,9 +31,7 @@ class FriendsController extends Controller
     }
     
     function show($id){
-        // $friendId=$request->id;
-        // $userinst= new \App\User;
-        // $user = $userinst::find($friendId);
+
         $user = User::find($id);
         
         return view('users.friend_detail', [
