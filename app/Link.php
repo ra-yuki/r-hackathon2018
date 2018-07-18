@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-use App\Event;
+use App\Poll;
 use App\User;
 
 class Link extends Model
@@ -14,27 +14,27 @@ class Link extends Model
         return $this->belongsToMany(User::class, 'user_link', 'userId', 'linkId')->withTimestamps();
     }
     
-    //*-- event_link intermediate table stuffs --*//
-    public function events(){
-        return $this->belongsToMany(Event::class, 'event_link', 'eventId', 'linkId')->withTimestamps();
+    public function poll(){
+        return $this->belongsTo(Poll::class, 'pollId')->get();
     }
     
-    //*-- others --*//
-    // public static function getPollLinks($pollPath){
-    //     return Link::where('pollPath', $pollPath)->orderBy('created_at')->get();
-    // }
-    
-    // public function bulkSave($links, $pollTitle){
-    //     $pollPath = OctopathHelper::generate_octopath();
+    public static function bulkSaveAndRegisterAsPoll($links, $title, $eventPath){
+        // store poll record for connecting event and links
+        $poll = new Poll();
+        $poll->title = $title;
+        $poll->eventPath = $eventPath;
+        $saved = $poll->save();
+        // exception handling
+        if(!$saved) return false;
         
-    //     foreach($links as $link){
-    //         $link->pollPath = $pollPath;
-    //         $link->pollTitle =$pollTitle;
-    //         $saved = $link->save();
+        foreach($links as $l){
+            $l->pollId = $poll->id;
             
-    //         if(!$saved) return false;
-    //     }
+            $saved = $l->save();
+            // exception handling
+            if(!$saved) return false;
+        }
         
-    //     return true;
-    // }
+        return true;
+    }
 }
