@@ -1,77 +1,98 @@
 @extends('layouts.app')
 
+@section('head-plus')
+<link rel="stylesheet" href="{{ secure_asset('css/commons/spaces.css') }}">
+<link rel="stylesheet" href="{{ secure_asset('css/commons/buttons.css') }}">
+<script>
+    // friend stuffs
+    var usersImages = new Array();
+    var usersIds = new Array();
+    var usersNames = new Array();
+    @if(count($friends) > 0)
+        @foreach($friends as $key => $r)
+            usersImages[{{$r->id}}] = '{{$r->imageUrl}}';
+            usersIds[{{$r->id}}] = {{$r->id}};
+            usersNames[{{$r->id}}] = '{{$r->name}}';
+        @endforeach
+    @endif
+    
+    // group stuffs
+    var groupsImages = new Array();
+    var groupsIds = new Array();
+    var groupsNames = new Array();
+    @if(count($groups) > 0)
+        @foreach($groups as $key => $r)
+            groupsImages[{{$r->id}}] = '{{$r->imageUrl}}';
+            groupsIds[{{$r->id}}] = {{$r->id}};
+            groupsNames[{{$r->id}}] = '{{$r->name}}';
+        @endforeach
+    @endif
+    
+</script>
+<script src="{{ secure_asset('js/displayUser.js') }}"></script>
+@endsection
+
 @section('content')
 
 {{-- display friends and groups --}}
 
-
 <div class="container">
-
-  <ul class="nav nav-tabs" id="tab">
-    <li class="active"><a data-toggle="tab" href="#friend">Friends</a></li>
-    <li><a data-toggle="tab" href="#group">Groups</a></li>
-  </ul>
-
-  <div class="tab-content">
-      <div id="friend" class="tab-pane fade in active">
-      <h3>Friends</h3>
-      {{-- ↓↓ 検索フォーム ↓↓ --}}
-
-<form class="form-inline" action="{{route('friends.index')}}">
-  <div class="form-group">
-  <input type="text" name="friendId" value="{{$friendId}}" class="form-control" placeholder="Search Friends">
-  </div>
-
- 
-  <input type="image" src="images/megane2.png" alt="虫眼鏡">
-  <!--<div class="input-group"><input placeholder="検索" class="form-control form-text" type="text" id="edit-keys" name="keys" value="" size="40" maxlength="255"><span class="input-group-btn"><button type="submit" class="btn btn-default"><span class="icon glyphicon glyphicon-search" aria-hidden="true"></span>-->
-　　<!--</button></span></div>-->
-  
-
-</form>
-
-
-
-{{-- ↑↑ 検索フォーム ↑↑ --}}
-        @foreach ($friends as $friend)
-        <div class="col-md-3 col-sm-4 col-xs-12">
-            <div class="panel panel-default">
-                <div class>{!! link_to_route('friends.show',$friend->name, ['id' => $friend->id]) !!}</div>
+    <div class="col-xs-6">
+        {{-- friend/group tag --}}
+        <ul class="nav nav-tabs" id="tab">
+            <li class="active"><a data-toggle="tab" href="#friend">Friends</a></li>
+            <li><a data-toggle="tab" href="#group">Groups</a></li>
+        </ul>
+        
+        {{-- tab content starts here --}}
+        <div class="tab-content">
+            {{-- Friends Main --}}
+            <div id="friend" class="tab-pane fade in active">
+                <h3>Friends</h3>
+                
+                {{-- ↓↓ 検索フォーム ↓↓ --}}
+                <form class="form-inline" action="{{route('friends.index')}}">
+                    <div class="form-group">
+                        <input type="text" name="friendId" value="{{$friendId}}" class="form-control" placeholder="Search Friends">
+                    </div>
+                    <button id="search-button"class="btn btn-grey"><span class="glyphicon glyphicon-search"></span></button>
+                </form>
+                <br>
+                {{-- ↑↑ 検索フォーム ↑↑ --}}
+                
+                @foreach ($friends as $friend)
+                    <p>
+                        <img class="img-circle" src="{{$friend->imageUrl}}" alt="" style="width:50px;">
+                        <a href="#" class="no-decoration" onclick="displayUser('{{$friend->id}}')">{{$friend->name}}</a>
+                    </p>
+                @endforeach
+            </div>
+            
+            {{-- Group Main --}}
+            <div id="group" class="tab-pane fade">
+                <h3>Groups</h3>
+                @foreach ($groups as $group)
+                    <p>
+                        <img class="img-circle" src="{{$group->imageUrl}}" alt="" style="width:50px;">
+                        <a href="#" class="no-decoration" onclick="displayGroup('{{$group->id}}')">{{$group->name}}</a>
+                    </p>
+                @endforeach
             </div>
         </div>
-        @endforeach
-    
-     </div>
-     <div id="group" class="tab-pane fade">
-     <h3>Groups</h3>
-  {{--   
-   ↓↓ 検索フォーム ↓↓ 
-
-<form class="form-inline" action="{{route('groups.index')}}">
-  <div class="form-group">
-  <input type="text" name="groupId" value="{{$groupId}}" class="form-control" placeholder="Search groups">
-  </div>
-  <input type="submit" value="Search" class="bt">
-</form>
-
- ↑↑ 検索フォーム ↑↑ 
---}}
-      
-      @foreach ($groups as $group)
-           <div class="col-md-3 col-sm-4 col-xs-12">
-                <div class="panel panel-default">
-                    <div>
-                        {!! link_to_route('groups.show',$group->name, ['id' => $group->id]) !!}
-                    </div>
-                    
-            
-                </div>
-            </div>
-    
-@endforeach
-      
+        {{-- tab content ends here --}}
     </div>
-  </div>
+    
+    <div id="user-detail" class="col-xs-6 pad-top-m">
+        <div id="user-image" class="">
+            <!-- <img> -->
+        </div>
+        <h1 id="user-name" class="text-center">
+            <!-- user name -->
+        </h1>
+        <div id="user-add">
+
+        </div>
+    </div>
 </div>
 
 @endsection

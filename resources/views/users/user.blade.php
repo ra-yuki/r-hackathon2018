@@ -2,6 +2,7 @@
 @section('head-plus')
 <link rel="stylesheet" href="{{ secure_asset('css/user-user.css') }}">
 <link rel="stylesheet" href="{{ secure_asset('css/commons/buttons.css') }}">
+<link rel="stylesheet" href="{{ secure_asset('css/commons/spaces.css') }}">
 <script>
     var usersImages = new Array();
     var usersIds = new Array();
@@ -15,21 +16,20 @@
     @endif
 </script>
 <script src="{{ secure_asset('js/displayUser.js') }}"></script>
-<!-- $imageUrl = Config::AVATAR_DEFAULT_URLS[$user->id % count(Config::AVATAR_DEFAULT_URLS)]; -->
 @endsection
 @section('content')
 
 <div class="container">
-    <div class="col-xs-5">
+    <div class="col-xs-6">
         <!--↓↓ 検索フォーム ↓↓-->
         
         <form class="form-inline" action="{{route('user.index')}}">
           <div class="form-group">
           <input type="text" name="userId" value="{{$userId}}" class="form-control" placeholder="Search New Friends">
           </div>
-            <button id="search-button"class="btn btn-grey"><span class="glyphicon glyphicon-search"></span></button>
+          <button id="search-button"class="btn btn-grey"><span class="glyphicon glyphicon-search"></span></button>
         </form>
-    
+        <br>
         <!--↑↑ 検索フォーム ↑↑-->
     
     
@@ -41,9 +41,12 @@
                 <div class="media-body">
                     <div>
                        {{--<a href="{{route('friends.show',['id'=>$user->id])}}"> {{ $user->name }} </a>--}}
-                       <a onclick="displayUser('{{$user->id}}')">{{$user->name}}</a>
+                       <p>
+                           <img class="img-circle" src="{{$user->imageUrl}}" alt="" style="width:50px;">
+                           <a href="#" class="no-decoration" onclick="displayUser('{{$user->id}}')">{{$user->name}}</a>
+                       </p>
                     </div>
-                    @include('users.addbutton', ['user' => $user])
+                    {{-- @include('users.addbutton', ['user' => $user]) --}}
                 </div>
             </li>
         
@@ -53,7 +56,7 @@
         @endif
 
     </div>
-    <div id="user-detail" class="col-xs-7">
+    <div id="user-detail" class="col-xs-6 pad-top-m">
         <div id="user-image" class="">
             <!-- <img> -->
         </div>
