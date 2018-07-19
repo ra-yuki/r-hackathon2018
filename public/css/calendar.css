@@ -27,3 +27,21 @@ table{
     padding:2px 5px ;
     border-radius:4px;
 }
+
+.event-card{
+    text-decoration: none;
+    color: #555;
+}
+
+.event-card:hover {
+    text-decoration: none;
+    color: #555;
+}
+
+.event-card .event:hover{
+    background-color:#D0d7f0;
+}
+
+.event-card .group-event:hover{
+    background-color:#E0E0F3;
+}

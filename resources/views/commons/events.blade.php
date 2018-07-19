@@ -21,10 +21,12 @@ foreach($events as $e){
     <?php $from = explode(':', explode(' ', $e->dateTimeFromSelf)[1])[0]; ?>
     <?php $to = explode(':', explode(' ', $e->dateTimeToSelf)[1])[0]; ?>
     
-    <div class="{{$classBtnColor}}">
-        {!! link_to_route('events.show', $e->title, ['id' => $e->id], ['class' => ""]) !!}
-        <br>
-        <small>{{$timeFrom}}-{{$timeTo}}</small>
-        <br>
-    </div>
+    <a class="event-card" href="{{route('events.show', ['id' => $e->id])}}">
+        <div class="{{$classBtnColor}}">
+            {{-- {!! link_to_route('events.show', $e->title, ['id' => $e->id], ['class' => ""]) !!} --}}
+            <div>{{$e->title}}</div>
+            <small>{{$timeFrom}}-{{$timeTo}}</small>
+            <br>
+        </div>
+    </a>
 @endforeach

@@ -1,0 +1,6 @@
+#top-cover{
+    background-image: url('/images/welcome.jpg');
+    background-position: 0px 0px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
