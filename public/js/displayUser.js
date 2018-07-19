@@ -6,7 +6,7 @@ function displayUser(id){
     var userAddButtonMsg = document.getElementById('user-add-button-msg');
     
     userName.innerHTML = usersNames[id];
-    userImage.innerHTML = "<p class=\"text-center\"><img src=" + usersImages[id] + " alt=\"\"></p>";
+    userImage.innerHTML = "<p class=\"text-center\"><img style=\"width:250px;\" src=" + usersImages[id] + " alt=\"\"></p>";
     userAdd.innerHTML = usersIds[id];
 }
 
@@ -18,6 +18,6 @@ function displayGroup(id){
     var userAddButtonMsg = document.getElementById('user-add-button-msg');
     
     userName.innerHTML = groupsNames[id];
-    userImage.innerHTML = "<p class=\"text-center\"><img src=" + groupsImages[id] + " alt=\"\"></p>";
+    userImage.innerHTML = "<p class=\"text-center\"><img style=\"width:250px;\" src=" + groupsImages[id] + " alt=\"\"></p>";
     userAdd.innerHTML = groupsIds[id];
 }
