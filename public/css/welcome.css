@@ -21,7 +21,7 @@
 }
 
 .popcon2{
-    margin-top:50px;
+    
     font-family: 'Fredericka the Great', cursive;
     font-family: 'Asap Condensed', sans-serif; 
 }
@@ -79,20 +79,25 @@
 
 /*POPCONの文字終わり*/
 
+#adjust{
+    margin-bottom:100px;
+}
 /*#top-cover h1{*/
 /*    margin-top:250px;*/
 /*}*/
 
 #top-welcome{
-    padding: 30px 0;
+    padding: 150px 0;
     font-family: 'Fredericka the Great', cursive;
     font-family: 'Asap Condensed', sans-serif; 
+    background-color:#F8F4EE;
 }
 
 #hiw{
-    padding:30px 0;
+    padding:200px 0;
     font-family: 'Fredericka the Great', cursive;
     font-family: 'Asap Condensed', sans-serif; 
+    background-color:white;
 }    
 
 #hiw img{
@@ -100,9 +105,10 @@
 }
 
 #bottom-welcome{
-    padding:30px 0;
+    padding:120px 0;
     font-family: 'Fredericka the Great', cursive;
     font-family: 'Asap Condensed', sans-serif; 
+    background-color:#EBDECD;
 }
 
 #foot{
@@ -131,15 +137,23 @@
 
 /*ログインボタン終わり*/
 #sign{
-    /*margin-right: 0px;*/
+    margin-bottom:50px;
 }
 
 #log{
-    /*margin-left: 20px;*/
+    margin-bottom:50px;
 }
 
 /*WELCOME TO POPCON*/
-#top-welcome{
-    background-color:#F5F5F5;
+
+#foot{
+    background-color:#EBDECD;
 }
 
+p{
+    font-size:30px;
+}
+
+h1{
+    font-size:50px;
+}

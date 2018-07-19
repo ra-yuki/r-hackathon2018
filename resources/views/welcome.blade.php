@@ -22,7 +22,7 @@
 
         <div class="popcon2">
           <div class="container">
-                <h3 class="text-center">Adjust Your Schedule, Quicker Than Ever</h3>
+                <h3 class="text-center" id="adjust">Adjust Your Schedule, Quicker Than Ever</h3>
                 <p class="text-center">
                     <a href="{{ route('signup.get') }}" class="col-xs-12 col-md-offset-3 col-md-2 square_btn" id="sign">SIGNUP</a>
                     <a href="{{ route('login') }}" class="col-xs-12 col-md-offset-2 col-md-2 square_btn" id="log">LOGIN</a>
@@ -32,13 +32,13 @@
     </div>
     <div id="top-welcome" class="col-xs-12">
         <div class="col-xs-offset-3 col-xs-6">
-            <h2 class="text-center">WELCOME TO POPCON</h2>
+            <h1 class="text-center">WELCOME TO POPCON</h1>
             <p class="text-center">POPCON will lead you to a whole new way of scheduling by automatically picking the best date for you. <br>NO MORE 調整さん, HELLO POPCON</p>
             
         </div>
     </div>
     
-    <div id="hiw" class="col-xs-12 bg-blue">
+    <div id="hiw" class="col-xs-12">
         <div class="container">
             <h1 class="text-center">HOW POPCON WORKS</h1><br>
             
@@ -61,8 +61,9 @@
     </div>
     
   
-    <div id="bottom-welcome" class="col-xs-12 bg-red">
+    <div id="bottom-welcome" class="col-xs-12">
         <h1 class="text-center">WHAT ARE YOU WAITING FOR?</h1>
+        <br>
         <p class="text-center">
             <a href="{{ route('signup.get') }}" class="col-xs-2 col-xs-offset-5 square_btn">START</a>
         </p>
