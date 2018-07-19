@@ -21,7 +21,7 @@
                     </span>
                 </h1>
                 
-                <p class="p">Adjust Your Schedule, quicker than ever</p>
+                <p class="p">Adjust Your Schedule, quicker than ever</p><br>
 
 
                 <div class="row">
