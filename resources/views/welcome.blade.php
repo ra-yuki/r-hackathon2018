@@ -8,23 +8,29 @@
 
 @section('content')
 <div id="wrapper-container">
-    <div id="top-cover" class="col-xs-12 bg-red">
-<<<<<<< HEAD
-<h1 class="ml1">
+    <div id="top-cover" class="col-xs-12">
+
+      <div class="popcon">
+                <h1 class="ml1">
                     <span class="text-wrapper">
                     <span class="line line1"></span>
-                    <span class="letters">CALENDAR</span>
+                    <span class="letters">POPCON</span>
                     <span class="line line2"></span>
                     </span>
                 </h1>
+      </div>
 
-        <h3 class="text-center">Adjust Your Schedule, Quicker Than Ever</h3>
-        <p class="text-center">
-            <a href="{{ route('signup.get') }}" class="col-xs-offset-4 col-xs-2 square_btn">SIGNUP</a>
-            <a href="{{ route('login') }}" class="col-xs-2 square_btn">LOGIN</a>
-        </p>
+        <div class="popcon2">
+          <div class="container">
+                <h3 class="text-center">Adjust Your Schedule, Quicker Than Ever</h3>
+                <p class="text-center">
+                    <a href="{{ route('signup.get') }}" class="col-xs-12 col-md-offset-3 col-md-2 square_btn" id="sign">SIGNUP</a>
+                    <a href="{{ route('login') }}" class="col-xs-12 col-md-offset-2 col-md-2 square_btn" id="log">LOGIN</a>
+                </p> 
+          </div>
+        </div>
     </div>
-    <div id="top-welcome" class="col-xs-12 bg-green">
+    <div id="top-welcome" class="col-xs-12">
         <div class="col-xs-offset-3 col-xs-6">
             <h2 class="text-center">WELCOME TO POPCON</h2>
             <p class="text-center">POPCON will lead you to a whole new way of scheduling by automatically picking the best date for you. <br>NO MORE 調整さん, HELLO POPCON</p>
@@ -54,16 +60,18 @@
         
     </div>
     
-    
+  
     <div id="bottom-welcome" class="col-xs-12 bg-red">
         <h1 class="text-center">WHAT ARE YOU WAITING FOR?</h1>
         <p class="text-center">
-            <a href="{{ route('signup.get') }}" class="col-xs-2 col-xs-offset-5 square_btn">SIGNUP</a>
+            <a href="{{ route('signup.get') }}" class="col-xs-2 col-xs-offset-5 square_btn">START</a>
         </p>
     </div>
     
     @include('commons.footer')
 </div>
+<link href="https://fonts.googleapis.com/css?family=Asap+Condensed%7CCabin+Sketch%7CFredericka+the+Great%7CRammetto+One" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Bungee+Inline" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
 <script src="{{ secure_asset('js/test.js') }}"></script>
 @endsection
