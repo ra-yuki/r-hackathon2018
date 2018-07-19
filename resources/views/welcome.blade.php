@@ -18,16 +18,32 @@
     </div>
     <div id="top-welcome" class="col-xs-12 bg-green">
         <div class="col-xs-offset-3 col-xs-6">
-            <h2 class="text-center">Welcome</h2>
-            <p class="text-center">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing</p>
+            <h2 class="text-center">Welcome To Popcon</h2>
+            <p class="text-center">Popcon will lead you to a whole new way of scheduling by automatically picking the best date for you. <br>NO MORE 調整さん, HELLO POPCON</p>
             
         </div>
     </div>
+    
     <div id="middle-slide" class="col-xs-12 bg-blue">
-        <h1 class="text-center">Slides are supposed to go here</h1>
+        <div class="container">
+            <h1 class="text-center">How Popcon Works</h1>
+            
+            <div class="col-xs-4"><p>Form a group with friends that you would like to make plans with.</p></div>
+            <div class="col-xs-4"><p>It will automatically caluculate each others available days and you will be able to select it.</p></div>
+            <div class="col-xs-4"><p>Click the confirm button and your plans will be reflected on your Calendar.</p></div>
+        </div>
+        
     </div>
+    
+    <div id="features" class="col-xs-12 bg-green">
+        <div class="col-xs-offset-1 col-xs-5 bg-red"><p>hello</p></div>
+        <div class="col-xs-5 bg-blue"><p>bye</p></div>
+    </div>
+    
+    
+    
     <div id="bottom-lets-start" class="col-xs-12 bg-red">
-        <h1 class="text-center">Let's get started!</h1>
+        <h1 class="text-center">What are you waiting for?</h1>
         <p class="text-center">
             <a>Signup</a>
         </p>
