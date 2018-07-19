@@ -17,12 +17,19 @@
 }
 
 *{
-    background-color:white;
     font-family: 'Ubuntu Condensed', sans-serif;
     color: black;
     font-size: 100%;
     font-size:30px;
   　
+}
+
+#coverpic{
+    background-image: url("/images/cal.jpg");
+    background-position: 0px 0px;
+    background-repeat: no-repeat;
+    /*background-attachment: fixed;*/
+    background-size: cover;
 }
 #topall{
 position: absolute;
