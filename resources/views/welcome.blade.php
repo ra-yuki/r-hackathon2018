@@ -3,11 +3,13 @@
 @section('head-plus')
     <link rel="stylesheet" href="{{secure_asset('css/commons/buttons.css')}}">
     <link rel="stylesheet" href="{{secure_asset('css/welcome.css')}}">
+    
 @endsection
 
 @section('content')
 <div id="wrapper-container">
     <div id="top-cover" class="col-xs-12 bg-red">
+<<<<<<< HEAD
 <h1 class="ml1">
                     <span class="text-wrapper">
                     <span class="line line1"></span>
@@ -15,10 +17,11 @@
                     <span class="line line2"></span>
                     </span>
                 </h1>
+
         <h3 class="text-center">Adjust Your Schedule, Quicker Than Ever</h3>
         <p class="text-center">
-            <a class="col-xs-offset-4 col-xs-2 square_btn">SIGNUP</a>
-            <a class="col-xs-2 square_btn">LOGIN</a>
+            <a href="{{ route('signup.get') }}" class="col-xs-offset-4 col-xs-2 square_btn">SIGNUP</a>
+            <a href="{{ route('login') }}" class="col-xs-2 square_btn">LOGIN</a>
         </p>
     </div>
     <div id="top-welcome" class="col-xs-12 bg-green">
@@ -52,10 +55,10 @@
     </div>
     
     
-    <div id="bottom-lets-start" class="col-xs-12 bg-red">
+    <div id="bottom-welcome" class="col-xs-12 bg-red">
         <h1 class="text-center">WHAT ARE YOU WAITING FOR?</h1>
         <p class="text-center">
-            <a>Signup</a>
+            <a href="{{ route('signup.get') }}" class="col-xs-2 col-xs-offset-5 square_btn">SIGNUP</a>
         </p>
     </div>
     
