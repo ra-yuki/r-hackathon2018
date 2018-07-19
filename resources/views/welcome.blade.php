@@ -8,8 +8,13 @@
 @section('content')
 <div id="wrapper-container">
     <div id="top-cover" class="col-xs-12 bg-red">
-        <h1 class="text-center">POPCON</h1>
-        <p class="text-center">_________</p>
+<h1 class="ml1">
+                    <span class="text-wrapper">
+                    <span class="line line1"></span>
+                    <span class="letters">CALENDAR</span>
+                    <span class="line line2"></span>
+                    </span>
+                </h1>
         <h3 class="text-center">Adjust Your Schedule, Quicker Than Ever</h3>
         <p class="text-center">
             <a class="col-xs-offset-4 col-xs-2 square_btn">SIGNUP</a>
@@ -56,5 +61,7 @@
     
     @include('commons.footer')
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+<script src="{{ secure_asset('js/test.js') }}"></script>
 @endsection
 
