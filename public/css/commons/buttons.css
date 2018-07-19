@@ -15,3 +15,13 @@
 .bg-blue{
     background-color:blue;
 }
+
+.no-decoration {
+    text-decoration: none;
+    color: #aaa;
+}
+
+.no-decoration:hover {
+    text-decoration: none;
+    color: #666;
+}

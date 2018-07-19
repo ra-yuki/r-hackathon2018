@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Libraries\Config;
+
 class FriendsController extends Controller
 {
     function index(){
-        // searching friends...
+        //*-- friend search --*//
         #キーワード受け取り
         $keyword = (isset($_GET['friendId'])) ? $_GET['friendId'] : null;
      
@@ -22,11 +24,37 @@ class FriendsController extends Controller
             $res = \Auth::user()->friends;
         }
         
+        // get friends images
+        foreach($res as $key => $r){
+            if($r->image != null){ //has image
+                $res[$key]->imageUrl = $r->image->url;
+            }
+            else{ //no image found
+                $res[$key]->imageUrl = Config::AVATAR_DEFAULT_URLS[$r->id % count(Config::AVATAR_DEFAULT_URLS)];
+            }
+        }
+        
+        //*-- group stuffs --*//
+        // get groups
+        $groups = \Auth::user()->groups()->where('visibility', '1')->get();
+        // get groups images
+        foreach($groups as $key => $r){
+            if($r->image != null){ //has image
+                $groups[$key]->imageUrl = $r->image->url;
+                \Debugbar::info($groups[$key]->imageUrl);
+            }
+            else{ //no image found
+                $groups[$key]->imageUrl = Config::AVATAR_DEFAULT_URLS[$r->id % count(Config::AVATAR_DEFAULT_URLS)];
+                \Debugbar::info($groups[$key]->imageUrl);
+            }
+        }
+        
+        //*-- parse to view --*//
         return view('users.friends', [
          'friendId' => $keyword, 
          'friends' => $res,
          'groupId' => '',
-         'groups' => \Auth::user()->groups()->where('visibility', '1')->get(),
+         'groups' => $groups,
         ]);
     }
     
