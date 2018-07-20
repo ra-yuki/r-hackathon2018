@@ -13,7 +13,7 @@ class UserController extends Controller
         $keyword = $request->userId;
      
         #もしキーワードがあったら
-        $res = null;
+        $res = [];
         if(!empty($keyword))
         {
             $res = \App\User::where('name', 'like', "%$keyword%")->get();
