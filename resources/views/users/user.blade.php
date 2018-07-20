@@ -9,6 +9,7 @@
     var usersNames = new Array();
     var routeAddFriend = "{{route('add.get', ['id' => '@split'])}}";
     var routeDeleteFriend = "{{route('unfriend', ['id' => '@split'])}}";
+    
     @if(count($SearchResult) > 0)
         @foreach($SearchResult as $key => $r)
             usersImages[{{$r->id}}] = '{{$r->imageUrl}}';
@@ -45,13 +46,11 @@
                
                 <div class="media-body">
                     <div>
-                       {{--<a href="{{route('friends.show',['id'=>$user->id])}}"> {{ $user->name }} </a>--}}
                        <p>
                            <img class="img-circle" src="{{$user->imageUrl}}" alt="" style="width:50px;">
                            <a href="#" class="no-decoration" onclick="displayUser('{{$user->id}}', {{ $isFriend }})">{{$user->name}}</a>
                        </p>
                     </div>
-                    {{-- @include('users.addbutton', ['user' => $user]) --}}
                 </div>
             </li>
         
