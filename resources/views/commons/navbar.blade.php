@@ -14,28 +14,28 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">MediumRare</a>
+      <a class="navbar-brand" href="/" id="popcorn">POPCON</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a class="navbar-left" href="/user">Search </a></li>
+        <li><a class="navbar-left" href="/user"><img src="{{secure_asset('images/search.png')}}" id="mushi"><br>search </a></li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Add Plans <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="{{secure_asset('images/calendar.png')}}" id="ca"><br>add plans <span class="caret"></span></a>
           <ul class="dropdown-menu" id="dp">
             <li><a class="navbar-left" href="{{route('events.showScheduleInPrivate')}}" >Private Event </a></li>
             <li><a class="navbar-left" href="{{route('events.showScheduleWithGroup')}}">Group Event </a></li>
           </ul>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Friends<span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="{{secure_asset('/images/add-user (1) (1).png')}}" id="fr"><br>friends<span class="caret"></span></a>
           <ul class="dropdown-menu" id="dp">
             <li><a class="navbar-left" href="/friends">Groups/Friends </a></li>
             <li><a class="navbar-left" href="/makegroup">Makegroup </a></li>
           </ul>
         </li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Settings <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="{{secure_asset('images/settings.png')}}" id="set"><br>settings <span class="caret"></span></a>
           <ul class="dropdown-menu" id="dp">
             <li><a class="navbar-left" href="{{ route('profile.index') }}">Profile </a></li>
             <li><a class="navbar-left" href="{{route('settings.settings')}}" >Layouts</a></li>
