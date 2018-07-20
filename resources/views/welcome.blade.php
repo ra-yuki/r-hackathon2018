@@ -8,6 +8,7 @@
 
 @section('content')
 <div id="wrapper-container">
+   
     <div id="top-cover" class="col-xs-12">
 
       <div class="popcon">
@@ -30,31 +31,36 @@
           </div>
         </div>
     </div>
+
     <div id="top-welcome" class="col-xs-12">
         <div class="col-xs-offset-3 col-xs-6">
+            
             <h1 class="text-center">WELCOME TO POPCON</h1>
-            <p class="text-center">POPCON will lead you to a whole new way of scheduling by automatically picking the best date for you. <br>NO MORE 調整さん, HELLO POPCON</p>
+            <p class="text-center">POPCON will lead you to a whole new way of scheduling by automatically picking the best date for you. <br>NO MORE 調整さん, HELLO POPCON!</p>
             
         </div>
+       
     </div>
     
     <div id="hiw" class="col-xs-12">
         <div class="container">
             <h1 class="text-center">HOW POPCON WORKS</h1><br>
+           
+            <br>
             
             <div class="col-xs-12 col-md-4">
                 <p class="text-center"><img src="{{secure_asset('/images/customer.png')}}"></p>
-                <p>Form a group with friends that you would like to make plans with.</p>
+                <p class="text-center">Form a group with friends <br> that you would like to make plans with.</p>
             </div>
             
             <div class="col-xs-12 col-md-4">
                 <p class="text-center"><img src="{{secure_asset('/images/loupe.png')}}"></p>
-                <p>It will automatically caluculate each others available days and you will be able to select it.</p>
+                <p class="text-center">It will automatically caluculate each others available days and you <br>will be able to select it.</p>
             </div>
             
             <div class="col-xs-12 col-md-4">
                 <p class="text-center"><img src="{{secure_asset('/images/check-mark-button.png')}}"></p>
-                <p>Click the confirm button and your plans will be reflected on your Calendar.</p>
+                <p class="text-center">Click the confirm button <br>and your plans will be reflected on your Calendar.</p>
             </div>
         </div>
         

@@ -6,9 +6,13 @@
 @endsection
 
 @section('content')
+
 <div id="wrapper" class="container">
+    <div class="kakomi-te1">
+
     <div class="row justify-content-center">
         <h1 id="login-txt" class="text-center">{{ __('login') }}</h1>
+        <br>
         <form method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
             @csrf
             <div id="form-name" class="row">
@@ -35,7 +39,7 @@
                     <p></p>
                     <div class="form-group row mb-0">
                         <div class="col-xs-offset-9 col-md-offset-10">
-                            <button type="submit" class="btn btn-grey">
+                            <button type="submit" class="btn">
                                 {{ __('login') }}
                             </button>
                         </div>
@@ -47,5 +51,6 @@
             <a href="{{route('signup.get')}}">Not a member?</a>
         </div>
     </div>
+   </div>
 </div>
 @endsection
