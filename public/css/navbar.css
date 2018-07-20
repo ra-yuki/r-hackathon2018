@@ -107,9 +107,40 @@ background-color: white;
 	
 }
 
+/*#popcorn{*/
+/*	font-size:35px;*/
+/*	margin-left:20px;*/
+/*	color:black;*/
+/*	margin-top:20px;*/
+/*	font-family: 'Fredericka the Great', cursive;*/
+/*    font-family: 'Asap Condensed', sans-serif;*/
+/*    font-family: 'Rammetto One', cursive;*/
+/*    font-family: 'Cabin Sketch', cursive;*/
+/*    font-weight: bold;*/
+/*}*/
+
+/*#pp{*/
+/*	width:40px;*/
+/*	height:40px;*/
+/*    margin-right:30px;*/
+/*    margin-top:20px;*/
+	
+/*}*/
+
 #popcorn{
-	font-size:35px;
-	margin-left:20px;
+
+    padding-left: 45px;
+    line-height: 30px;
+    background: url(/images/popcorn.png) no-repeat;
+    background-size: 24%;
+    font-size:35px;
+	margin-left:40px;
 	color:black;
 	margin-top:20px;
+	font-family: 'Fredericka the Great', cursive;
+    font-family: 'Asap Condensed', sans-serif;
+    font-family: 'Rammetto One', cursive;
+    font-family: 'Cabin Sketch', cursive;
+    font-weight: bold;
+
 }
