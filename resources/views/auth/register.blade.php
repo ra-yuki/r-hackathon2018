@@ -9,6 +9,7 @@
 <div id="wrapper" class="container">
     <div class="row justify-content-center">
         <h1 id="login-txt" class="text-center">{{ __('signup') }}</h1>
+        <br>
         <form method="POST" action="{{ route('signup.post') }}" aria-label="{{ __('Login') }}">
             @csrf
             <div id="form-name" class="row">
@@ -43,7 +44,7 @@
                 <p></p>
                 <div class="form-group row mb-0">
                     <div class="col-xs-offset-4 col-md-offset-7">
-                        <button type="submit" class="btn btn-grey">
+                        <button type="submit" class="btn">
                             {{ __('signup') }}
                         </button>
                     </div>

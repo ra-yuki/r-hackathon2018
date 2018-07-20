@@ -74,27 +74,31 @@
     background-size: cover;
     height:650px;
     
-    
 }
 
 /*POPCONの文字終わり*/
 
 #adjust{
     margin-bottom:100px;
+    font-size:40px;
 }
 /*#top-cover h1{*/
 /*    margin-top:250px;*/
 /*}*/
+
 
 #top-welcome{
     padding: 150px 0;
     font-family: 'Fredericka the Great', cursive;
     font-family: 'Asap Condensed', sans-serif; 
     background-color:#F8F4EE;
+     
 }
 
+
+
 #hiw{
-    padding:200px 0;
+    padding:120px 0;
     font-family: 'Fredericka the Great', cursive;
     font-family: 'Asap Condensed', sans-serif; 
     background-color:white;
@@ -155,5 +159,7 @@ p{
 }
 
 h1{
-    font-size:50px;
+    font-size:70px;
+    margin-bottom:100px;
 }
+
