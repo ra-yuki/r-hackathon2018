@@ -5,6 +5,7 @@
 @section('content')
 
 <div id="wrapper-top" class="container">
+    @include('commons.messages')
     <div class="col-xs-12 col-md-8">
         <h1>
             <a href="{{route('mypage.index')}}?year={{$yearPrev}}&month={{$monthPrev}}" class="btn btn-link"><</a>

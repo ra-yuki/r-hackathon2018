@@ -8,6 +8,8 @@
     var usersImages = new Array();
     var usersIds = new Array();
     var usersNames = new Array();
+    var routeAddFriend = "{{route('add.get', ['id' => '@split'])}}";
+    var routeDeleteFriend = "{{route('unfriend', ['id' => '@split'])}}";
     @if(count($friends) > 0)
         @foreach($friends as $key => $r)
             usersImages[{{$r->id}}] = '{{$r->imageUrl}}';
@@ -37,6 +39,8 @@
 {{-- display friends and groups --}}
 
 <div class="container">
+    @include('commons.messages')
+    
     <div class="col-xs-6">
         {{-- friend/group tag --}}
         <ul class="nav nav-tabs" id="tab">
@@ -61,9 +65,10 @@
                 {{-- ↑↑ 検索フォーム ↑↑ --}}
                 
                 @foreach ($friends as $friend)
+                    <?php $isFriend = \Auth::user()->is_friend($friend->id); ?>
                     <p>
                         <img class="img-circle" src="{{$friend->imageUrl}}" alt="" style="width:50px;">
-                        <a href="#" class="no-decoration" onclick="displayUser('{{$friend->id}}')">{{$friend->name}}</a>
+                        <a href="#" class="no-decoration" onclick="displayUser('{{$friend->id}}', {{ $isFriend }})">{{$friend->name}}</a>
                     </p>
                 @endforeach
             </div>
@@ -72,9 +77,16 @@
             <div id="group" class="tab-pane fade">
                 <h3>Groups</h3>
                 @foreach ($groups as $group)
+                    <?php $userNames = []; ?>
+                    @foreach($group->users as $key => $u)
+                        <?php 
+                            $userNames[$key] = $u->name; 
+                            $userNamesJson = json_encode($userNames);
+                        ?>
+                    @endforeach
                     <p>
                         <img class="img-circle" src="{{$group->imageUrl}}" alt="" style="width:50px;">
-                        <a href="#" class="no-decoration" onclick="displayGroup('{{$group->id}}')">{{$group->name}}</a>
+                        <a href="#" class="no-decoration" onclick="displayGroup('{{$group->id}}', '{{$userNamesJson}}')">{{$group->name}}</a>
                     </p>
                 @endforeach
             </div>

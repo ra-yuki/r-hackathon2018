@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="container">
+    @include('commons.messages')
     <div class="col-xs-12">
         <h1>TITLE | {{$event->title}}</h1>
         <h3>DESCRIPTION | {{$event->description}}</h3>

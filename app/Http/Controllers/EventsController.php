@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Event;
 use App\Group;
+use App\Poll;
 use App\Libraries\Vec2;
 use App\Libraries\OctopathHelper;
 use App\Libraries\Config;
@@ -39,6 +40,9 @@ class EventsController extends Controller
     }
     
     function show($id){
+        // exception handling
+        if(!Event::find($id)->fixed) abort(404);
+        
         $event = Event::find($id);
         $eventOtherOptions = Event::where([
             ['eventPath', '=', $event->eventPath],
@@ -62,7 +66,7 @@ class EventsController extends Controller
             ['id', '<>', $event->id],
         ])->delete();
         
-        return redirect()->route('events.show', ['id' => $id]);
+        return redirect()->route('events.show', ['id' => $id])->with('message', 'Fixed \''. $event->title .'\' on '. explode(' ', $event->dateTimeFromSelf)[0]. '!');
     }
     
     public function edit($id)
@@ -94,12 +98,14 @@ class EventsController extends Controller
     public function destroy($id)
     {
         $event = Event::find($id);
+        $title = $event->title;
+        
         // delete all the $event with the same event path
         Event::where([
             ['eventPath', '=', $event->eventPath],
         ])->delete();
         
-        return redirect()->route('mypage.index');
+        return redirect()->route('mypage.index')->with('messageDanger', 'Deleted \''. $title .'\' successfully.');
     }
     
     public function showHub($eventPath){
@@ -122,9 +128,13 @@ class EventsController extends Controller
         \Debugbar::info('$events');
         \Debugbar::info($events);
         
+        // get poll data
+        $polls = Poll::findFromEventPath($events[0]->eventPath);
+        
         return view('events.hub', [
             'events' => $fetched,
             'users' => $users,
+            'polls' => $polls,
         ]);
     }
     
@@ -174,7 +184,7 @@ class EventsController extends Controller
         }
         \Auth::user()->groups()->where('name', Config::getPrivateGroupName())->first()->subscribeEvent($event->id);
         
-        return redirect()->route('mypage.index');
+        return redirect()->route('events.show', ['id' => $event->id])->with('message', 'Private event ('.$event->title.') has been created successfully!');
     }
     
     function scheduleWithGroup(Request $request){
@@ -207,7 +217,7 @@ class EventsController extends Controller
         \Debugbar::info('$res');
         \Debugbar::info($res);
         
-        return redirect()->route('events.showHub', ['eventPath' => $res]);
+        return redirect()->route('events.showHub', ['eventPath' => $res])->with('message', 'Calculated the best dates for \''. $plan->title .'\'!');
     }
     
     function rescheduleWithGroup(Request $request, $id){

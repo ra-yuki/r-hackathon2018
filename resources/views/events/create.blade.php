@@ -1,4 +1,3 @@
-<?php $exists = isset($event) ?>
 @extends('layouts.app')
 
 @section('head-plus')
@@ -9,6 +8,8 @@
     <link href="{{ asset('css/create.css') }}" rel="stylesheet">
     <link href="{{ asset('css/commons/buttons.css') }}" rel="stylesheet">
 
+    <!--<script type="text/javascript" src="{{ asset('js/inputsPoll.js') }}"></script>-->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
 @endsection
 
 @section('content')
@@ -16,6 +17,9 @@
         <h1>Schedule Group Event</h1><br>
         
         <div class="col-xs-12" >
+            <?php $exists = isset($event) ?>
+            
+            <!-- Scheduling Form -->
             @if(!$exists)
                 {{Form::open(['route' => 'events.scheduleWithGroup', 'method' => 'post'])}}
                     <div class="row">
@@ -97,11 +101,22 @@
                         </script>
                     </div>
                     
+                    <!-- input field for polls -->
+                    <!--<div class="row">-->
+                    <!--    <h3>Polls</h3>-->
+                    <!--    <a href="#" onclick="displayPolls(1)" class="btn btn-default">+</a> | <a href="#" onclick="displayPolls(-1)" class="btn btn-default">-</a>-->
+                    <!--    <div id="inputs-poll" class="row">-->
+                            <!-- heavily on inputsPoll.js -->
+                    <!--    </div>-->
+                    <!--</div>-->
+                    
                     <p></p>
-                        <div class="row col-xs-2 col-xs-offset-3">
+                    <div class="row col-xs-2 col-xs-offset-3">
                         <button class="btn btn-grey">Schedule</button>
                     </div>
                 {{Form::close()}}
+            
+            <!-- Rescheduling Form -->
             @else
                 {{Form::open(['route' => ['events.rescheduleWithGroup', $event->id], 'method' => 'post'])}}
                     <div class="row">

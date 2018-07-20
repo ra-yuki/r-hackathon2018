@@ -42,7 +42,7 @@ class OctopathHelper{
         return (int)(($sec + $msec) * 1000000);
     }
     
-    //reference from: http://php.net/manual/en/function.base-convert.php#109308, corrected a bit (init of $_10to62, $_62to10)
+    //got the inspiration from: http://php.net/manual/en/function.base-convert.php#109308, corrected a bit (init of $_10to62, $_62to10)
     public static function base_convert_x( $_number='', $_frBase=10, $_toBase=62 ) {
 
         //Today's Date - C74 - convert a string (+ve integer) from any arbitrary base to any arbitrary base, up to base 62, using  0-9,A-Z,a-z
