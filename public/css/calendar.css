@@ -10,7 +10,7 @@ table{
 }
 
 .event{
-    background-color:#D9E5FF;
+    background-color:#FFD2A2;
     margin-bottom:5px;
     padding:2px 5px ;
     border-radius:4px;
@@ -22,7 +22,7 @@ table{
 }
 
 .group-event{
-    background-color:#FFEEFF;
+    background-color:#FFF1E2;
     margin-bottom:5px;
     padding:2px 5px ;
     border-radius:4px;
@@ -30,18 +30,21 @@ table{
 
 .event-card{
     text-decoration: none;
-    color: #555;
+    color: black;
 }
 
 .event-card:hover {
     text-decoration: none;
-    color: #555;
+    color: black;
 }
 
 .event-card .event:hover{
-    background-color:#D0d7f0;
+    background-color:#FFF9F2;
 }
 
 .event-card .group-event:hover{
-    background-color:#E0E0F3;
+    background-color:#FFF9F2;
 }
+
+
+

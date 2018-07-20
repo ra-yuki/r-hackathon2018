@@ -6,7 +6,9 @@
 @endsection
 
 @section('content')
-
+ <div class="navbar">
+   <a class="navbar-brand" href="/" id="popcorn">POPCON</a>
+ </div>
 <div id="wrapper" class="container">
     <div class="kakomi-te1">
 
