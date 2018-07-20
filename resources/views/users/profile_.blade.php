@@ -2,7 +2,7 @@
 
 @section('head-plus')
     <link rel="stylesheet" href="{{secure_asset('css/commons/buttons.css')}}">
-@endsection)
+@endsection
 
 @section('content')
     <div id="top-wrapper" class="container">
