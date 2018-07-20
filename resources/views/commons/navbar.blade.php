@@ -15,7 +15,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-     <a class="navbar-brand" href="/" id="popcorn">POPCON</a>
+     <a class="navbar-brand" href="/" id="popcorn">POPCON</a><img src="{{secure_asset('images/pop.PNG')}}" id="tobi">
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
