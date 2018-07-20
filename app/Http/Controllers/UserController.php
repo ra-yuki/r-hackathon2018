@@ -14,7 +14,7 @@ public function index(Request $request)
     $keyword = $request->userId;
  
     #もしキーワードがあったら
-    $res = null;
+    $res = 0;
     if(!empty($keyword))
     {
         $res = \App\User::where('name', 'like', "%$keyword%")->get();
@@ -28,7 +28,8 @@ public function index(Request $request)
             }
         }
         \Debugbar::info(json_encode($res));
-    }       
+    }
+    
 
     return view('users.user', [
         'userId' => $keyword, 
