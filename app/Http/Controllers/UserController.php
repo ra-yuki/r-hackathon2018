@@ -14,7 +14,7 @@ public function index(Request $request)
     $keyword = $request->userId;
  
     #もしキーワードがあったら
-    $res = 0;
+    $res = [];
     if(!empty($keyword))
     {
         $res = \App\User::where('name', 'like', "%$keyword%")->get();
