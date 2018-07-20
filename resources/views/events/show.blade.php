@@ -49,7 +49,7 @@
             </div>
         </div>
         
-        @if(preg_match("/@self/",$event->groups[0]->name, $output_array)==false)
+        @if(preg_match("/@[0-9]*/",$event->groups[0]->name, $output_array)==false)
             <div id="group-member" class="row">
                  <div class="col-xs-1" >
                     <h2><span class="glyphicon glyphicon-user"></span></h2>
