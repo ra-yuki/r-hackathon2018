@@ -3,12 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Libraries\Config;
 
 class MakegroupController extends Controller
 {
         public function index()
     { 
         $friends = \Auth::user()->friends;
+        
+        // get friends images
+        foreach($friends as $key => $f){
+            if($f->image != null){ //has image
+                $friends[$key]->imageUrl = $f->image->url;
+            }
+            else{ //no image found
+                $friends[$key]->imageUrl = Config::AVATAR_DEFAULT_URLS[$f->id % count(Config::AVATAR_DEFAULT_URLS)];
+            }
+        }
         
         return view('group.makegroup', [
             'friends' => $friends,
