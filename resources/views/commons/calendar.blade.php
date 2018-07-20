@@ -1,6 +1,7 @@
 <table class="table table-bordered">
     <thead>
         <tr>
+            {{--
             @for($i=0; $i<7; $i++)
                 <th scope="col" class=
                 @if($i == 5)
@@ -13,6 +14,14 @@
                     {{jddayofweek($i, 2)}}
                 </th>
             @endfor
+            --}}
+            <th scope="col" class="">Mon</th>
+            <th scope="col" class="">Tue</th>
+            <th scope="col" class="">Wen</th>
+            <th scope="col" class="">Thu</th>
+            <th scope="col" class="">Fri</th>
+            <th scope="col" class="text-primary">Sat</th>
+            <th scope="col" class="text-danger">Sun</th>
         </tr>
     </thead>
     <tbody>
