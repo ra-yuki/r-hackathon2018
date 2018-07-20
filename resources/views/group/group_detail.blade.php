@@ -1,23 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="row">
-        <aside class="col-xs-4">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Group Name: {{ $group->name }}</h3>
-                </div>
-                <div class="panel-body">
+    <div class="container">
+        <div class="row">
+            <aside class="col-xs-4">
+                <h3 class="panel-title">Group Name: {{ $group->name }}</h3>
                     @foreach($members as $member)
                         <p>{{$member->name}}</p>
                     @endforeach
+                    {{-- <div class="panel-body"> 
+                       @include('users.friends', ['friends' => $group])
+                    </div> --}}
                 </div>
-                {{-- <div class="panel-body"> 
-                   @include('users.friends', ['friends' => $group])
-                </div> --}}
-            </div>
-        </aside>
-       
+            </aside>
         </div>
     </div>
 @endsection
