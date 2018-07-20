@@ -95,7 +95,7 @@ h3{
     padding:100px 0;
     font-family: 'Fredericka the Great', cursive;
     font-family: 'Asap Condensed', sans-serif; 
-    background-color:white;
+    background-color:#fde9df;
 }    
 
 #hiw img{
@@ -106,8 +106,11 @@ h3{
     padding:120px 0;
     font-family: 'Fredericka the Great', cursive;
     font-family: 'Asap Condensed', sans-serif; 
-    background-color:#EBDECD;
+    background-color:#0881a3;
+    color:black;
 }
+
+
 
 #foot{
   margin-left: 35px;}
@@ -139,7 +142,7 @@ h3{
 /*WELCOME TO POPCON*/
 
 #foot{
-    background-color:#EBDECD;
+    background-color:#fffdfb;
 }
 
 p{
@@ -153,7 +156,7 @@ h1{
 
 #top-welcome {
   position: relative;
-  background-color:#F8F4EE;
+  background-color:#fffdfb;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.8));
   padding: 150px 0;
   font-family: 'Fredericka the Great', cursive;
@@ -168,11 +171,11 @@ h1{
 }
 #top-welcome::before {
   top: -20px;
-  background: linear-gradient(45deg,#F8F4EE  10px, transparent 0), linear-gradient(315deg, #F8F4EE 10px, transparent 0);
+  background: linear-gradient(45deg,#fffdfb  10px, transparent 0), linear-gradient(315deg, #fffdfb 10px, transparent 0);
   background-size: 20px 20px;
 }
 #top-welcome::after {
   bottom: -20px;
-  background: linear-gradient(135deg, #F8F4EE 10px, transparent 0), linear-gradient(225deg, #F8F4EE 10px, transparent 0);
+  background: linear-gradient(135deg, #fffdfb 10px, transparent 0), linear-gradient(225deg, #fffdfb 10px, transparent 0);
   background-size: 20px 20px;
 }
