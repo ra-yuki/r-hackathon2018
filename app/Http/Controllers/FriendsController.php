@@ -41,11 +41,11 @@ class FriendsController extends Controller
         foreach($groups as $key => $r){
             if($r->image != null){ //has image
                 $groups[$key]->imageUrl = $r->image->url;
-                \Debugbar::info($groups[$key]->imageUrl);
+                // \Debugbar::info($groups[$key]->imageUrl);
             }
             else{ //no image found
                 $groups[$key]->imageUrl = Config::AVATAR_DEFAULT_URLS[$r->id % count(Config::AVATAR_DEFAULT_URLS)];
-                \Debugbar::info($groups[$key]->imageUrl);
+                // \Debugbar::info($groups[$key]->imageUrl);
             }
         }
         
