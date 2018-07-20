@@ -6,6 +6,9 @@
 @endsection
 
 @section('content')
+ <div class="navbar">
+   <a class="navbar-brand" href="/" id="popcorn">POPCON</a>
+ </div>
 <div id="wrapper" class="container">
     <div class="row justify-content-center">
         <h1 id="login-txt" class="text-center">{{ __('signup') }}</h1>
