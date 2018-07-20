@@ -3,13 +3,7 @@
 
 @section('content')
     <div id="top-wrapper" class="container">
-        <div class="col-xs-12">
-            @if(session('message'))
-                <div class="alert alert-info">
-                    {{ session('message') }}
-                </div>
-            @endif
-        </div>
+        @include('commons.messages')
         <div id="top-main" class="col-xs-12">
             <div class="row">
                 <div id="top-image-wrapper" class="col-xs-12">

@@ -7,6 +7,8 @@
     var usersImages = new Array();
     var usersIds = new Array();
     var usersNames = new Array();
+    var routeAddFriend = "{{route('add.get', ['id' => '@split'])}}";
+    var routeDeleteFriend = "{{route('unfriend', ['id' => '@split'])}}";
     @if(count($SearchResult) > 0)
         @foreach($SearchResult as $key => $r)
             usersImages[{{$r->id}}] = '{{$r->imageUrl}}';
@@ -20,6 +22,8 @@
 @section('content')
 
 <div class="container">
+    @include('commons.messages')
+    
     <div class="col-xs-6">
         <!--↓↓ 検索フォーム ↓↓-->
         
@@ -36,6 +40,7 @@
         @if (count($SearchResult) > 0)
         <ul class="media-list">
         @foreach ($SearchResult as $user)
+            <?php $isFriend = \Auth::user()->is_friend($user->id); ?>
             <li class="media">
                
                 <div class="media-body">
@@ -43,7 +48,7 @@
                        {{--<a href="{{route('friends.show',['id'=>$user->id])}}"> {{ $user->name }} </a>--}}
                        <p>
                            <img class="img-circle" src="{{$user->imageUrl}}" alt="" style="width:50px;">
-                           <a href="#" class="no-decoration" onclick="displayUser('{{$user->id}}')">{{$user->name}}</a>
+                           <a href="#" class="no-decoration" onclick="displayUser('{{$user->id}}', {{ $isFriend }})">{{$user->name}}</a>
                        </p>
                     </div>
                     {{-- @include('users.addbutton', ['user' => $user]) --}}

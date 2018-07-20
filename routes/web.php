@@ -35,6 +35,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('events/{id}/reschedule', 'EventsController@rescheduleWithGroup')->name('events.rescheduleWithGroup');
     Route::resource('events', 'EventsController', ['only' => ['index', 'show', 'edit', 'update', 'destroy']]);
     
+    //*-- UserController (Vote stuffs) --*//
+    Route::get('user/vote/{id}', 'UserController@vote')->name('user.vote');
+    Route::delete('user/vote/{id}', 'UserController@unvote')->name('user.unvote');
+    
     Route::resource('friends', 'FriendsController', ['only' => ['show','store','delete','index']]);
     Route::get('search', 'SearchController@index')->name('friends.search');
     // Group表示はフレンドの方に含める
@@ -43,7 +47,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('user', 'UserController');
     Route::resource('makegroup', 'MakegroupController', ['only' => ['index','store', 'destroy']]);
     Route::get('add/{id}', 'AddFriendController@store')->name('add.get');
-    Route::delete('unfriend/{id}','AddFriendController@destroy')->name('unfriend');
+    Route::get('unfriend/{id}','AddFriendController@destroy')->name('unfriend.get');
+    Route::delete('unfriend/{id}','AddFriendController@destroyGet')->name('unfriend');
     //Settingsのコントローラー
      Route::get('settings', 'SettingsController@index')->name('settings.settings');
      Route::get('settings/theme', 'SettingsController@changeTheme')->name('settings.changeTheme');

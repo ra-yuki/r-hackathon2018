@@ -77,7 +77,6 @@ class User extends Authenticatable
     // confirming that it is not you
         $its_me = $this->id == $userId;
 
-
         if ($exist && !$its_me) {
         // stop following if following
         $this->friends()->detach($userId);
@@ -109,25 +108,41 @@ class User extends Authenticatable
     
     //*-- links table stuffs --*//
     public function links(){
-        return $this->belongsToMany(Link::class, 'user_link', 'linkId', 'userId')->withTimestamps();
+        return $this->belongsToMany(Link::class, 'user_link', 'userId', 'linkId')->withTimestamps();
     }
     
-    public function poll($linkId){
-        // exception handling
-        if($this->is_polled($linkid)) return false;
-        
+    public function vote($linkId){
+        //*-- exception handling --*//
+        if($this->isVotedAny($linkId)) return false;
+
         $this->links()->attach($linkId);
+        
+        return true;
     }
     
-    public function unpoll($linkId){
+    public function unvote($linkId){
         // exception handling
-        if(!$this->is_polled($linkId)) return false;
+        if(!$this->isVoted($linkId)) return false;
         
         $this->links()->detach($linkId);
+        
+        return true;
     }
     
-    public function is_polled($linkId){
+    public function isVoted($linkId){
         return $this->links()->where('linkId', $linkId)->exists();
+    }
+    
+    public function isVotedAny($linkId){
+        $links = Link::find($linkId)->poll->links; // get links
+        
+        foreach($links as $l){
+            if(!$this->isVoted($l->id)) continue;
+            
+            return true;
+        }
+        
+        return false;
     }
     
     //*-- other helper functions --*//
