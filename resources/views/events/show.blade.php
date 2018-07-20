@@ -77,12 +77,12 @@
         <!--    <li>START | {{$event->dateTimeFromSelf}}</li>-->
         <!--    <li>END | {{$event->dateTimeToSelf}}</li>-->
         <!--</ul>-->
-        {{-- @if($event->fixed) {!! link_to_route('events.edit', 'Edit', ['id'=>$event->id],['class'=>'btn btn-primary']) !!}
+        @if($event->fixed) {!! link_to_route('events.edit', 'Edit', ['id'=>$event->id],['class'=>'btn btn-primary']) !!}
         @else {!! link_to_route('events.showRescheduleWithGroup', 'Reschedule', ['id'=>$event->id],['class'=>'btn btn-primary']) !!}
         @endif
         {!! Form::open(['route' => ['events.destroy', $event->id], 'method' => 'delete']) !!}
             <button class="btn btn-danger">Delete</button>
-        {!! Form::close() !!} --}}
+        {!! Form::close() !!}
     
     </div>
 </div>
