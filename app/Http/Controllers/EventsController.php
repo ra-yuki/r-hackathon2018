@@ -113,14 +113,14 @@ class EventsController extends Controller
         $retrieved = Event::retrieveFromSchedulables($schedulables, clone $events);
         $fetched = Event::fetchAvailables($retrieved, clone $events);
         
-        \Debugbar::info('$schedulables');
-        \Debugbar::info($schedulables);
-        \Debugbar::info('$retrieved');
-        \Debugbar::info($retrieved);
-        \Debugbar::info('$fetched');
-        \Debugbar::info($fetched);
-        \Debugbar::info('$events');
-        \Debugbar::info($events);
+        // \Debugbar::info('$schedulables');
+        // \Debugbar::info($schedulables);
+        // \Debugbar::info('$retrieved');
+        // \Debugbar::info($retrieved);
+        // \Debugbar::info('$fetched');
+        // \Debugbar::info($fetched);
+        // \Debugbar::info('$events');
+        // \Debugbar::info($events);
         
         return view('events.hub', [
             'events' => $fetched,
@@ -183,37 +183,37 @@ class EventsController extends Controller
         // exception handling
         if(!$plan) return false;
         
-        \Debugbar::info('$plan');
-        \Debugbar::info($plan);
+        // \Debugbar::info('$plan');
+        // \Debugbar::info($plan);
         
         // get group obj
         $group = Group::find($request->groupId);
         
-        \Debugbar::info('$group');
-        \Debugbar::info($group);
+        // \Debugbar::info('$group');
+        // \Debugbar::info($group);
         
         // schedule and get the result
         $schedulables = Event::getBestSchedulablesWithGroup($plan, $group);
         // exception handling
         if(!$schedulables) return false;
         
-        \Debugbar::info('$schedulables');
-        \Debugbar::info($schedulables);
+        // \Debugbar::info('$schedulables');
+        // \Debugbar::info($schedulables);
         
         //save to db
         $res = Event::saveSchedulablesWithGroup($plan, $group, $request, $schedulables);
         if(!$res) return false;
         
-        \Debugbar::info('$res');
-        \Debugbar::info($res);
+        // \Debugbar::info('$res');
+        // \Debugbar::info($res);
         
         return redirect()->route('events.showHub', ['eventPath' => $res]);
     }
     
     function rescheduleWithGroup(Request $request, $id){
         $event = Event::find($id);
-        \Debugbar::info('$event');
-        \Debugbar::info($event);
+        // \Debugbar::info('$event');
+        // \Debugbar::info($event);
         Event::where([
             ['eventPath', '=', $event->eventPath],
         ])->delete();

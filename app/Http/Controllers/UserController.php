@@ -27,7 +27,7 @@ public function index(Request $request)
                 $res[$key]->imageUrl = Config::AVATAR_DEFAULT_URLS[$r->id % count(Config::AVATAR_DEFAULT_URLS)];
             }
         }
-        \Debugbar::info(json_encode($res));
+        // \Debugbar::info(json_encode($res));
     }
     
 

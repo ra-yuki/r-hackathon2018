@@ -53,18 +53,18 @@ class Event extends Model
     public static function getSchedulablesWithGroup(Event $plan, Group $group, $exceptions = null){
         // Get from&to pair for each date options as array
         $options = Event::getOptionsAll($plan);
-        \Debugbar::info('$options');
-        \Debugbar::info($options);
+        // \Debugbar::info('$options');
+        // \Debugbar::info($options);
         // Get each users' events in the group
         $memberEvents = Event::getMemberEventsAll($group, $exceptions);
-        \Debugbar::info('$memberEvents');
-        \Debugbar::info($memberEvents);
+        // \Debugbar::info('$memberEvents');
+        // \Debugbar::info($memberEvents);
         
         // Get availability status of each date options
         $availabilities = Event::getAvailabilitiesAll($options, $memberEvents);
         
-        \Debugbar::info('$availabilities');
-        \Debugbar::info($availabilities);
+        // \Debugbar::info('$availabilities');
+        // \Debugbar::info($availabilities);
         
         return $availabilities;
     }
@@ -72,18 +72,18 @@ class Event extends Model
     public static function getBestSchedulablesWithGroup(Event $plan, Group $group, $exceptions = null){
         // Get from&to pair for each date options as array
         $options = Event::getOptionsAll($plan);
-        \Debugbar::info('$options');
-        \Debugbar::info($options);
+        // \Debugbar::info('$options');
+        // \Debugbar::info($options);
         // Get each users' events in the group
         $memberEvents = Event::getMemberEventsAll($group, $exceptions);
-        \Debugbar::info('$memberEvents');
-        \Debugbar::info($memberEvents);
+        // \Debugbar::info('$memberEvents');
+        // \Debugbar::info($memberEvents);
         
         // Get availability status of each date options
         $availabilities = Event::getAvailabilitiesAll($options, $memberEvents);
         
-        \Debugbar::info('$availabilities');
-        \Debugbar::info($availabilities);
+        // \Debugbar::info('$availabilities');
+        // \Debugbar::info($availabilities);
         
         // Get the most favourable options
         $favourables = Event::getMostFavourables($availabilities);
@@ -240,8 +240,8 @@ class Event extends Model
     //                  ]]
     public static function getAvailabilitiesAll($options, $memberEvents){
         $availableDatesOfMembers = Event::getAvailableDatesOfGroupMembers($options, $memberEvents);
-        \Debugbar::info('$availableDatesOfMembers');
-        \Debugbar::info($availableDatesOfMembers);
+        // \Debugbar::info('$availableDatesOfMembers');
+        // \Debugbar::info($availableDatesOfMembers);
         $availabilities = Event::initAvailabilitiesArray($options);
         $c = count($availabilities);
         for($i=0; $i<$c; $i++){
@@ -258,8 +258,8 @@ class Event extends Model
     }
     
     public static function isFromToPairMatched($fromToPair, $subjectFromToPairs){
-        \Debugbar::info('$subjectFromToPairs');
-        \Debugbar::info($subjectFromToPairs);
+        // \Debugbar::info('$subjectFromToPairs');
+        // \Debugbar::info($subjectFromToPairs);
         
         foreach($subjectFromToPairs as $subject){
             if(
@@ -330,8 +330,8 @@ class Event extends Model
             }
         }
         
-        \Debugbar::info('$availableDates');
-        \Debugbar::info($availableDates);
+        // \Debugbar::info('$availableDates');
+        // \Debugbar::info($availableDates);
         
         if(count($availableDates) == 0) return false;
         
