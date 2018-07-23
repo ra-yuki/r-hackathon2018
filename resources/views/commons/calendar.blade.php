@@ -1,5 +1,7 @@
+<link rel="stylesheet" href="{{ secure_asset('css/commons/buttons.css') }}">
+
 <table class="table table-bordered">
-   <p><span class="label label-default" id="private">private event</span>  <span class="label label-default" id="group">group event</span> <span class="label label-default" id="undifined">undefined event</span></p> 
+   <p><span class="label label-default" id="private">private event</span>  <span class="label" id="group">group event</span> <span class="label label-default" id="undifined">undefined event</span></p> 
    <thead>
         <tr>
             {{--
@@ -73,7 +75,7 @@
                 
                 {{-- render --}}
                 <td class="{{$classTd}} ">
-                    <a href="{{ route('events.showScheduleHub', ['year'=>2017, 'month'=>9, 'day'=>12]) }}" style="text-decoration: none; color:black;">
+                    <a href="{{ route('events.showScheduleInPrivate') }}?date={{( new DateTime($year.'-'.$month.'-'.$days[$daysInWeek*$i + $j]) )->format('Y-m-d')}}" style="text-decoration: none; color:black;">
                         <p class="{{$classText}}">{{ $days[$daysInWeek*$i + $j] }}</p>
                         <small class="{{$classText}}">{{$name}}</small>
                         {{-- render events --}}
