@@ -166,6 +166,13 @@ class EventsController extends Controller
         ]);
     }
     
+    function showScheduleHub($year, $month){
+        return view('events.scheduleHub', [
+            'year' => $year,
+            'month' => $month,
+        ]);
+    }
+    
     function showScheduleWithGroup(){
         // get groups
         $groups = \Auth::user()->groups()->where('visibility', '1')->get();
