@@ -88,16 +88,16 @@ background-color: white;
 }
 
 #ca{
-	width:30px;
+	width:35px;
 	height:30px;
 	margin-left:15px;
 }
 
 #fr{
-	width:30px;
+	width:35px;
 	height:30px;
-	margin-left:5px;
-	
+	margin-left:10px;
+
 }
 
 #set{
@@ -151,4 +151,10 @@ background-color: white;
 	margin-right:5px;
 	margin-top:18px;
 	
+}
+
+#home{
+	width:35px;
+	height:30px;
+	margin-right:5px;
 }

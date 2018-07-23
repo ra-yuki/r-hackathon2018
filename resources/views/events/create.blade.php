@@ -27,17 +27,17 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-5 col-sm-3 col-md-2 col-lg-2 waku">
-                           {{Form::text('title',null,['class' => 'form-control'])}}
+                           {{Form::text('title',null,['class' => 'form-control','placeholder' => 'ex.) drive'])}}
                         </div>
                     </div>
                     <p></p>
                     
                     <div class="row">
-                        {{Form::label('description')}}
+                        {{Form::label('memo')}}
                     </div>
                     <div class="row">
                         <div class="col-xs-12 col-sm-7 col-md-6 col-lg-6 waku">
-                           {{Form::text('description',null,['class' => 'form-control'])}}
+                           {{Form::text('description',null,['class' => 'form-control','placeholder' => 'ex.) Shall we go to Atami?'])}}
                         </div>
                     </div>
                     <p></p>

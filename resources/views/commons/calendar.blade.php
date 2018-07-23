@@ -71,14 +71,16 @@
                 
                 {{-- render --}}
                 <td class="{{$classTd}} ">
-                    <p class="{{$classText}}">{{ $days[$daysInWeek*$i + $j] }}</p>
-                    <small class="{{$classText}}">{{$name}}</small>
-                    {{-- render events --}}
-                    @include('commons.events', [
-                        'year' => $year,
-                        'month' => $month,
-                        'day' => $days[$daysInWeek*$i + $j],
-                    ])
+                    <a href="{{ route('events.showScheduleHub', ['year'=>2017, 'month'=>9]) }}" style="text-decoration: none; color:black;">
+                        <p class="{{$classText}}">{{ $days[$daysInWeek*$i + $j] }}</p>
+                        <small class="{{$classText}}">{{$name}}</small>
+                        {{-- render events --}}
+                        @include('commons.events', [
+                            'year' => $year,
+                            'month' => $month,
+                            'day' => $days[$daysInWeek*$i + $j],
+                        ])
+                    </a>
                 </td>
             @endfor
             </tr>
