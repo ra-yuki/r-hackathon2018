@@ -47,4 +47,30 @@
 
 }
 
+.btn-deletefriend {
+   background-color:#f38181; 
+   color: black;
+}
 
+.btn-edit {
+   background-color:#f38181; 
+   color: black;    
+}
+
+.label-name{
+    background-color:#d7eef2;
+    color: black;
+}
+
+#cre{
+    background-color:#d7eef2;
+}
+
+#theme{
+    background-color:#ffd6a4;
+    
+}
+
+#change{
+    font-size: 30px;
+}

@@ -96,7 +96,7 @@
                     
                     <p></p>
                     <div class="row col-xs-2 col-xs-offset-3">
-                    <button class="btn btn-grey">create</button>
+                    <button class="btn" id="cre">create</button>
                     </div>
                 {{Form::close()}}
            

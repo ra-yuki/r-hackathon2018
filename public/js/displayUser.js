@@ -16,7 +16,7 @@ function displayUser(id, isFriend){
         userAdd.innerHTML = 
             "<form action=\""+ routeDeleteFriend.split('@split')[0] + usersIds[id] + "\" method=\"delete\">"+
                 "<div class=\"col-xs-12 col-md-offset-3 col-md-6\" style=\"margin-top: 5px;\">"+
-                    "<button class=\"btn btn-danger btn-block\">Delete from Friend List</button>"+
+                    "<button class=\"btn btn-deletefriend btn-block\">Delete from Friend List</button>"+
                 "</div>"+
             "</form>";
     else
@@ -47,7 +47,7 @@ function displayGroup(id, userNames){
     var userNamesFormatted = JSON.parse(userNames);
     memberList.innerHTML = "";
     for(var i=0; i<userNamesFormatted.length; i++){
-        memberList.innerHTML += '<span class=\"label label-success\">' + userNamesFormatted[i] + '</span> ';
+        memberList.innerHTML += '<span class=\"label label-name\">' + userNamesFormatted[i] + '</span> ';
         
         if( (i == limit-1) && (i+1 < userNamesFormatted.length) ){ //limit display
             memberList.innerHTML += 
@@ -61,7 +61,7 @@ function displayGroup(id, userNames){
     
     userAdd.innerHTML =
         "<div class=\"col-xs-12 col-md-offset-3 col-md-6\" style=\"margin-top: 10px;\">" +
-            "<a href=\""+ routeEditGroup.split('@split')[0] + groupsIds[id] + routeEditGroup.split('@split')[1] + "\" class=\"btn btn-primary btn-block\">Edit</a>" +
+            "<a href=\""+ routeEditGroup.split('@split')[0] + groupsIds[id] + routeEditGroup.split('@split')[1] + "\" class=\"btn btn-edit btn-block\">Edit</a>" +
         "</div>";
     
     console.log("hey: "+userAdd.innerHTML);
