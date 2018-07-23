@@ -73,7 +73,7 @@ class EventsController extends Controller
             ['id', '<>', $event->id],
         ])->delete();
         
-        return redirect()->route('events.show', ['id' => $id])->with('message', 'Fixed \''. $event->title .'\' on '. explode(' ', $event->dateTimeFromSelf)[0]. '!');
+        return redirect()->route('mypage.index')->with('message', 'Fixed \''. $event->title .'\' on '. explode(' ', $event->dateTimeFromSelf)[0]. '!');
     }
     
     public function edit($id)
@@ -255,7 +255,7 @@ class EventsController extends Controller
         // \Debugbar::info('$res');
         // \Debugbar::info($res);
         
-        return redirect()->route('mypage.index' )->with('message', 'Calculated the best dates for \''. $plan->title .'\'!');
+        return redirect()->route('events.showHub', ['eventPath' => $res])->with('message', 'Calculated the best dates for \''. $plan->title .'\'!');
     }
     
     function rescheduleWithGroup(Request $request, $id, $isRefresh = false){
