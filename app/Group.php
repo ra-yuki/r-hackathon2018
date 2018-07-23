@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+use App\Libraries\Config;
+
 class Group extends Model
 {
     // use Notifiable;
@@ -26,23 +28,10 @@ class Group extends Model
         'password', 'remember_token',
     ];
     
-
-
-    
-    
     public function makegroups()
     {
         return $this->hasMany(Group::class);
     }
-    
-    // public function feed_makegroups()
-    // {
-    //     $follow_user_ids = $this->followings()-> pluck('users.id')->toArray();
-    //     $follow_user_ids[] = $this->id;
-    //     return Micropost::whereIn('user_id', $follow_user_ids);
-        
-        
-    // }
     
     public function users(){
         return $this->belongsToMany(User::class, 'user_group', 'groupId', 'userId')->withTimestamps();
@@ -116,5 +105,9 @@ class Group extends Model
     
     public function image(){
         return $this->hasOne('App\Image', 'groupId');
+    }
+    
+    public function getImageUrl(){
+        return (isset($this->image)) ? $this->image->url : Config::AVATAR_DEFAULT_URLS_GROUP[$this->id % count(Config::AVATAR_DEFAULT_URLS_GROUP)];
     }
 }

@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Event;
 use App\Libraries\GeneralHelper;
 use App\Link;
+use App\Libraries\Config;
 
 class User extends Authenticatable
 {
@@ -53,37 +54,40 @@ class User extends Authenticatable
     
     public function friend($userId)
     {
-    // confirm if already following
+        // confirm if already following
         $exist = $this->is_friend($userId);
-    // confirming that it is not you
+        // confirming that it is not you
         $its_me = $this->id == $userId;
 
         if ($exist || $its_me) {
-        // do nothing if already following
-        return false;
+            // do nothing if already following
+            return false;
         } else {
-        // follow if not following
-        $this->friends()->attach($userId);
-        // friend back
-        User::find($userId)->friends()->attach($this->id);
-        return true;
+            // follow if not following
+            $this->friends()->attach($userId);
+            // friend back
+            User::find($userId)->friend($this->id);
+            return true;
         }
     }
 
     public function unfriend($userId)
     {
-    // confirming if already following
+        // confirming if already following
         $exist = $this->is_friend($userId);
-    // confirming that it is not you
+        // confirming that it is not you
         $its_me = $this->id == $userId;
 
         if ($exist && !$its_me) {
-        // stop following if following
-        $this->friends()->detach($userId);
-        return true;
-        } else {
-        // do nothing if not following
-        return false;
+            // stop following if following
+            $this->friends()->detach($userId);
+            // unfriend back
+            User::find($userId)->unfriend($this->id);
+            return true;
+        } 
+        else {
+            // do nothing if not following
+            return false;
         }
     }
 
@@ -104,6 +108,10 @@ class User extends Authenticatable
     //*-- groups table stuffs --*//
     public function groups(){
         return $this->belongsToMany(Group::class, 'user_group', 'userId', 'groupId')->withTimestamps();
+    }
+    
+    public function is_inGroup($groupId){
+        return $this->groups()->where('groupId', $groupId)->exists();
     }
     
     //*-- links table stuffs --*//
@@ -184,6 +192,19 @@ class User extends Authenticatable
         }
         
         return $events;
+    }
+    
+    public static function getIds($users){
+        $res = [];
+        foreach($users as $u){
+            array_push($res, $u->id);
+        }
+        
+        return $res;
+    }
+    
+    public function getImageUrl(){
+        return (isset($this->image)) ? $this->image->url : Config::AVATAR_DEFAULT_URLS[$this->id % count(Config::AVATAR_DEFAULT_URLS)];
     }
 }
 

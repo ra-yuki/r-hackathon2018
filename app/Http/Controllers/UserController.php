@@ -16,18 +16,9 @@ class UserController extends Controller
         $res = [];
         if(!empty($keyword))
         {
-            $res = \App\User::where('name', 'like', "%$keyword%")->get();
-            
-            foreach($res as $key => $r){
-                if($r->image != null){ //has image
-                    $res[$key]->imageUrl = $r->image->url;
-                }
-                else{ //no image found
-                    $res[$key]->imageUrl = Config::AVATAR_DEFAULT_URLS[$r->id % count(Config::AVATAR_DEFAULT_URLS)];
-                }
-            }
+            $res = \App\User::where('name', 'like', "%$keyword%")->orderBy('name')->get();
         }
-        // \Debugbar::info(json_encode($res));
+        
         return view('users.user', [
             'userId' => $keyword, 
             'SearchResult' => $res,

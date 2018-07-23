@@ -44,13 +44,20 @@ class EventsController extends Controller
         if(!Event::find($id)->fixed) abort(404);
         
         $event = Event::find($id);
-        $eventOtherOptions = Event::where([
-            ['eventPath', '=', $event->eventPath],
-            ['id', '<>', $event->id],
-        ])->get();
+        
+        //*-- group info -*//
+        $group = $event->groups()->where('name', 'NOT LIKE', '%@%')->get();
+        if(count($group) > 0){$group = $group[0];}
+        
+        // $eventOtherOptions = Event::where([
+        //     ['eventPath', '=', $event->eventPath],
+        //     ['id', '<>', $event->id],
+        // ])->get();
+        
         return view('events.show', [
             'event' => $event,
-            'eventOtherOptions' => $eventOtherOptions,
+            'group' => $group,
+            // 'eventOtherOptions' => $eventOtherOptions,
         ]);
     }
     
@@ -83,6 +90,7 @@ class EventsController extends Controller
         $event = Event::find($id);
         $event->dateTimeFromSelf = $request->dateFrom. " ". $request->timeFrom;
         $event->dateTimeToSelf = $request->dateTo. " ". $request->timeTo;
+        $event->description = $request->description;
         $event->title = $request->title;
         $event->save();
         
@@ -119,6 +127,10 @@ class EventsController extends Controller
         $retrieved = Event::retrieveFromSchedulables($schedulables, clone $events);
         $fetched = Event::fetchAvailables($retrieved, clone $events);
         
+        // get poll data
+        $polls = Poll::findFromEventPath($events[0]->eventPath);
+        
+        // debug msg
         // \Debugbar::info('$schedulables');
         // \Debugbar::info($schedulables);
         // \Debugbar::info('$retrieved');
@@ -128,13 +140,29 @@ class EventsController extends Controller
         // \Debugbar::info('$events');
         // \Debugbar::info($events);
         
-        // get poll data
-        $polls = Poll::findFromEventPath($events[0]->eventPath);
+        //*-- reschedule if new member is added --*//
+        foreach($users as $u){
+            if($events[0]->created_at->getTimestamp() < $u->pivot->updated_at->getTimestamp()){
+                $request = new Request();
+                $request->title = $events[0]->title;
+                $request->description = $events[0]->description;
+                $request->groupId = $events[0]->groups[0]->id;
+                $request->dateFrom = $events[0]->dateFrom;
+                $request->dateTo = $events[0]->dateTo;
+                $request->timeFrom = $events[0]->timeFrom;
+                $request->timeTo = $events[0]->timeTo;
+                
+                return $this->rescheduleWithGroup($request, $events[0]->id, true);
+            }
+        }
         
+        //*-- render view --*//
         return view('events.hub', [
             'events' => $fetched,
             'users' => $users,
             'polls' => $polls,
+            'group' => $group,
+            'messages' => isset($messages) ? $messages : null,
         ]);
     }
     
@@ -168,10 +196,12 @@ class EventsController extends Controller
         $event = new Event();
         $event->dateTimeFromSelf = $request->dateFrom. " ". $request->timeFrom;
         $event->dateTimeToSelf = $request->dateTo. " ". $request->timeTo;
+        $event->description = $request->description;
         $event->title = $request->title;
         $event->fixed = true;
         $event->eventPath = OctopathHelper::generate_octopath();
-        $event->save();
+        $saved = $event->save();
+        if(!$saved) return false; //exception handling
         
         // sub to the $event
         //create private group if not exists
@@ -220,13 +250,17 @@ class EventsController extends Controller
         return redirect()->route('events.showHub', ['eventPath' => $res])->with('message', 'Calculated the best dates for \''. $plan->title .'\'!');
     }
     
-    function rescheduleWithGroup(Request $request, $id){
+    function rescheduleWithGroup(Request $request, $id, $isRefresh = false){
         $event = Event::find($id);
         // \Debugbar::info('$event');
         // \Debugbar::info($event);
         Event::where([
             ['eventPath', '=', $event->eventPath],
         ])->delete();
+        
+        // change message if refreshing
+        if($isRefresh)
+            return $this->scheduleWithGroup($request)->with('message', 'New member(s) detected. Recalculated the best dates!');
         
         return $this->scheduleWithGroup($request);
     }

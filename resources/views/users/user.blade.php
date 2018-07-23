@@ -12,7 +12,7 @@
     
     @if(count($SearchResult) > 0)
         @foreach($SearchResult as $key => $r)
-            usersImages[{{$r->id}}] = '{{$r->imageUrl}}';
+            usersImages[{{$r->id}}] = '{{$r->getImageUrl()}}';
             usersIds[{{$r->id}}] = {{$r->id}};
             usersNames[{{$r->id}}] = '{{$r->name}}';
         @endforeach
@@ -25,12 +25,13 @@
 <div class="container">
     @include('commons.messages')
     
-    <div class="col-xs-6">
-        <!--↓↓ 検索フォーム ↓↓-->
-        
+    <h1 class="text-center">Search Users</h1>
+    
+    <div class="col-xs-12 col-md-6">
+        <!--↓↓ 検索フォーム ↓↓<--></-->
         <form class="form-inline" action="{{route('user.index')}}">
           <div class="form-group">
-          <input type="text" name="userId" value="{{$userId}}" class="form-control" placeholder="Search New Friends">
+          <input type="text" name="userId" value="{{$userId}}" class="form-control" placeholder="Type User Name">
           </div>
           <button id="search-button"class="btn btn-grey"><span class="glyphicon glyphicon-search"></span></button>
         </form>
@@ -47,7 +48,7 @@
                 <div class="media-body">
                     <div>
                        <p>
-                           <img class="img-circle" src="{{$user->imageUrl}}" alt="" style="width:50px;">
+                           <img class="img-circle" src="{{$user->getImageUrl()}}" alt="" style="width:50px;">
                            <a href="#" class="no-decoration" onclick="displayUser('{{$user->id}}', {{ $isFriend }})">{{$user->name}}</a>
                        </p>
                     </div>
@@ -60,7 +61,7 @@
         @endif
 
     </div>
-    <div id="user-detail" class="col-xs-6 pad-top-m">
+    <div id="user-detail" class="col-xs-12 col-md-6 pad-top-m">
         <div id="user-image" class="">
             <!-- <img> -->
         </div>
@@ -70,6 +71,9 @@
         <div id="user-add">
 
         </div>
+        
+        <!-- will never use it, but required to make my shitty js run -->
+        <div id="member-list"></div>
     </div>
 </div>
 

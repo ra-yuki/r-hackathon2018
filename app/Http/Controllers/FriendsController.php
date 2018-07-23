@@ -17,37 +17,16 @@ class FriendsController extends Controller
         $res = null;
         if(!empty($keyword))
         {
-            $res = \Auth::user()->friends()->where('name', 'like', "%$keyword%")->get();
+            $res = \Auth::user()->friends()->where('name', 'like', "%$keyword%")->orderBy('name')->get();
         }
         # キーワードないときは全友達取得
         else{
-            $res = \Auth::user()->friends;
-        }
-        
-        // get friends images
-        foreach($res as $key => $r){
-            if($r->image != null){ //has image
-                $res[$key]->imageUrl = $r->image->url;
-            }
-            else{ //no image found
-                $res[$key]->imageUrl = Config::AVATAR_DEFAULT_URLS[$r->id % count(Config::AVATAR_DEFAULT_URLS)];
-            }
+            $res = \Auth::user()->friends()->orderBy('name')->get();
         }
         
         //*-- group stuffs --*//
         // get groups
-        $groups = \Auth::user()->groups()->where('visibility', '1')->get();
-        // get groups images
-        foreach($groups as $key => $r){
-            if($r->image != null){ //has image
-                $groups[$key]->imageUrl = $r->image->url;
-                // \Debugbar::info($groups[$key]->imageUrl);
-            }
-            else{ //no image found
-                $groups[$key]->imageUrl = Config::AVATAR_DEFAULT_URLS[$r->id % count(Config::AVATAR_DEFAULT_URLS)];
-                // \Debugbar::info($groups[$key]->imageUrl);
-            }
-        }
+        $groups = \Auth::user()->groups()->where('visibility', '1')->orderBy('name')->get();
         
         //*-- parse to view --*//
         return view('users.friends', [

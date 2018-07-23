@@ -7,9 +7,18 @@
 @section('content')
 <div class="container">
     @include('commons.messages')
+    <!-- title -->
     <h1 class="text-center">{{$events[0]->title}}</h1>
-    <h3 class="text-center">TIME: {{$events[0]->timeFrom}} - {{$events[0]->timeTo}}</h3>
-    <h3 class="text-center">DESCRIPTION: {{$events[0]->description}}</h3>
+    
+    <!-- description -->
+    <h4 class="text-center">{{$events[0]->description}}</h4>
+    <!-- group info -->
+    <h4 class="text-center"><img class="img-circle" src="{{$group->getImageUrl()}}" alt="" style="width:50px;">&nbsp;{{ $group->name }}</h4>
+    <!-- time -->
+    <h4 class="text-center">{{$events[0]->timeFrom}} - {{$events[0]->timeTo}}</h4>
+    
+    
+    <!-- availability table -->
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
@@ -21,8 +30,7 @@
                             "$1($2)", 
                             (new \DateTime($e->dateTimeFromSelf))->format('y/m/d l')
                         ) }}
-                        {{-- {!! link_to_route('events.show', 'Detail', ['id'=>$e->id],['class'=>'btn btn-primary']) !!} --}}
-                        {!! link_to_route('events.fix', 'Fix', ['id'=>$e->id],['class'=>'btn btn-danger']) !!}
+                        {!! link_to_route('events.fix', 'Fix', ['id'=>$e->id],['class'=>'btn btn-primary']) !!}
                     </th>
                 @endforeach
             </tr>
@@ -30,7 +38,10 @@
         <tbody>
             @foreach($users as $u)
                 <tr>
-                    <td>{{$u->name}}</td>
+                    <td>
+                        <img class="img-circle" src="{{$u->getImageUrl()}}" alt="" style="width:25px;">
+                        {{$u->name}}
+                    </td>
                     @foreach($events as $e)
                         @if(in_array($u->id, $e->availables))
                             <td>O</td>
@@ -75,6 +86,18 @@
                 </div>
             @endforeach
         @endforeach
+    </div>
+    
+    <!-- buttons -->
+    <div class="col-xs-12">
+        <div class="col-xs-offset-2 col-xs-8 col-md-offset-2 col-md-4">
+            <a href="{{ route('events.showRescheduleWithGroup', ['id' => $events[0]->id]) }}" class="btn btn-success btn-block">Reschedule</a>
+        </div>
+        <div class="col-xs-offset-2 col-xs-8 col-md-offset-0 col-md-4">
+            {{ Form::open( ['route' => ['events.destroy', $events[0]->id], 'method' => 'delete', 'style' => 'display:inline;'] ) }}
+                <button class="btn btn-danger btn-block">Delete</a>
+            {{ Form::close() }}
+        </div>
     </div>
 </div>
 

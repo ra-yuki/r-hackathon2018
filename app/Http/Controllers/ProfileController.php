@@ -31,14 +31,10 @@ class ProfileController extends Controller
     function index(){
         // get user data
         $user = \Auth::user();
-        // get avatar image
-        $imageUrl = Config::AVATAR_DEFAULT_URLS[$user->id % count(Config::AVATAR_DEFAULT_URLS)];
-        if($user->image()->count() > 0) $imageUrl = $user->image->url;
         
         //parse to view
         return view('users.profile_', [
             'user' => $user,
-            'imageUrl' => $imageUrl,
         ]);
     }
     
