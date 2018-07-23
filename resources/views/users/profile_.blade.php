@@ -2,6 +2,7 @@
 
 @section('head-plus')
     <link rel="stylesheet" href="{{secure_asset('css/commons/buttons.css')}}">
+
 @endsection
 
 @section('content')
@@ -27,7 +28,7 @@
                                
                                 <div class="col-xs-4">
                                     {{ csrf_field() }}
-                                    <button class="btn btn-primary">Upload</button>
+                                    <button class="btn" id="upload">Upload</button>
                                 </div>
                             </div>
                     </form>
@@ -35,12 +36,12 @@
             </div>
             
             <!-- logout button -->
-            <div class="row">
-                <p class="text-center">
-                    <br>
-                    <a href="{{route('logout.get')}}" class="btn btn-danger">Logout</a>
-                </p>
-            </div>
+            <!--<div class="row">-->
+            <!--    <p class="text-center">-->
+            <!--        <br>-->
+            <!--        <a href="{{route('logout.get')}}" class="btn" id="logout">Logout</a>-->
+            <!--    </p>-->
+            <!--</div>-->
         </div>
     </div>
 @endsection

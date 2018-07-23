@@ -50,11 +50,50 @@ table{
 }
 
 .event-card .group-event:hover{
-    background-color:#fcd9c7;
+    background-color:#f16a6a;
 }
 
 .event-card .undefined-event:hover{
-    background-color:#e3d1c8;
+    background-color:#FFCB8B;
 }
 
 
+#month{
+    background-color:white;
+}
+
+#month:hover{
+    background-color:white;
+}
+
+#hako{
+border:0;
+padding:3px;
+font-size:1.3em;
+font-family:Arial, sans-serif;
+color:#ccc;
+border:solid 1px #ccc;
+margin:0 0 20px;
+width:120px;
+-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+}
+
+#go{
+background-color:#fde9df;    
+border:0;
+padding:1px;
+font-size:1.3em;
+font-family:Arial, sans-serif;
+color:black;
+border:solid 1px #fde9df;
+margin:0 0 20px;
+width:50px;
+-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+
+}
+
+.see{
+    font-size:30px;
+}
