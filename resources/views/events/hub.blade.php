@@ -30,7 +30,7 @@
                             "$1($2)", 
                             (new \DateTime($e->dateTimeFromSelf))->format('y/m/d l')
                         ) }}
-                        {!! link_to_route('events.fix', 'Fix', ['id'=>$e->id],['class'=>'btn btn-primary']) !!}
+                        {!! link_to_route('events.fix', 'Schedule here!', ['id'=>$e->id],['class'=>'btn btn-primary']) !!}
                     </th>
                 @endforeach
             </tr>

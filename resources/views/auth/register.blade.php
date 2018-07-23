@@ -16,7 +16,7 @@
         <form method="POST" action="{{ route('signup.post') }}" aria-label="{{ __('Login') }}">
             @csrf
             <div id="form-name" class="row">
-                <div class="form-group col-xs-offset-2 col-xs-8 col-md-offset-4 col-md-4" id="user">
+                <div class="form-group col-xs-offset-3 col-xs-6 col-md-offset-4 col-md-4" id="user">
                     <input placeholder="username" id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
         
                     @if ($errors->has('name'))
@@ -28,7 +28,7 @@
                 </div>
             </div>
             <div id="form-passwd" class="row">
-                <div class="form-group col-xs-offset-2 col-xs-8 col-md-offset-4 col-md-4" id="pass">
+                <div class="form-group col-xs-offset-3 col-xs-6 col-md-offset-4 col-md-4" id="pass">
                     <input placeholder="password" id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
         
                     @if ($errors->has('password'))
@@ -39,15 +39,15 @@
                 </div>
                     
                 <div class="form-group row">
-                    <div id="form-confirm" class="col-xs-offset-2 col-xs-8 col-md-offset-4 col-md-4">
+                    <div id="form-confirm" class="col-xs-offset-3 col-xs-6 col-md-offset-4 col-md-4">
                         <input  placeholder="confirm password" id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                     </div>
                 </div>
                     
                 <p></p>
                 <div class="form-group row mb-0">
-                    <div class="col-xs-offset-4 col-md-offset-7">
-                        <button type="submit" class="btn">
+                    <div class="col-xs-offset-5 col-xs-2">
+                        <button type="submit" class="btn btn-block">
                             {{ __('signup') }}
                         </button>
                     </div>
@@ -59,4 +59,6 @@
         </div>
     </div>
 </div>
+<link href="https://fonts.googleapis.com/css?family=Asap+Condensed%7CCabin+Sketch%7CFredericka+the+Great%7CRammetto+One" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Bungee+Inline" rel="stylesheet">
 @endsection

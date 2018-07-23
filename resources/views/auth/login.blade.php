@@ -40,8 +40,8 @@
                     @endif
                     <p></p>
                     <div class="form-group row mb-0">
-                        <div class="col-xs-offset-9 col-md-offset-10">
-                            <button type="submit" class="btn">
+                        <div class="col-xs-offset-4 col-xs-4">
+                            <button type="submit" class="btn-block btn">
                                 {{ __('login') }}
                             </button>
                         </div>
@@ -55,4 +55,6 @@
     </div>
    </div>
 </div>
+<link href="https://fonts.googleapis.com/css?family=Asap+Condensed%7CCabin+Sketch%7CFredericka+the+Great%7CRammetto+One" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Bungee+Inline" rel="stylesheet">
 @endsection
