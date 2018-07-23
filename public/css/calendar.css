@@ -10,7 +10,7 @@ table{
 }
 
 .event{
-    background-color:#FFD2A2;
+    background-color:#d7eef2;
     margin-bottom:5px;
     padding:2px 5px ;
     border-radius:4px;
@@ -22,7 +22,14 @@ table{
 }
 
 .group-event{
-    background-color:#FFF1E2;
+    background-color:#f38181;
+    margin-bottom:5px;
+    padding:2px 5px ;
+    border-radius:4px;
+}
+
+.undefined-event{
+    background-color:#ffd6a4;
     margin-bottom:5px;
     padding:2px 5px ;
     border-radius:4px;
@@ -39,12 +46,15 @@ table{
 }
 
 .event-card .event:hover{
-    background-color:#FFF9F2;
+    background-color:#0881a3;
 }
 
 .event-card .group-event:hover{
-    background-color:#FFF9F2;
+    background-color:#fcd9c7;
 }
 
+.event-card .undefined-event:hover{
+    background-color:#e3d1c8;
+}
 
 
