@@ -122,7 +122,7 @@
                     
                     <p></p>
                     <div class="row col-xs-2 col-xs-offset-3">
-                        <button class="btn" id="sc">Schedule</button>
+                        <button class="btn" id="sc">Create</button>
                     </div>
                 {{Form::close()}}
             
