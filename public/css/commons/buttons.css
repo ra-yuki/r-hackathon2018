@@ -1,7 +1,7 @@
 .btn-grey {
     color: #fff;
-    background-color: #ccc;
-    border-color: #ccc;
+    background-color:#d7eef2;
+    border-color: #d7eef2;
 }
 
 .bg-red{
@@ -24,4 +24,22 @@
 .no-decoration:hover {
     text-decoration: none;
     color: #666;
+}
+#upload{
+    background-color:#d7eef2;
+}
+#logout{
+    background-color:#f38181;
+    color: black;
+}
+
+#edit{
+    background-color:#d7eef2;
+    color:black;
+    border-color:#d7eef2;
+}
+
+#danger{
+    background-color:#f38181;
+    border-color:#f38181;
 }

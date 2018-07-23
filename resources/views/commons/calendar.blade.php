@@ -90,7 +90,7 @@
 </table>
 
 <div id="color">
-   <div id="privateevent"> <P>&nbsp;&nbsp;privatevent:&nbsp;<img src="{{secure_asset('images/private.png')}}" id="pp">&nbsp;&nbsp;&nbsp;&nbsp;groupevent:&nbsp;<img src="{{secure_asset('images/group.png')}}" id="pp">&nbsp;&nbsp;&nbsp;&nbsp;undefinedevent:&nbsp;<img src="{{secure_asset('images/undifined.png')}}" id="pp"></P></div>
+   <div id="privateevent"> <P>&nbsp;&nbsp;private event:&nbsp;<img src="{{secure_asset('images/private.png')}}" id="pp">&nbsp;&nbsp;&nbsp;&nbsp;group event:&nbsp;<img src="{{secure_asset('images/group.png')}}" id="pp">&nbsp;&nbsp;&nbsp;&nbsp;undefined event:&nbsp;<img src="{{secure_asset('images/undifined.png')}}" id="pp"></P></div>
   
 </div>    
  
