@@ -221,7 +221,7 @@ class EventsController extends Controller
         }
         \Auth::user()->groups()->where('name', Config::getPrivateGroupName())->first()->subscribeEvent($event->id);
         
-        return redirect()->route('events.show', ['id' => $event->id])->with('message', 'Private event ('.$event->title.') has been created successfully!');
+        return redirect()->route('mypage.index')->with('message', 'Private event ('.$event->title.') has been created successfully!');
     }
     
     function scheduleWithGroup(Request $request){
@@ -254,7 +254,7 @@ class EventsController extends Controller
         // \Debugbar::info('$res');
         // \Debugbar::info($res);
         
-        return redirect()->route('events.showHub', ['eventPath' => $res])->with('message', 'Calculated the best dates for \''. $plan->title .'\'!');
+        return redirect()->route('mypage.index' )->with('message', 'Calculated the best dates for \''. $plan->title .'\'!');
     }
     
     function rescheduleWithGroup(Request $request, $id, $isRefresh = false){
