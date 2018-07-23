@@ -27,7 +27,7 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-5 col-sm-3 col-md-2 col-lg-2 waku">
-                           {{Form::text('title',null,['class' => 'form-control','placeholder' => 'ex.) drive'])}}
+                           {{Form::text('title',null,['class' => 'form-control','placeholder' => 'ex.) Drive'])}}
                         </div>
                     </div>
                     <p></p>
@@ -122,7 +122,7 @@
                     
                     <p></p>
                     <div class="row col-xs-2 col-xs-offset-3">
-                        <button class="btn btn-grey">Schedule</button>
+                        <button class="btn" id="sc">Schedule</button>
                     </div>
                 {{Form::close()}}
             
@@ -225,7 +225,7 @@
                     
                     <p></p>
                         <div class="row col-xs-2 col-xs-offset-3">
-                        <button class="btn btn-grey">Reschedule</button>
+                        <button class="btn" id="">Reschedule</button>
                     </div>
                 {{Form::close()}}
             @endif

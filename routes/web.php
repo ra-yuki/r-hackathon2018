@@ -25,7 +25,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('mypage', 'MypageController', ['only' => ['index']]);
     
     //*-- eventsController --*//
-    Route::get('events/{year}/{month}/scheduleHub', 'EventsController@showScheduleHub')->name('events.showScheduleHub');
+    Route::get('events/{year}/{month}/{day}/scheduleHub', 'EventsController@showScheduleHub')->name('events.showScheduleHub');
     Route::get('events/schedule', 'EventsController@showScheduleWithGroup')->name('events.showScheduleWithGroup');
     Route::get('events/schedule-private', 'EventsController@showScheduleInPrivate')->name('events.showScheduleInPrivate');
     Route::post('events/schedule', 'EventsController@scheduleWithGroup')->name('events.scheduleWithGroup');

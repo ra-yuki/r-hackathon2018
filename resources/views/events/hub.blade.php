@@ -30,7 +30,7 @@
                             "$1($2)", 
                             (new \DateTime($e->dateTimeFromSelf))->format('y/m/d l')
                         ) }}
-                        {!! link_to_route('events.fix', 'Schedule here!', ['id'=>$e->id],['class'=>'btn btn-primary']) !!}
+                        {!! link_to_route('events.fix', 'Schedule here!', ['id'=>$e->id],['class'=>'btn','id'=>'here']) !!}
                     </th>
                 @endforeach
             </tr>
@@ -91,11 +91,11 @@
     <!-- buttons -->
     <div class="col-xs-12">
         <div class="col-xs-offset-2 col-xs-8 col-md-offset-2 col-md-4">
-            <a href="{{ route('events.showRescheduleWithGroup', ['id' => $events[0]->id]) }}" class="btn btn-success btn-block">Reschedule</a>
+            <a href="{{ route('events.showRescheduleWithGroup', ['id' => $events[0]->id]) }}" class="btn btn-block" id="res">Reschedule</a>
         </div>
         <div class="col-xs-offset-2 col-xs-8 col-md-offset-0 col-md-4">
             {{ Form::open( ['route' => ['events.destroy', $events[0]->id], 'method' => 'delete', 'style' => 'display:inline;'] ) }}
-                <button class="btn btn-danger btn-block">Delete</a>
+                <button class="btn btn-block" id="dn">Delete</a>
             {{ Form::close() }}
         </div>
     </div>
