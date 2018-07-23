@@ -97,3 +97,18 @@ width:50px;
 .see{
     font-size:30px;
 }
+
+#undifined{
+     background-color:#ffd6a4;
+     color:black;
+}
+
+#private{
+    background-color:#d7eef2;
+    color:black;
+}
+
+#group{
+     background-color:#f38181;
+     color:black;
+}

@@ -1,5 +1,6 @@
 <table class="table table-bordered">
-    <thead>
+   <p><span class="label label-default" id="private">private event</span>  <span class="label label-default" id="group">group event</span> <span class="label label-default" id="undifined">undefined event</span></p> 
+   <thead>
         <tr>
             {{--
             @for($i=0; $i<7; $i++)
@@ -13,6 +14,7 @@
                 @endif
                     {{jddayofweek($i, 2)}}
                 </th>
+                 
             @endfor
             --}}
             <th scope="col" class="">Mon</th>
@@ -89,8 +91,12 @@
     </tbody>
 </table>
 
-<div id="color">
-   <div id="privateevent"> <P>&nbsp;&nbsp;private event:&nbsp;<img src="{{secure_asset('images/private.png')}}" id="pp">&nbsp;&nbsp;&nbsp;&nbsp;group event:&nbsp;<img src="{{secure_asset('images/group.png')}}" id="pp">&nbsp;&nbsp;&nbsp;&nbsp;undefined event:&nbsp;<img src="{{secure_asset('images/undifined.png')}}" id="pp"></P></div>
+
+   
+   
+   
   
-</div>    
+  
+   
+   
  
