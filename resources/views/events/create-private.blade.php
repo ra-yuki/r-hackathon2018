@@ -3,14 +3,11 @@
 @section('head-plus')
     <link href="{{ asset('css/create.css') }}" rel="stylesheet">
     <link href="{{ asset('css/commons/buttons.css') }}" rel="stylesheet"
-    <!--calender -->
-        
 
 
 @endsection
 
 @section('content')
-
    <div class="container" id="all">
         <h1>Schedule Private Event</h1><br>
         
@@ -32,7 +29,6 @@
                     <div class="row">
                         <div class="col-xs-12 col-sm-7 col-md-6 col-lg-6 waku">
                            {{Form::text('description',null,['class' => 'form-control'])}}
-                           
                         </div>
                     </div>
                     
@@ -44,7 +40,6 @@
                     <div class="row">
                         <div class="col-xs-7 col-sm-3 col-md-2 col-lg-2 waku">
                             {{Form::date('dateFrom',null,['class' => 'form-control'])}}
-                            
                         </div>
                     </div>
                     
