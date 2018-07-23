@@ -24,6 +24,7 @@
             <th scope="col" class="text-danger">Sun</th>
         </tr>
     </thead>
+    
     <tbody>
         <?php $daysLength = count($days); ?>
         <?php $daysInWeek = 7; ?>
@@ -70,17 +71,26 @@
                 
                 {{-- render --}}
                 <td class="{{$classTd}} ">
-                    <p class="{{$classText}}">{{ $days[$daysInWeek*$i + $j] }}</p>
-                    <small class="{{$classText}}">{{$name}}</small>
-                    {{-- render events --}}
-                    @include('commons.events', [
-                        'year' => $year,
-                        'month' => $month,
-                        'day' => $days[$daysInWeek*$i + $j],
-                    ])
+                    <a href="{{ route('events.showScheduleHub', ['year'=>2017, 'month'=>9]) }}" style="text-decoration: none; color:black;">
+                        <p class="{{$classText}}">{{ $days[$daysInWeek*$i + $j] }}</p>
+                        <small class="{{$classText}}">{{$name}}</small>
+                        {{-- render events --}}
+                        @include('commons.events', [
+                            'year' => $year,
+                            'month' => $month,
+                            'day' => $days[$daysInWeek*$i + $j],
+                        ])
+                    </a>
                 </td>
             @endfor
             </tr>
         @endfor
+       
     </tbody>
 </table>
+
+<div id="color">
+   <div id="privateevent"> <P>&nbsp;&nbsp;privatevent:&nbsp;<img src="{{secure_asset('images/private.png')}}" id="pp">&nbsp;&nbsp;&nbsp;&nbsp;groupevent:&nbsp;<img src="{{secure_asset('images/group.png')}}" id="pp">&nbsp;&nbsp;&nbsp;&nbsp;undefinedevent:&nbsp;<img src="{{secure_asset('images/undifined.png')}}" id="pp"></P></div>
+  
+</div>    
+ 

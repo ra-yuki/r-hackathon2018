@@ -12,7 +12,17 @@ foreach($events as $e){
 @foreach($eventsMatched as $e)
     <?php
         // formatting
-        $classBtnColor = ($e->fixed) ? 'event' : 'group-event' ;
+        if($e->fixed){
+            if(isset($e->dateFrom)){ //group event
+                $classBtnColor = 'group-event';
+            }
+            else { //pricate event
+                $classBtnColor = 'event';
+            }
+        }
+        else { //未確定
+            $classBtnColor = 'undefined-event';
+        }
         $timeFromSplit = explode(':', explode(' ', $e->dateTimeFromSelf)[1]);
         $timeToSplit = explode(':', explode(' ', $e->dateTimeToSelf)[1]);
         $timeFrom = $timeFromSplit[0]. ":". $timeFromSplit[1];
