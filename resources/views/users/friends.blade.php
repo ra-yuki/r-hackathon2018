@@ -66,6 +66,7 @@
                 <br>
                 {{-- ↑↑ 検索フォーム ↑↑ --}}
                 
+                <p><a href="{{ route('user.index') }}" class="no-decoration"><span class="glyphicon glyphicon-plus-sign"></span>&nbsp;Find New Friends</a></p>
                 @foreach ($friends as $friend)
                     <?php $isFriend = \Auth::user()->is_friend($friend->id); ?>
                     <p>
@@ -78,6 +79,7 @@
             {{-- Group Main --}}
             <div id="group" class="tab-pane fade">
                 <h3>Groups</h3>
+                <p><a href="{{ route('makegroup.index') }}" class="no-decoration"><span class="glyphicon glyphicon-plus-sign"></span>&nbsp;Create a New Group</a></p>
                 @foreach ($groups as $group)
                     <?php $userNames = []; ?>
                     @foreach($group->users()->orderBy('name')->get() as $key => $u)

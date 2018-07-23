@@ -166,10 +166,11 @@ class EventsController extends Controller
         ]);
     }
     
-    function showScheduleHub($year, $month){
+    function showScheduleHub($year, $month, $day){
         return view('events.scheduleHub', [
             'year' => $year,
             'month' => $month,
+            'day' => $day,
         ]);
     }
     

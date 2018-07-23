@@ -67,4 +67,7 @@ class Config{
     const DATETIME_FORMAT_FULL = 'Y-m-d H:i:s';
     const DATETIME_FORMAT_DATE = 'Y-m-d';
     const DATETIME_FORMAT_TIME = 'H:i:s';
+    
+    //*-- images --*//
+    const IMAGE_PLUS = 'https://res.cloudinary.com/dkgsscz7j/image/upload/v1532320235/plus.png';
 }

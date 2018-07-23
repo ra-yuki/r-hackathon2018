@@ -27,7 +27,7 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-5 col-sm-3 col-md-2 col-lg-2 waku">
-                           {{Form::text('title',null,['class' => 'form-control','placeholder' => 'ex.) drive'])}}
+                           {{Form::text('title',null,['class' => 'form-control','placeholder' => 'ex.) Drive'])}}
                         </div>
                     </div>
                     <p></p>
