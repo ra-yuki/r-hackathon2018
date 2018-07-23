@@ -12,6 +12,8 @@ $toSet = explode(' ', $event->dateTimeToSelf);
             {{Form::open(['route' => ['events.update', $event->id], 'method' => 'put'])}}
                 {{Form::label('title')}}
                 {{Form::text('title', $event->title)}}
+                {{Form::label('description')}}
+                {{Form::text('description', $event->description)}}
                 {{Form::label('date start')}}
                 {{Form::date('dateFrom', $fromSet[0])}}
                 {{Form::label('date end')}}

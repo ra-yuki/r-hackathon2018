@@ -12,7 +12,7 @@
     var routeDeleteFriend = "{{route('unfriend', ['id' => '@split'])}}";
     @if(count($friends) > 0)
         @foreach($friends as $key => $r)
-            usersImages[{{$r->id}}] = '{{$r->imageUrl}}';
+            usersImages[{{$r->id}}] = '{{$r->getImageUrl()}}';
             usersIds[{{$r->id}}] = {{$r->id}};
             usersNames[{{$r->id}}] = '{{$r->name}}';
         @endforeach
@@ -22,9 +22,11 @@
     var groupsImages = new Array();
     var groupsIds = new Array();
     var groupsNames = new Array();
+    var routeEditGroup = "{{route('makegroup.edit', ['id' => '@split'])}}";
+    var routeShowGroup = "{{route('groups.show', ['id' => '@split'])}}";
     @if(count($groups) > 0)
         @foreach($groups as $key => $r)
-            groupsImages[{{$r->id}}] = '{{$r->imageUrl}}';
+            groupsImages[{{$r->id}}] = '{{$r->getImageUrl()}}';
             groupsIds[{{$r->id}}] = {{$r->id}};
             groupsNames[{{$r->id}}] = '{{$r->name}}';
         @endforeach
@@ -41,7 +43,7 @@
 <div class="container">
     @include('commons.messages')
     
-    <div class="col-xs-6">
+    <div class="col-xs-12 col-md-6">
         {{-- friend/group tag --}}
         <ul class="nav nav-tabs" id="tab">
             <li class="active"><a data-toggle="tab" href="#friend">Friends</a></li>
@@ -67,7 +69,7 @@
                 @foreach ($friends as $friend)
                     <?php $isFriend = \Auth::user()->is_friend($friend->id); ?>
                     <p>
-                        <img class="img-circle" src="{{$friend->imageUrl}}" alt="" style="width:50px;">
+                        <img class="img-circle" src="{{$friend->getImageUrl()}}" alt="" style="width:50px;">
                         <a href="#" class="no-decoration" onclick="displayUser('{{$friend->id}}', {{ $isFriend }})">{{$friend->name}}</a>
                     </p>
                 @endforeach
@@ -78,14 +80,12 @@
                 <h3>Groups</h3>
                 @foreach ($groups as $group)
                     <?php $userNames = []; ?>
-                    @foreach($group->users as $key => $u)
-                        <?php 
-                            $userNames[$key] = $u->name; 
-                            $userNamesJson = json_encode($userNames);
-                        ?>
+                    @foreach($group->users()->orderBy('name')->get() as $key => $u)
+                        <?php $userNames[$key] = $u->name; ?>
                     @endforeach
+                    <?php $userNamesJson = json_encode($userNames); ?>
                     <p>
-                        <img class="img-circle" src="{{$group->imageUrl}}" alt="" style="width:50px;">
+                        <img class="img-circle" src="{{$group->getImageUrl()}}" alt="" style="width:50px;">
                         <a href="#" class="no-decoration" onclick="displayGroup('{{$group->id}}', '{{$userNamesJson}}')">{{$group->name}}</a>
                     </p>
                 @endforeach
@@ -94,14 +94,15 @@
         {{-- tab content ends here --}}
     </div>
     
-    <div id="user-detail" class="col-xs-6 pad-top-m">
+    <div id="user-detail" class="col-xs-12 col-md-6 pad-top-m">
         <div id="user-image" class="">
             <!-- <img> -->
         </div>
-        <h1 id="user-name" class="text-center">
+        <div id="user-name" class="text-center">
             <!-- user name -->
-        </h1>
-        <div id="user-add">
+        </div>
+        <div id="member-list" class="col-xs-12"></div>
+        <div id="user-add" class="col-xs-12">
 
         </div>
     </div>

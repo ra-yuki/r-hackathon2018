@@ -10,7 +10,7 @@
         <div id="top-main" class="col-xs-12">
             <div class="row">
                 <div id="top-image-wrapper" class="col-xs-12">
-                    <p class="text-center"><img class="img-circle" src="{{$imageUrl}}" alt="{{$imageUrl}}" style="width:250px;"></p>
+                    <p class="text-center"><img class="img-circle" src="{{$user->getImageUrl()}}" alt="{{$user->getImageUrl()}}" style="width:250px;"></p>
                     <!-- upload image form -->
                     <form action="{{route('profile.uploadImage')}}" method="post" enctype="multipart/form-data">
                             <div class="row">

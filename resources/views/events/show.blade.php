@@ -55,28 +55,29 @@
                     <h2><span class="glyphicon glyphicon-user"></span></h2>
                  </div>
                  <div class="col-xs-2" style="padding: 0px;">
-                     <h3><a href="{{route('groups.show',['id'=>$event->groups[0]->id])}}">{{$event->groups[0]->name}}</a></h3>
+                     <h3>
+                         <a href="{{route('groups.show',['id'=>$event->groups[0]->id])}}">
+                             <img class="img-circle" src="{{$group->getImageUrl()}}" alt="" style="width:50px;">
+                             &nbsp;{{$event->groups[0]->name}}
+                         </a>
+                    </h3>
                 </div>
             </div>
         @endif
         
-        <div id="URL" class="row" >
-           <div class="col-xs-1" >
-               <h2><span class="glyphicon glyphicon-list-alt"></span></h2>
-           </div>
-           <div class="col-xs-2" style="padding: 0px;">
-               <p>投票名前</p> 
-               <p>候補1</p>
-               <p>候補2</p>
-               <p>候補3</p>
-           </div>
-            
-            
-        </div>
-        <!--<ul>-->
-        <!--    <li>START | {{$event->dateTimeFromSelf}}</li>-->
-        <!--    <li>END | {{$event->dateTimeToSelf}}</li>-->
-        <!--</ul>-->
+        <!-- Poll info -->
+        <!--<div id="URL" class="row" >-->
+        <!--   <div class="col-xs-1" >-->
+        <!--       <h2><span class="glyphicon glyphicon-list-alt"></span></h2>-->
+        <!--   </div>-->
+        <!--   <div class="col-xs-2" style="padding: 0px;">-->
+        <!--       <p>投票名前</p> -->
+        <!--       <p>候補1</p>-->
+        <!--       <p>候補2</p>-->
+        <!--       <p>候補3</p>-->
+        <!--   </div>-->
+        <!--</div>-->
+        
         @if($event->fixed) {!! link_to_route('events.edit', 'Edit', ['id'=>$event->id],['class'=>'btn btn-primary']) !!}
         @else {!! link_to_route('events.showRescheduleWithGroup', 'Reschedule', ['id'=>$event->id],['class'=>'btn btn-primary']) !!}
         @endif
