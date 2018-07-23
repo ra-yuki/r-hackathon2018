@@ -196,7 +196,11 @@ class EventsController extends Controller
     }
     
     function showScheduleInPrivate(){
-        return view('events.create-private');
+        $date = isset($_GET['date']) ? $_GET['date'] : null;
+        
+        return view('events.create-private', [
+            'date' => $date,
+        ]);
     }
     
     function scheduleInPrivate(Request $request){
