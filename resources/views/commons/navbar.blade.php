@@ -31,7 +31,7 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="{{secure_asset('/images/add-user (1) (1).png')}}" id="fr"><br>friends<span class="caret"></span></a>
           <ul class="dropdown-menu" id="dp">
-            <li><a class="navbar-left" href="/friends">Groups/Friends </a></li>
+            <li><a class="navbar-left" href="/friends">Friends/Groups </a></li>
             <li><a class="navbar-left" href="/makegroup">Makegroup </a></li>
           </ul>
         </li>
