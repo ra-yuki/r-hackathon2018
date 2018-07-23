@@ -48,16 +48,20 @@
      <!--        <li><a href="{{route('mypage.index')}}?year=2018&month=11">November</a></li>-->
      <!--        <li><a href="{{route('mypage.index')}}?year=2018&month=12">December</a></li>-->
      <!--     </ul>-->
-          
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
           <form>
-              <p>See other Months Schedule</p>
-              <input type="text" name="year" placeholder="Year" id="hako">
-              <br>
-              <p></p>
-              <input type="number" name="month" placeholder="Month" id="hako">
-              <br>
-              <br>
-              <button>go</button>
+              <p class="see">See Other Months Schedule</p>
+              <input type="text" name="year" placeholder="Year" id="hako" value="{{(new DateTime())->format('Y')}}">
+              
+              <input type="number" name="month" placeholder="Month" id="hako" value="{{(new DateTime())->format('m')}}">
+            
+              
+              <button id="go">go</button>
           </form>
         </div>
 </div>
