@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+<link href="{{ asset('css/commons/buttons.css') }}" rel="stylesheet">
 <div class="container">
     @include('commons.messages')
     <div class="col-xs-12 col-md-offset-1 col-md-10">
@@ -78,11 +79,11 @@
         <!--   </div>-->
         <!--</div>-->
         
-        @if($event->fixed) {!! link_to_route('events.edit', 'Edit', ['id'=>$event->id],['class'=>'btn btn-primary']) !!}
+        @if($event->fixed) {!! link_to_route('events.edit', 'Edit', ['id'=>$event->id],['class'=>'btn','id'=>'edit']) !!}
         @else {!! link_to_route('events.showRescheduleWithGroup', 'Reschedule', ['id'=>$event->id],['class'=>'btn btn-primary']) !!}
         @endif
         {!! Form::open(['route' => ['events.destroy', $event->id], 'method' => 'delete']) !!}
-            <button class="btn btn-danger">Delete</button>
+          <br>  <button class="btn" id="danger">Delete</button>
         {!! Form::close() !!}
     
     </div>

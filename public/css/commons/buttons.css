@@ -25,3 +25,14 @@
     text-decoration: none;
     color: #666;
 }
+#edit{
+    background-color:#d7eef2;
+    color:black;
+    border-color:#d7eef2;
+}
+
+#danger{
+    background-color:#f38181;
+    border-color:#f38181;
+}
+
