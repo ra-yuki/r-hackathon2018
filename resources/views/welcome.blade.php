@@ -30,12 +30,16 @@
                 </p> 
           </div>
         </div>
+       <a href="#welcom"><span class="scroll"></span></a> 
     </div>
+    
 
     <div id="top-welcome" class="col-xs-12">
+        
         <div class="col-xs-offset-3 col-xs-6">
             
-            <h1 class="text-center">WELCOME TO POPCON</h1>
+            
+            <h1 class="text-center"><a name="welcom"></a>WELCOME TO POPCON</h1>
             <p class="text-center">POPCON will lead you to a whole new way of scheduling by automatically picking the best date for you. <br>NO MORE 調整さん, HELLO POPCON!</p>
             
         </div>
