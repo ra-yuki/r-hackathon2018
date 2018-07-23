@@ -32,7 +32,7 @@
      <!--       <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" id="month">-->
      <!--       Select Month <span class="glyphicon glyphicon-triangle-bottom"></span>-->
      <!--     </button>-->
-          <!-- choices -->
+     <!--      choices -->
      <!--     <ul class="dropdown-menu">-->
         
      <!--        <li><a href="{{route('mypage.index')}}?year=2019&month=01">January</a></li>-->
