@@ -32,10 +32,9 @@
     <div class="col-xs-12 col-md-4">
         <form>
             <p class="see">See Other Months Schedule</p>
-            <input type="text" name="year" placeholder="Year" id="hako" value="{{(new DateTime())->format('Y')}}">
+            <input type="number" name="year" placeholder="Year" id="hako" value="{{(new DateTime())->format('Y')}}">
             
             <input type="number" name="month" placeholder="Month" id="hako" value="{{(new DateTime())->format('m')}}">
-            
             
             <button id="go">go</button>
         </form>

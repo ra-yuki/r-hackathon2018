@@ -30,7 +30,6 @@
                     <div class="row">
                         <div class="col-xs-12 col-sm-7 col-md-6 col-lg-6 waku">
                            {{Form::text('description',null,['class' => 'form-control','placeholder' => 'ex.) Go to Atami with my family'])}}
-                           
                         </div>
                     </div>
                     
@@ -41,8 +40,7 @@
                     
                     <div class="row">
                         <div class="col-xs-7 col-sm-3 col-md-2 col-lg-2 waku">
-                            {{Form::date('dateFrom',null,['class' => 'form-control'])}}
-                            
+                            {{Form::date('dateFrom',$date,['class' => 'form-control'])}}
                         </div>
                     </div>
                     
@@ -54,7 +52,7 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-7 col-sm-3 col-md-2 col-lg-2 waku">
-                            {{Form::date('dateTo',null,['class' => 'form-control'])}}
+                            {{Form::date('dateTo',$date,['class' => 'form-control'])}}
                         </div>
                     </div>
                 
