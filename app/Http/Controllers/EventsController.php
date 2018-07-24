@@ -233,7 +233,8 @@ class EventsController extends Controller
         // convert request to event obj
         $plan = Event::request2Event($request);
         // exception handling
-        if(!$plan) return false;
+        if(!$plan)
+            return redirect()->back()->with('messageDanger', 'Invalid request given.')->withInput();;
         
         // \Debugbar::info('$plan');
         // \Debugbar::info($plan);
@@ -247,14 +248,17 @@ class EventsController extends Controller
         // schedule and get the result
         $schedulables = Event::getBestSchedulablesWithGroup($plan, $group);
         // exception handling
-        if(!$schedulables) return false;
+        if(!$schedulables)
+            return redirect()->back()->with('messageDanger', 'No dates are available for '. $request->title. '.')->withInput();
         
         // \Debugbar::info('$schedulables');
         // \Debugbar::info($schedulables);
         
         //save to db
         $res = Event::saveSchedulablesWithGroup($plan, $group, $request, $schedulables);
-        if(!$res) return false;
+        if(!$res){
+            return redirect()->back()->with('messageDanger', 'Failed to save stuffs for '. $request->title. '.')->withInput();
+        } 
         
         // \Debugbar::info('$res');
         // \Debugbar::info($res);

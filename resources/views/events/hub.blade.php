@@ -19,6 +19,8 @@
     
     
     <!-- availability table -->
+    <h3>Best Available Dates <small>Choose the day you like to make happen!</small></h3>
+    
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
