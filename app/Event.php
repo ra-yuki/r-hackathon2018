@@ -239,13 +239,19 @@ class Event extends Model
     //                      'availables': [(int) userId, ...]
     //                  ]]
     public static function getAvailabilitiesAll($options, $memberEvents){
+        \Debugbar::info($memberEvents);
         $availableDatesOfMembers = Event::getAvailableDatesOfGroupMembers($options, $memberEvents);
         // \Debugbar::info('$availableDatesOfMembers');
         // \Debugbar::info($availableDatesOfMembers);
         $availabilities = Event::initAvailabilitiesArray($options);
         $c = count($availabilities);
+        
+        // \Debugbar::info($availabilities);
         for($i=0; $i<$c; $i++){
+            \Debugbar::info($availableDatesOfMembers);
             foreach($availableDatesOfMembers as $id => $aDsOM){
+                if($aDsOM == false) continue; //skip if the user id has no available dates
+                
                 if(!Event::isFromToPairMatched($availabilities[$i], $aDsOM)) continue;
                 
                 array_push($availabilities[$i]->availables, $id);
