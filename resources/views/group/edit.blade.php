@@ -5,8 +5,6 @@
 @endsection
 
 @section('content')
-     <link href="{{ asset('css/commons/buttons.css') }}">
-   
     <div class="container">
         @include('commons.messages')
         <h1 class="text-center">Edit {{$group->name}}</h1>

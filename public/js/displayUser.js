@@ -61,7 +61,12 @@ function displayGroup(id, userNames){
     
     userAdd.innerHTML =
         "<div class=\"col-xs-12 col-md-offset-3 col-md-6\" style=\"margin-top: 10px;\">" +
-            "<a href=\""+ routeEditGroup.split('@split')[0] + groupsIds[id] + routeEditGroup.split('@split')[1] + "\" class=\"btn btn-edit btn-block\">Edit</a>" +
+            "<div class=\"col-xs-12 col-md-6 pt-05\">"+
+                "<a href=\""+ routeEditGroup.split('@split')[0] + groupsIds[id] + routeEditGroup.split('@split')[1] + "\" class=\"btn btn-edit btn-block\">Edit</a>" +
+            "</div>"+
+            "<div class=\"col-xs-12 col-md-6 pt-05\">"+
+                "<a href=\""+ routeScheduleWithGroup + "?groupId="+groupsIds[id]+"\" class=\"btn btn-edit btn-block\">Schedule</a>" +
+            "</div>"+
         "</div>";
     
     console.log("hey: "+userAdd.innerHTML);
