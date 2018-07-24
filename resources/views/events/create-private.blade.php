@@ -7,7 +7,9 @@
 
 @section('content')
    <div class="container" id="all">
-        <h1>Schedule Private Event</h1><br>
+        <h1>Schedule Private Event</h1>
+        <!--<p>&nbsp&nbspmake a personal event</p>-->
+        <br>
         
         <div class="col-xs-12" >
                 {{Form::open(['route' => 'events.scheduleInPrivate', 'method' => 'post'])}}
@@ -87,7 +89,7 @@
                     
                     <p></p>
                     <div class="row col-xs-2 col-xs-offset-3">
-                    <button class="btn" id="cre">create</button>
+                    <button class="btn" id="cre">Add Plan</button>
                     </div>
                 {{Form::close()}}
            

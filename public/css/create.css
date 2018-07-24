@@ -19,3 +19,46 @@
 #sc{
     background-color:#f38181;
 }
+
+.hidden_box {
+    display:inline;
+    padding: 0;
+}
+
+/*ボタン装飾*/
+/*.hidden_box label {*/
+/*    padding: 15px;*/
+/*    font-weight: bold;*/
+/*    border: solid 2px black;*/
+/*    cursor :pointer;*/
+/*}*/
+
+/*ボタンホバー時*/
+.hidden_box label:hover {
+    background: #efefef;
+}
+
+/*チェックは見えなくする*/
+.hidden_box input {
+    display: none;
+}
+
+/*中身を非表示にしておく*/
+.hidden_box .hidden_show {
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: 0.8s;
+}
+
+/*クリックで中身表示*/
+.hidden_box input:checked ~ .hidden_show {
+    padding: 10px 0;
+    height: auto;
+    opacity: 1;
+}
+
+/*.wakuwakuwaku{*/
+/*    margin-top:0;*/
+/*}*/
