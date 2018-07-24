@@ -31,8 +31,8 @@
     <!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
 
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
-s
+    <title>POPCON</title>
+
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
