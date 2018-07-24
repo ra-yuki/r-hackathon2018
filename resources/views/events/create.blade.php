@@ -14,7 +14,8 @@
 
 @section('content')
     <div class="container" id="all">
-        <h1 class="wakuwakuwaku">Schedule Group Event</h1><br>
+        @include('commons.messages')
+        <h1>Schedule Group Event</h1><br>
         <div class="col-xs-12" >
             <?php $exists = isset($event) ?>
             
@@ -35,7 +36,7 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-5 col-sm-3 col-md-2 col-lg-2 waku">
-                           {{Form::text('title',null,['class' => 'form-control','placeholder' => 'ex.) Drive'])}}
+                           {{Form::text('title',old('title'),['class' => 'form-control','placeholder' => 'ex.) Drive'])}}
                         </div>
                     </div>
                     <p></p>
@@ -54,7 +55,7 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-12 col-sm-7 col-md-6 col-lg-6 waku">
-                           {{Form::text('description',null,['class' => 'form-control','placeholder' => 'ex.) Shall we go to Atami?'])}}
+                           {{Form::text('description',old('description'),['class' => 'form-control','placeholder' => 'ex.) Shall we go to Atami?'])}}
                         </div>
                     </div>
                     <p></p>
@@ -75,7 +76,7 @@
                         <div class="col-xs-4 col-sm-3 col-md-2 col-lg-2 waku">
                         <select name="groupId" class="selectpicker" data-live-search="true" title="select group">
                             @foreach($groups as $g)
-                                <?php if(isset($_GET['groupId']) && $_GET['groupId'] == $g->id){ ?>
+                                <?php if( (isset($_GET['groupId']) && $_GET['groupId'] == $g->id) || old('groupId') == $g->id ){ ?>
                                     <option value="{{$g->id}}" selected>{{$g->name}}</option>
                                 <?php }else{ ?>
                                     <option value="{{$g->id}}">{{$g->name}}</option>
@@ -100,7 +101,7 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-7 col-sm-3 col-md-2 col-lg-2 waku">
-                            {{Form::date('dateFrom',null,['class' => 'form-control'])}}
+                            {{Form::date('dateFrom',old('dateFrom'),['class' => 'form-control'])}}
                         </div>
                     </div>
                     
@@ -119,7 +120,7 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-7 col-sm-3 col-md-2 col-lg-2 waku">
-                            {{Form::date('dateTo',null,['class' => 'form-control'])}}
+                            {{Form::date('dateTo',old('dateTo'),['class' => 'form-control'])}}
                         </div>
                     </div>
                 
@@ -137,9 +138,8 @@
                         </div>
                     </div>
                     <div class="row">
-                        
                         <div class="input-group clockpicker col-xs-5 col-sm-3 col-md-2 col-lg-2 wakuwaku" data-placement="right" data-align="top" data-autoclose="true">
-                            <input type="time" class="form-control" value="00:00" name="timeFrom">
+                            <input type="time" class="form-control" value="{{old('timeFrom')}}" name="timeFrom">
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-time"></span>
                                 </span>
@@ -165,7 +165,7 @@
                     <div class="row">
                         
                         <div class="input-group clockpicker  col-xs-5 col-sm-3 col-md-2 col-lg-2 wakuwaku" data-placement="right" data-align="top" data-autoclose="true">
-                            <input type="time" class="form-control" value="00:00" name="timeTo">
+                            <input type="time" class="form-control" value="{{old('timeTo')}}" name="timeTo">
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-time"></span>
                                 </span>

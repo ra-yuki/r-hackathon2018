@@ -1,0 +1,104 @@
+.btn-grey {
+    color: #fff;
+    background-color:#d7eef2;
+    border-color: #d7eef2;
+}
+
+.bg-red{
+    background-color: #d7eef2;
+}
+
+.bg-green{
+    background-color:green;
+}
+
+.bg-blue{
+    background-color:blue;
+}
+
+.bg-yellow{
+    background-color: #FFCB8B;
+}
+
+.no-decoration {
+    text-decoration: none;
+    color: #aaa;
+}
+
+.no-decoration-black{
+    text-decoration: none;
+    color:black;
+}
+
+.no-decoration:hover {
+    text-decoration: none;
+    color: #666;
+}
+
+#upload{
+    background-color:#d7eef2;
+}
+#logout{
+    background-color:#f38181;
+    color: black;
+}
+
+
+#edit{
+    background-color:#f38181;
+    color:black;
+    border-color:#d7eef2;
+}
+
+#danger{
+    background-color:#f38181;
+    border-color:#f38181;
+
+}
+
+.btn-deletefriend {
+   background-color:#f38181; 
+   color: black;
+}
+
+.btn-edit {
+   background-color:#f38181; 
+   color: black;    
+}
+
+.label-name{
+    background-color:#d7eef2;
+    color: black;
+}
+
+#cre{
+    background-color:#d7eef2;
+}
+
+#theme{
+    background-color:#ffd6a4;
+    
+}
+
+#change{
+    font-size: 30px;
+}
+
+#up{
+    background-color:#d7eef2;
+}
+
+#upd{
+    background-color:#d7eef2;
+}
+
+#lg{
+    background-color:#f38181;
+    color: black;
+}
+
+#dg{
+     background-color:#f38181;
+    color: black;
+}
+

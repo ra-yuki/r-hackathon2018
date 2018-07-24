@@ -45,6 +45,8 @@
     
     @if(Auth::check() && Auth::user()->layout != null)
         <link rel="stylesheet" href ="{{ asset('css/commons/layout-'. Auth::user()->layout.'.css') }}">
+        <link rel="stylesheet" href ="{{ asset('css/commons/generals-'. Auth::user()->layout.'.css') }}">
+        <link rel="stylesheet" href ="{{ asset('css/commons/buttons-'. Auth::user()->layout.'.css') }}">
     @endif
     
     @yield('head-plus')
