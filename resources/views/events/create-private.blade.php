@@ -6,7 +6,6 @@
 @endsection
 
 @section('content')
-
    <div class="container" id="all">
         <h1>Schedule Private Event</h1><br>
         
