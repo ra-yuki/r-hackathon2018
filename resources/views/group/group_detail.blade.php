@@ -1,17 +1,14 @@
 @extends('layouts.app')
 
-@section('head-plus')
-    <link rel="stylesheet" href="{{ secure_asset('css/commons/buttons.css') }}">
-@endsection
-
 @section('content')
-    <div class="container col-xs-offset-3 col-xs-6">
+    <div class="container">
         <div class="row">
-            <h3 class="panel-title">
-                <p class="text-center">
-                    <img style="width:250px;" src="{{$group->getImageUrl()}}" alt="">
-                </p>
-                <h1 class="text-center">
+            <aside class="col-xs-4">
+                <h3 class="panel-title">Group Name: {{ $group->name }}</h3>
+                    @foreach($members as $member)
+                        <p>{{$member->name}}</p>
+                    @endforeach
+                </div>
                     {{ $group->name }}
                 </h1>
                 <div class="col-xs-offset-3 col-xs-6">

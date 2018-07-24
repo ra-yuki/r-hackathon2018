@@ -44,31 +44,31 @@ class SettingsController extends Controller
             $layout = 'navy';
         }
         if($layout == '6'){ // flower
-            $layout = 'css/flower.css';
+            $layout = 'flower';
         }
         if($layout == '7'){ // fruits
-            $layout = 'css//fruits.css';
+            $layout = 'fruits';
         }
         if($layout == '8'){ // beach
-            $layout = 'css/beach.css';
+            $layout = 'beach';
         }
         if($layout == '9'){ // galaxy
-            $layout = 'css/galaxy.css';
+            $layout = 'galaxy';
         }
         if($layout == '10'){ // snow
-            $layout = 'css/snow.css';
+            $layout = 'snow';
         }
         if($layout == '11'){ //newyork
-            $layout = 'css/newyork.css';
+            $layout = 'newyork';
         }
         if($layout == '12'){ //cafe
-            $layout = 'css/cafe.css';
+            $layout = 'cafe';
         }
         if($layout == '13'){ //beer
-            $layout = 'css/beer.css';
+            $layout = 'beer';
         }
         if($layout == '14'){ //neon
-            $layout = 'css/neon.css';
+            $layout = 'neon';
         }
         
         $table->layout = $layout;
