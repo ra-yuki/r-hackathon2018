@@ -31,7 +31,7 @@
     </div>
 
     <div class="col-xs-12 col-md-4">
-        <h3>TBD</h3>
+        <h3>Undecided Event List</h3>
         <div id="unfix" class="panel panel-default">
         @include('commons.unfixedEvents', [
             'events' => $eventsUnfixed,
