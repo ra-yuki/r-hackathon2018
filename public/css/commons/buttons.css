@@ -76,5 +76,19 @@
 }
 
 #up{
-   background-color:red;
+    background-color:#d7eef2;
+}
+
+#upd{
+    background-color:#d7eef2;
+}
+
+#lg{
+    background-color:#f38181;
+    color: black;
+}
+
+#dg{
+     background-color:#f38181;
+    color: black;
 }
