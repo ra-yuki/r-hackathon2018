@@ -41,7 +41,7 @@
                     <!--<li><a href="{{route('settings.changeTheme')}}?layout=10">snow</a></li>-->
                     <li><a href="{{route('settings.changeTheme')}}?layout=11">newyork</a></li>
                     <li><a href="{{route('settings.changeTheme')}}?layout=12">cafe</a></li>
-                    <li><a href="{{route('settings.changeTheme')}}?layout=13">beer</a></li>
+                    <li><a href="{{route('settings.changeTheme')}}?layout=13">star</a></li>
                     <!--<li><a href="{{route('settings.changeTheme')}}?layout=14">neon</a></li>-->
                 </ul>
             </div>
