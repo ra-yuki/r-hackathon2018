@@ -1,17 +1,38 @@
 body{
+    
     background-image: url("/images/flower.jpg");
+    background-position: center center;
     background-repeat: no-repeat;
+    background-attachment: fixed;
     background-size: cover;
-    font-family: 'Quicksand', sans-serif;
+    font-family: 'Fredericka the Great', cursive;
+    font-family: 'Asap Condensed', sans-serif; 
+    color:black;
+    font-size: 105%;
 }
 
 .navbar-default {
-    background-color:white;
-    border-color:white;
+        
+    background-image: url("/images/flower.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+      font-family: 'Fredericka the Great', cursive;
+    font-family: 'Asap Condensed', sans-serif; 
+
+   
 }
 
 .dropdown-menu {
-background-color: white;
+    
+    background-image: url("/images/flower.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+  font-family: 'Fredericka the Great', cursive;
+    font-family: 'Asap Condensed', sans-serif; 
 border: 1px solid black;
 border: 1px solid black(0, 0, 0, .15);
 -webkit-box-shadow: 0 6px 12px rgba(94, 136, 129, 0.35);
@@ -21,8 +42,15 @@ box-shadow: 0 6px 12px rgba(94, 136, 129, 0.35);
 
 .dropdown-menu>li>a:focus,
 .dropdown-menu>li>a:hover {
-color: #CCCCCC;
-background-color:white;
+color: black;
+    
+    background-image: url("/images/flower.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+  font-family: 'Fredericka the Great', cursive;
+    font-family: 'Asap Condensed', sans-serif; 
 }
 
 
@@ -30,5 +58,12 @@ background-color:white;
 .navbar-default .navbar-nav>.open>a:focus,
 .navbar-default .navbar-nav>.open>a:hover {
 color: black;
-background-color: white;
+    
+    background-image: url("/images/flower.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+   font-family: 'Fredericka the Great', cursive;
+    font-family: 'Asap Condensed', sans-serif; 
 }
