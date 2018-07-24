@@ -49,7 +49,11 @@
                         <div class="col-xs-4 col-sm-3 col-md-2 col-lg-2 waku">
                         <select name="groupId" class="selectpicker" data-live-search="true" title="select group">
                             @foreach($groups as $g)
-                                <option value="{{$g->id}}">{{$g->name}}</option>
+                                <?php if(isset($_GET['groupId']) && $_GET['groupId'] == $g->id){ ?>
+                                    <option value="{{$g->id}}" selected>{{$g->name}}</option>
+                                <?php }else{ ?>
+                                    <option value="{{$g->id}}">{{$g->name}}</option>
+                                <?php } ?>
                             @endforeach
                         </select>
                         </div>
