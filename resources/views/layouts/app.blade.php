@@ -31,7 +31,7 @@
     <!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
 
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>POPCON</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -42,11 +42,9 @@
 
 
     <link href="{{ asset('css/navbar.css') }}" rel="stylesheet">
-    <!-- Styles -->
+    
     @if(Auth::check() && Auth::user()->layout != null)
-       {{--<link rel="stylesheet" href="{{ secure_asset(Auth::user()->layout) }}">--}}
-    @else
-        {{--<link rel="stylesheet" href="{{ secure_asset('css/style.css') }}">--}}
+        <link rel="stylesheet" href ="{{ asset('css/commons/layout-'. Auth::user()->layout.'.css') }}">
     @endif
     
     @yield('head-plus')
@@ -67,6 +65,7 @@
                     @else
                         
                     @endif
+
                     
     <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
