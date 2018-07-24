@@ -5,6 +5,8 @@
 @endsection
 
 @section('content')
+     <link href="{{ asset('css/commons/buttons.css') }}">
+   
     <div class="container">
         @include('commons.messages')
         <h1 class="text-center">Edit {{$group->name}}</h1>
@@ -26,7 +28,7 @@
                             {{ csrf_field() }}
                             <div class="row">
                                 <div class="col-xs-offset-2 col-xs-8">
-                                    <button class="btn btn-primary btn-block">Upload</button>
+                                    <button class="btn btn-block" id="up">Upload</button>
                                 </div>
                             </div>
                         </div>
