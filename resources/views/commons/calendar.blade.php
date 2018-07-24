@@ -1,7 +1,11 @@
 <link rel="stylesheet" href="{{ secure_asset('css/commons/buttons.css') }}">
 
 <table class="table table-bordered">
+<<<<<<< HEAD
 <p><span class="label label-default" id="today">today</span>  <span class="label label-default" id="private">private event</span>  <span class="label" id="group">group event</span> <span class="label label-default" id="undifined">undefined event</span></p>
+=======
+   <p><span class="label label-default" id="today">today</span>  <span class="label label-default" id="private">private event</span>  <span class="label" id="group">group event</span> <span class="label label-default" id="undifined">undefined event</span></p> 
+>>>>>>> 95a91e61753fa416c896b59417ad2c4c705ed6fd
    <thead>
         <tr>
             {{--
