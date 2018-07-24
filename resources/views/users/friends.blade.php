@@ -57,12 +57,12 @@
                 <h3>Friends</h3>
                 
                 {{-- ↓↓ 検索フォーム ↓↓ --}}
-                <form class="form-inline" action="{{route('friends.index')}}">
-                    <div class="form-group">
-                        <input type="text" name="friendId" value="{{$friendId}}" class="form-control" placeholder="Search Friends">
-                    </div>
-                    <button id="search-button"class="btn btn-grey"><span class="glyphicon glyphicon-search"></span></button>
-                </form>
+                <!--<form class="form-inline" action="{{route('friends.index')}}">-->
+                <!--    <div class="form-group">-->
+                <!--        <input type="text" name="friendId" value="{{$friendId}}" class="form-control" placeholder="Search Friends">-->
+                <!--    </div>-->
+                <!--    <button id="search-button"class="btn btn-grey"><span class="glyphicon glyphicon-search"></span></button>-->
+                <!--</form>-->
                 <br>
                 {{-- ↑↑ 検索フォーム ↑↑ --}}
                 

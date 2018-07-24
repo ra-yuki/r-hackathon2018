@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('head-plus')
     <link rel="stylesheet" href ="{{ secure_asset('css/calendar.css') }}">
+    <link rel="stylesheet" href ="{{ secure_asset('css/mypage.css') }}">
 @endsection
 @section('content')
 
@@ -22,11 +23,14 @@
             ])
         </div>
     </div>
+
     <div class="col-xs-12 col-md-4">
         <h1>Unfixed Events</h1>
+        <div id="unfix" class="panel panel-default">
         @include('commons.unfixedEvents', [
             'events' => $eventsUnfixed,
         ])
+        </div>
     </div>
     
     <div class="col-xs-12 col-md-4">
