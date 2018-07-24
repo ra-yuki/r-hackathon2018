@@ -2,7 +2,11 @@
 
 @section('head-plus')
     <link href="{{ asset('css/create.css') }}" rel="stylesheet">
+<<<<<<< HEAD
     <link href="{{ asset('css/commons/buttons.css') }}" rel="stylesheet"
+=======
+    <link href="{{ asset('css/commons/buttons.css') }}" rel="stylesheet">
+>>>>>>> b22bd8fc81d93f71383b221691635966c29e475d
 @endsection
 
 @section('content')
