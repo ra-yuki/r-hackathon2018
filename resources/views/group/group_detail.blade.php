@@ -1,18 +1,29 @@
 @extends('layouts.app')
 
+@section('head-plus')
+    <link rel="stylesheet" href="{{ secure_asset('css/commons/buttons.css') }}">
+@endsection
+
 @section('content')
-    <div class="container">
+    <div class="container col-xs-offset-3 col-xs-6">
         <div class="row">
-            <aside class="col-xs-4">
-                <h3 class="panel-title">Group Name: {{ $group->name }}</h3>
-                    @foreach($members as $member)
-                        <p>{{$member->name}}</p>
-                    @endforeach
-                    {{-- <div class="panel-body"> 
-                       @include('users.friends', ['friends' => $group])
-                    </div> --}}
+            <h3 class="panel-title">
+                <p class="text-center">
+                    <img style="width:250px;" src="{{$group->getImageUrl()}}" alt="">
+                </p>
+                <h1 class="text-center">
+                    {{ $group->name }}
+                </h1>
+                <div class="col-xs-offset-3 col-xs-6">
+                    <a href="{{route('makegroup.edit', ['id' => $group->id])}}" class="btn btn-block" id="edit">Edit</a>
                 </div>
-            </aside>
+                
+                <div class="col-xs-offset-3 col-xs-6" style="margin-top: 10px;">
+                    @foreach($members as $member)
+                        <p><img class="img-circle" src="{{$member->getImageUrl()}}" alt="" style="width:50px;"> &nbsp;{{$member->name}}</p>
+                    @endforeach
+                </div>
+            </div>
         </div>
     </div>
 @endsection
