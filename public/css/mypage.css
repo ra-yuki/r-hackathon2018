@@ -5,12 +5,13 @@
     padding:10px 0;
 }
 
-#list{
+.list{
     margin:5px 0px 5px 10px;
-    background-color: #FFCB8B;
-
+    /*background-color: #FFCB8B;*/
+    
 }
 
 #month{
     margin-bottom:0;
 }
+

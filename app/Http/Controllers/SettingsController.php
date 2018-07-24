@@ -25,54 +25,54 @@ class SettingsController extends Controller
     
     public function changeTheme()
     {
-       if(isset($_GET['layout'])){
-           $layout = $_GET['layout'];
-           $userId = \Auth::user()->id;
-           $table = User::find($userId);
+        if(!isset($_GET['layout'])) return redirect()->back()->with('messageDanger', 'Invalid theme code detected');
+        
+        $layout = $_GET['layout'];
+        $userId = \Auth::user()->id;
+        $table = User::find($userId);
            
-        //   if($layout == '1'){ // original
-        //       $layout = 'css/.original.css';
-        //   }
-          if($layout == '2'){ // original
-              $layout = 'css/white.css';
-          }
-           if($layout == '3'){ // pink
-               $layout = 'css/pink.css';
-           }
-            if($layout == '4'){ // beige
-               $layout = 'css/beige.css';
-           }
-        //   if($layout == '5'){ // navy
-        //       $layout = 'css/navy.css';
-        //   }
-           if($layout == '6'){ // flower
-               $layout = 'css/flower.css';
-           }if($layout == '7'){ // fruits
-               $layout = 'css//fruits.css';
-           }if($layout == '8'){ // beach
-               $layout = 'css/beach.css';
-           }
-        //   if($layout == '9'){ // galaxy
-        //       $layout = 'css/galaxy.css';
-        //   }
-        //      if($layout == '10'){ // snow
-        //       $layout = 'css/snow.css';
-        //   }
-            if($layout == '11'){ //newyork
-               $layout = 'css/newyork.css';
-           }
-           if($layout == '12'){ //cafe
-               $layout = 'css/cafe.css';
-           }
-           if($layout == '13'){ //beer
-               $layout = 'css/beer.css';
-           }
-        //     if($layout == '14'){ //neon
-        //       $layout = 'css/neon.css';
-        //   }
-           $table->layout = $layout;
-           $table->save();
-       }
+        if($layout == '2'){ // original
+            $layout = null;
+        }
+        if($layout == '3'){ // pink
+            $layout = 'pink';
+        }
+        if($layout == '4'){ // beige
+           $layout = 'beige';
+        }
+        if($layout == '5'){ // navy
+            $layout = 'navy';
+        }
+        if($layout == '6'){ // flower
+            $layout = 'css/flower.css';
+        }
+        if($layout == '7'){ // fruits
+            $layout = 'css//fruits.css';
+        }
+        if($layout == '8'){ // beach
+            $layout = 'css/beach.css';
+        }
+        if($layout == '9'){ // galaxy
+            $layout = 'css/galaxy.css';
+        }
+        if($layout == '10'){ // snow
+            $layout = 'css/snow.css';
+        }
+        if($layout == '11'){ //newyork
+            $layout = 'css/newyork.css';
+        }
+        if($layout == '12'){ //cafe
+            $layout = 'css/cafe.css';
+        }
+        if($layout == '13'){ //beer
+            $layout = 'css/beer.css';
+        }
+        if($layout == '14'){ //neon
+            $layout = 'css/neon.css';
+        }
+        
+        $table->layout = $layout;
+        $table->save();
        
         return redirect()->back();
     }

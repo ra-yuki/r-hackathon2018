@@ -1,7 +1,17 @@
 @extends('layouts.app')
 @section('head-plus')
-<link rel="stylesheet" href="{{ secure_asset('css/user-user.css') }}">
-<link rel="stylesheet" href="{{ secure_asset('css/commons/buttons.css') }}">
+
+@if(Auth::user()->layout == null)
+    <link rel="stylesheet" href ="{{ secure_asset('css/commons/buttons.css') }}">
+    <link rel="stylesheet" href ="{{ secure_asset('css/user-user.css') }}">
+    <link rel="stylesheet" href ="{{ secure_asset('css/friends.css') }}">
+@else
+    <link rel="stylesheet" href ="{{ asset('css/commons/buttons-'. Auth::user()->layout.'.css') }}">
+    <link rel="stylesheet" href ="{{ asset('css/user-user-'. Auth::user()->layout.'.css') }}">
+    <link rel="stylesheet" href ="{{ asset('css/friends-'. Auth::user()->layout.'.css') }}">
+@endif
+
+
 <link rel="stylesheet" href="{{ secure_asset('css/commons/spaces.css') }}">
 <script>
     var usersImages = new Array();
