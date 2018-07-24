@@ -1,5 +1,7 @@
 @section('head-plus')
     <link rel="stylesheet" href ="{{ secure_asset('css/mypage.css') }}">
+    <link rel="stylesheet" href ="{{ secure_asset('css/commons/buttons.css') }}">
+    <link rel="stylesheet" href ="{{ secure_asset('css/commons/generals.css') }}">
 @endsection
 
 
@@ -26,16 +28,20 @@
                 <p style="margin-bottom:0;">{{$yearMonthPair}}</p>
             </div>
             
-            <div id="list" class="row">
-                <div class="col-xs-8">
-                    {!! link_to_route('events.showHub',$events[$i]->title, ['eventPath' => $events[$i]->eventPath], ['class' => '']) !!}
-                </div>
+            <div class="row list">
+                <a href="{{route('events.showHub', ['eventPath' => $events[$i]->eventPath])}}" class="no-decoration-black">
+                    <div class="col-xs-10 bg-yellow py-05 ">
+                        {{$events[$i]->title}}
+                    </div>
+                </a>
             </div>
         @else
-            <div id="list" class="row">
-                <div class="col-xs-8">
-                    {!! link_to_route('events.showHub', $events[$i]->title, ['eventPath' => $events[$i]->eventPath], ['class' => '']) !!}
-                </div>
+            <div class="row list">
+                <a href="{{route('events.showHub', ['eventPath' => $events[$i]->eventPath])}}" class="no-decoration-black">
+                    <div class="col-xs-10 bg-yellow py-05 ">
+                        {{$events[$i]->title}}
+                    </div>
+                </a>
             </div>
         @endif
     @endfor
