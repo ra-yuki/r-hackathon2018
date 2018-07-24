@@ -2,9 +2,7 @@
 
 @section('head-plus')
     <link href="{{ asset('css/create.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/commons/buttons.css') }}" rel="stylesheet"
-    <!--calender -->
- 
+    <link href="{{ asset('css/commons/buttons.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')
