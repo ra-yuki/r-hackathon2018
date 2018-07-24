@@ -1,7 +1,13 @@
 @extends('layouts.app')
 
 @section('head-plus')
-    <link href="{{ asset('css/commons/buttons.css') }}">
+   <!-- reading layout here -->
+@if(Auth::user()->layout == null)
+    <link rel="stylesheet" href ="{{ secure_asset('css/commons/buttons.css') }}">
+@else
+    <link rel="stylesheet" href ="{{ asset('css/commons/buttons-'. Auth::user()->layout.'.css') }}">
+    <link rel="stylesheet" href ="{{ asset('css/commons/layout-'. Auth::user()->layout.'.css') }}">
+@endif
 @endsection
 
 @section('content')
