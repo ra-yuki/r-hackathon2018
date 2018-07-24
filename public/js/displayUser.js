@@ -1,3 +1,5 @@
+
+
 function displayUser(id, isFriend){
     var userName = document.getElementById('user-name');
     var userImage = document.getElementById('user-image');
@@ -22,7 +24,7 @@ function displayUser(id, isFriend){
     else
         userAdd.innerHTML = 
             "<div class=\"col-xs-12 col-md-offset-3 col-md-6\" style=\"margin-top: 5px;\">"+
-                "<a href=\""+ routeAddFriend.split('@split')[0] + usersIds[id] + "\" class=\"btn btn-primary btn-block\">Add To Friend</a>"+
+                "<a href=\""+ routeAddFriend.split('@split')[0] + usersIds[id] + "\" class=\"btn btn-block\"\" id=\"adf\">Add To Friend</a>"+
             "</div>";
 }
 
