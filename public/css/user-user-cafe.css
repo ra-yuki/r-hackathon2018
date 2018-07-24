@@ -1,6 +1,25 @@
 body{
+    background-image: url("/images/cafe.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+     font-family: 'Fredericka the Great', cursive;
+    font-family: 'Asap Condensed', sans-serif;
+}
+#search-button{
+    margin-left: 0px; 
+}
+
+#user-detail {
+    
+}
+
+#user-image img{
+    height:300px;
+    
+}
+
+body{
     background-color: #FFBEDA;
-    font-family: 'Quicksand', sans-serif;
 }
 
 .navbar-default {

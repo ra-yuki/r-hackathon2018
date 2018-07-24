@@ -1,0 +1,33 @@
+body{
+    background-color: #FAEBD7;
+    font-family: 'Fredericka the Great', cursive;
+    font-family: 'Asap Condensed', sans-serif; 
+}
+
+.navbar-default {
+    background-color:#FAEBD7;
+    border-color:white;
+}
+
+.dropdown-menu {
+background-color: #FAEBD7;
+border: 1px solid black;
+border: 1px solid black(0, 0, 0, .15);
+-webkit-box-shadow: 0 6px 12px rgba(94, 136, 129, 0.35);
+box-shadow: 0 6px 12px rgba(94, 136, 129, 0.35);
+}
+
+
+.dropdown-menu>li>a:focus,
+.dropdown-menu>li>a:hover {
+color: #CCCCCC;
+background-color:#FAEBD7;
+}
+
+
+.navbar-default .navbar-nav>.open>a,
+.navbar-default .navbar-nav>.open>a:focus,
+.navbar-default .navbar-nav>.open>a:hover {
+color: black;
+background-color: #FAEBD7;
+}
