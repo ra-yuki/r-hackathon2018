@@ -3,6 +3,8 @@
 @section('head-plus')
 <link rel="stylesheet" href="{{ secure_asset('css/commons/spaces.css') }}">
 <link rel="stylesheet" href="{{ secure_asset('css/commons/buttons.css') }}">
+<link rel="stylesheet" href="{{ secure_asset('css/commons/generals.css') }}">
+
 <script>
     // friend stuffs
     var usersImages = new Array();
@@ -24,6 +26,7 @@
     var groupsNames = new Array();
     var routeEditGroup = "{{route('makegroup.edit', ['id' => '@split'])}}";
     var routeShowGroup = "{{route('groups.show', ['id' => '@split'])}}";
+    var routeScheduleWithGroup = "{{route('events.showScheduleWithGroup')}}";
     @if(count($groups) > 0)
         @foreach($groups as $key => $r)
             groupsImages[{{$r->id}}] = '{{$r->getImageUrl()}}';
@@ -57,12 +60,12 @@
                 <h3>Friends</h3>
                 
                 {{-- ↓↓ 検索フォーム ↓↓ --}}
-                <form class="form-inline" action="{{route('friends.index')}}">
-                    <div class="form-group">
-                        <input type="text" name="friendId" value="{{$friendId}}" class="form-control" placeholder="Search Friends">
-                    </div>
-                    <button id="search-button"class="btn btn-grey"><span class="glyphicon glyphicon-search"></span></button>
-                </form>
+                <!--<form class="form-inline" action="{{route('friends.index')}}">-->
+                <!--    <div class="form-group">-->
+                <!--        <input type="text" name="friendId" value="{{$friendId}}" class="form-control" placeholder="Search Friends">-->
+                <!--    </div>-->
+                <!--    <button id="search-button"class="btn btn-grey"><span class="glyphicon glyphicon-search"></span></button>-->
+                <!--</form>-->
                 <br>
                 {{-- ↑↑ 検索フォーム ↑↑ --}}
                 
