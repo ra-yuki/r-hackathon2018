@@ -1,0 +1,58 @@
+.display-inline {
+    display: inline;
+}
+
+.display-inline-block {
+    display: inline-block;
+}
+
+.display-block {
+    display: block;
+}
+
+.pt-05{
+    padding-top: 5px;
+}
+
+.py-05{
+    padding: 5px 0;
+}
+
+.pt-1{
+    padding-top: 10px;
+}
+
+.pt-2{
+    padding-top: 10px;
+}
+
+.mt-1{
+    margin-top: 10px;
+}
+
+.mt-2 {
+    margin-top: 20px;
+}
+
+.m-0 {
+    margin: 0;
+}
+
+.p-0 {
+    padding: 0;
+}
+
+#here{
+    background-color:#ffd6a4;
+    color:black;
+}
+
+#dn{
+    background-color:#f38181;
+}
+
+#res{
+    background-color:#d7eef2; 
+    color: black;
+}
+

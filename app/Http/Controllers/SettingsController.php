@@ -50,7 +50,7 @@ class SettingsController extends Controller
             $layout = 'fruits';
         }
         if($layout == '8'){ // beach
-            $layout = 'css/beach.css';
+            $layout = 'beach';
         }
         if($layout == '9'){ // galaxy
             $layout = 'galaxy';

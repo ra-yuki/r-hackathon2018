@@ -1,6 +1,6 @@
 body{
     
-    background-image: url("/images/star.jpg");
+    background-image: url("/images/beach.jpg");
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -13,7 +13,7 @@ body{
 
 .navbar-default {
         
-    background-image: url("/images/star.jpg");
+    background-image: url("/images/beach.jpg");
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -26,7 +26,7 @@ body{
 
 .dropdown-menu {
     
-    background-image: url("/images/star.jpg");
+    background-image: url("/images/beach.jpg");
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -44,7 +44,7 @@ box-shadow: 0 6px 12px rgba(94, 136, 129, 0.35);
 .dropdown-menu>li>a:hover {
 color: #CCCCCC;
     
-    background-image: url("/images/star.jpg");
+    background-image: url("/images/beach.jpg");
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -59,7 +59,7 @@ color: #CCCCCC;
 .navbar-default .navbar-nav>.open>a:hover {
 color: black;
     
-    background-image: url("/images/star.jpg");
+    background-image: url("/images/beach.jpg");
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
