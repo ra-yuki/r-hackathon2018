@@ -11,7 +11,7 @@
                    <p>Change the theme</p>
                 </div>
             </div>    
-            <div class="col-xs-3 col-xs-offset-3">
+            <div class="col-xs-1 col-xs-offset-5">
                 <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" id="theme">
                     Color
                 </button>
@@ -29,7 +29,7 @@
         
         
 
-        <div class="col-xs-3">
+        <div class="col-xs-1">
                 <div class="dropdown">
                     <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" id="theme">
                     Theme
