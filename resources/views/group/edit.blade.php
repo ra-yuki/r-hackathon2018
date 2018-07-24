@@ -1,12 +1,11 @@
 @extends('layouts.app')
 
 @section('head-plus')
-    <link href="{{ asset('css/commons/buttons.css') }}">
+
+    <link href="{{ asset('css/commons/buttons.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')
-     <link href="{{ asset('css/commons/buttons.css') }}">
-   
     <div class="container">
         @include('commons.messages')
         <h1 class="text-center">Edit {{$group->name}}</h1>
@@ -76,7 +75,7 @@
                        
                        <div class="row">
                            <div class="col-xs-offset-2 col-xs-8">
-                               <button class="btn btn-primary btn-block">Update</button>
+                               <button class="btn btn-block" id="upd">Update</button>
                            </div>
                        </div>
                     {!! Form::close() !!}
@@ -93,14 +92,14 @@
                             <h3>Leave '{{ $group->name }}'</h3>
                             <p>Once you leave this group, all the associated Group Events will be unlisted on your calendar.</p>
                             <div class="col-xs-offset-2 col-xs-8" style="margin-bottom: 20px;">
-                                <a href="{{route('makegroup.leave', ['id' => $group->id])}}" class="btn btn-danger btn-block">Leave Group</a>
+                                <a href="{{route('makegroup.leave', ['id' => $group->id])}}" class="btn btn-block" id="lg">Leave Group</a>
                             </div>
                             
                             <br>
                             <h3>Delete '{{ $group->name }}'</h3>
                             <p>Once you delete this group, all the associated Group Events will be removed. This action is permanent. No turning back.</p>
                             <div class="col-xs-offset-2 col-xs-8">
-                                <button class="btn btn-danger btn-block">Delete Group</button>
+                                <button class="btn btn-block" id="dg">Delete Group</button>
                             </div>
                         </div>
                     {!! Form::close() !!}
