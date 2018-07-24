@@ -1,5 +1,3 @@
-
-
 <header>
 @if (Auth::check())
 

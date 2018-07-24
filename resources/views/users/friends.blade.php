@@ -1,9 +1,20 @@
 @extends('layouts.app')
 
 @section('head-plus')
+
+<!-- reading layout here -->
+@if(Auth::user()->layout == null)
+    <link rel="stylesheet" href ="{{ secure_asset('css/commons/buttons.css') }}">
+    <link rel="stylesheet" href ="{{ secure_asset('css/commons/generals.css') }}">
+    <link rel="stylesheet" href ="{{ secure_asset('css/friends.css') }}">
+@else
+    <link rel="stylesheet" href ="{{ asset('css/commons/buttons-'. Auth::user()->layout.'.css') }}">
+    <link rel="stylesheet" href ="{{ asset('css/commons/generals-'. Auth::user()->layout.'.css') }}">
+    <link rel="stylesheet" href ="{{ asset('css/friends-'. Auth::user()->layout.'.css') }}">
+@endif
+        
 <link rel="stylesheet" href="{{ secure_asset('css/commons/spaces.css') }}">
-<link rel="stylesheet" href="{{ secure_asset('css/commons/buttons.css') }}">
-<link rel="stylesheet" href="{{ secure_asset('css/commons/generals.css') }}">
+
 
 <script>
     // friend stuffs
@@ -69,12 +80,12 @@
                 <br>
                 {{-- ↑↑ 検索フォーム ↑↑ --}}
                 
-                <p><a href="{{ route('user.index') }}" class="no-decoration"><span class="glyphicon glyphicon-plus-sign"></span>&nbsp;Find New Friends</a></p>
+                <p><a href="{{ route('user.index') }}" class="no-decoration-black"><span class="glyphicon glyphicon-plus-sign"></span>&nbsp;Find New Friends</a></p>
                 @foreach ($friends as $friend)
                     <?php $isFriend = \Auth::user()->is_friend($friend->id); ?>
                     <p>
                         <img class="img-circle" src="{{$friend->getImageUrl()}}" alt="" style="width:50px;">
-                        <a href="#" class="no-decoration" onclick="displayUser('{{$friend->id}}', {{ $isFriend }})">{{$friend->name}}</a>
+                        <a href="#" class="no-decoration-black" onclick="displayUser('{{$friend->id}}', {{ $isFriend }})">{{$friend->name}}</a>
                     </p>
                 @endforeach
             </div>
@@ -82,7 +93,7 @@
             {{-- Group Main --}}
             <div id="group" class="tab-pane fade">
                 <h3>Groups</h3>
-                <p><a href="{{ route('makegroup.index') }}" class="no-decoration"><span class="glyphicon glyphicon-plus-sign"></span>&nbsp;Create a New Group</a></p>
+                <p><a href="{{ route('makegroup.index') }}" class="no-decoration-black"><span class="glyphicon glyphicon-plus-sign"></span>&nbsp;Create a New Group</a></p>
                 @foreach ($groups as $group)
                     <?php $userNames = []; ?>
                     @foreach($group->users()->orderBy('name')->get() as $key => $u)
@@ -91,7 +102,7 @@
                     <?php $userNamesJson = json_encode($userNames); ?>
                     <p>
                         <img class="img-circle" src="{{$group->getImageUrl()}}" alt="" style="width:50px;">
-                        <a href="#" class="no-decoration" onclick="displayGroup('{{$group->id}}', '{{$userNamesJson}}')">{{$group->name}}</a>
+                        <a href="#" class="no-decoration-black" onclick="displayGroup('{{$group->id}}', '{{$userNamesJson}}')">{{$group->name}}</a>
                     </p>
                 @endforeach
             </div>
