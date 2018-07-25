@@ -28,6 +28,7 @@
 .no-decoration-black{
     text-decoration: none;
     color:black;
+    font-size: 25px;
 }
 
 .no-decoration:hover {
@@ -86,6 +87,7 @@
 
 #up{
     background-color:#d7eef2;
+    color: black;
 }
 
 #upd{

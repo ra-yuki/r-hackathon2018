@@ -79,8 +79,8 @@
         <!--   </div>-->
         <!--</div>-->
         
-        @if($event->fixed) {!! link_to_route('events.rescheduleWithGroup', 'Reschedule', ['id'=>$event->id],['class'=>'btn','id'=>'edit']) !!}
-        @else {!! link_to_route('events.showRescheduleWithGroup', 'Reschedule', ['id'=>$event->id],['class'=>'btn btn-primary']) !!}
+        @if($event->fixed) {!! link_to_route('events.rescheduleWithGroup', 'Reschedule', ['id'=>$event->id],['class'=>'btn','id'=>'up']) !!}
+        @else {!! link_to_route('events.showRescheduleWithGroup', 'Reschedule', ['id'=>$event->id],['class'=>'btn','id'=>'up']) !!}
         @endif
         {!! Form::open(['route' => ['events.destroy', $event->id], 'method' => 'delete']) !!}
           <br>  <button class="btn" id="danger">Delete</button>
