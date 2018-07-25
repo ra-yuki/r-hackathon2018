@@ -2,6 +2,12 @@
 
 @section('head-plus')
     <link rel="stylesheet" href="{{ asset('css/commons/generals.css') }}">
+    <style>
+        .label-beige{
+            background-color:#fde9df;
+            color:black;
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -22,9 +28,9 @@
         <h2>Your request is...</h2>
     </div>
     <div class="col-xs-12">
-        <h4>You want to make happen <span class="label label-primary">{{$events[0]->title}}</span> with <span class="label label-primary">{{ $group->name }}</span></h4>
-        <h4>Somewhere between <span class="label label-primary">{{$events[0]->dateFrom}}</span> and <span class="label label-primary">{{$events[0]->dateTo}}</span></h4>
-        <h4>At <span class="label label-primary">{{ (new \DateTime($events[0]->timeFrom))->format('H:i') }}</span> - <span class="label label-primary">{{ (new \DateTime($events[0]->timeTo))->format('H:i') }}</span></h4>
+        <h4>You want to make happen <span class="label label-beige">{{$events[0]->title}}</span> with <span class="label label-beige">{{ $group->name }}</span></h4>
+        <h4>Somewhere between <span class="label label-beige">{{$events[0]->dateFrom}}</span> and <span class="label label-beige">{{$events[0]->dateTo}}</span></h4>
+        <h4>At <span class="label label-beige">{{ (new \DateTime($events[0]->timeFrom))->format('H:i') }}</span> - <span class="label label-beige">{{ (new \DateTime($events[0]->timeTo))->format('H:i') }}</span></h4>
     </div>
     
     <!-- availability table -->
@@ -32,7 +38,7 @@
         <h2 style="margin-top: 20px;">POPCON suggests...</h2>
     </div>
     <div class="col-xs-12">
-        <h4>You should make happen <span class="label label-primary">{{$events[0]->title}}</span> on one of the following dates.</h4>
+        <h4>You should make happen <span class="label label-beige">{{$events[0]->title}}</span> on one of the following dates.</h4>
         <h4>Click <span class="btn" id="here"><span class="glyphicon glyphicon-ok-circle icon-big" aria-hidden="true"></span>&nbsp;This day!</span> to schedule the event.</h4>
     </div>
     <!--<h3>Best Available Dates <small>Choose the day you like to make happen!</small></h3>-->
