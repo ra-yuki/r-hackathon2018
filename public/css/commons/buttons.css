@@ -62,7 +62,7 @@
 }
 
 .btn-edit {
-   background-color:#f38181; 
+   background-color:#ffd6a4; 
    color: black;    
 }
 
@@ -72,11 +72,12 @@
 }
 
 #cre{
-    background-color:#d7eef2;
+    background-color:#ffd6a4;
 }
 
 #theme{
-    background-color:#ffd6a4;
+    background-color:white;
+    border-color: black;
     
 }
 
@@ -103,6 +104,6 @@
 }
 
 #adf{
-    background-color:#f38181;
+    background-color:#ffd6a4;
     color:black;
 }
