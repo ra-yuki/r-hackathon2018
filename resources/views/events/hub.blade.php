@@ -32,7 +32,12 @@
                             "$1($2)", 
                             (new \DateTime($e->dateTimeFromSelf))->format('y/m/d l')
                         ) }}
-                        {!! link_to_route('events.fix', 'Schedule here!', ['id'=>$e->id],['class'=>'btn','id'=>'here']) !!}
+                        <!--{!! link_to_route('events.fix', 'This day!', ['id'=>$e->id],['class'=>'btn','id'=>'here']) !!}-->
+                        <!--<span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>-->
+                        <a href="route('events.fix', ['id'=>$e->id])" class="btn" id="here">
+                            <span class="glyphicon glyphicon-ok-circle icon-big" aria-hidden="true"></span>
+                            &nbsp;This day!
+                        </a>
                     </th>
                 @endforeach
             </tr>
