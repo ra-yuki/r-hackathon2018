@@ -23,8 +23,8 @@
                             
                             <div class="form-group col-xs-offset-4">
                                 <!--<input type="file" name="fileToUpload" id="fileToUpload">-->
-                                <div class="btn" id="btn">Choose a files</div>
-                                            <input type="file" id="files"/>
+                                 <div class="btn" id="btn">Choose a files</div>
+                                            <input name="fileToUpload" type="file" id="files"/>
                                             <input type="text" id="filename" placeholder="No file chosen" readonly />
                                             <script type="text/javascript">
                                             $(function() {
@@ -46,7 +46,6 @@
                                                  });
                                                 });
                                             </script>
-                               
                             </div>
                             
                             {{ csrf_field() }}

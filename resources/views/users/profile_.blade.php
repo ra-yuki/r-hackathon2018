@@ -21,13 +21,13 @@
                                 </div>
                             </div>
                                 
-                            <div class="col-xs-offset-4 col-xs-4" >
+                           
                                 
-                                <div class="col-xs-8">
+                                <div class="col-xs-offset-4 col-xs-2" style="padding-left:50px;">
                                     
                                          <!--<input type="file" name="fileToUpload" id="fileToUpload">-->
                                            <div class="btn" id="btn">Choose a files</div>
-                                            <input type="file" id="files"/>
+                                            <input name="fileToUpload" type="file" id="files"/>
                                             <input type="text" id="filename" placeholder="No file chosen" readonly />
                                             <script type="text/javascript">
                                             $(function() {
@@ -52,11 +52,11 @@
                                
                                 </div>
                                
-                                <div class="col-xs-4">
+                                <div class="col-xs-2 ">
                                     {{ csrf_field() }}
                                     <button class="btn" id="upload">Upload</button>
                                 </div>
-                            </div>
+                           
                     </form>
                 </div>
             </div>
