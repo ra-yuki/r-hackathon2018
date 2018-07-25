@@ -2,6 +2,7 @@
 
 @section('head-plus')
     <link rel="stylesheet" href="{{secure_asset('css/commons/buttons.css')}}">
+    <link rel="stylesheet" href="{{secure_asset('css/commons/fileupload.css')}}">
 
 @endsection
 
@@ -23,7 +24,32 @@
                             <div class="col-xs-offset-4 col-xs-4" >
                                 
                                 <div class="col-xs-8">
-                                     <input type="file" name="fileToUpload" id="fileToUpload">
+                                    
+                                         <!--<input type="file" name="fileToUpload" id="fileToUpload">-->
+                                           <div class="btn" id="btn">Choose a files</div>
+                                            <input type="file" id="files"/>
+                                            <input type="text" id="filename" placeholder="No file chosen" readonly />
+                                            <script type="text/javascript">
+                                            $(function() {
+                                                 $('#files').css({
+                                                     'position': 'absolute',
+                                                     'top': '-9999px'
+                                                 }).change(function() {
+                                                     var val = $(this).val();
+                                                     var path = val.replace(/\\/g, '/');
+                                                     var match = path.lastIndexOf('/');
+                                                $('#filename').css("display","inline-block");
+                                                     $('#filename').val(match !== -1 ? val.substring(match + 1) : val);
+                                                 });
+                                                 $('#filename').bind('keyup, keydown, keypress', function() {
+                                                     return false;
+                                                 });
+                                                 $('#filename, #btn').click(function() {
+                                                     $('#files').trigger('click');
+                                                 });
+                                                });
+                                            </script>
+                               
                                 </div>
                                
                                 <div class="col-xs-4">
