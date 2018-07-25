@@ -334,8 +334,7 @@ class EventsController extends Controller
     
     function rescheduleWithGroup(Request $request, $id, $isRefresh = false){
         $event = Event::find($id);
-        // \Debugbar::info('$event');
-        // \Debugbar::info($event);
+        
         Event::where([
             ['eventPath', '=', $event->eventPath],
         ])->delete();
