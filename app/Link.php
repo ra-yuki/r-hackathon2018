@@ -19,11 +19,11 @@ class Link extends Model
         return $this->belongsTo(Poll::class, 'pollId');
     }
     
-    public static function bulkSaveAndRegisterAsPoll($links, $title, Event $event){
+    public static function bulkSaveAndRegisterAsPoll($links, $title, $eventPath){
         // store poll record for connecting event and links
         $poll = new Poll();
         $poll->title = $title;
-        $poll->eventPath = $event->eventPath;
+        $poll->eventPath = $eventPath;
         $saved = $poll->save();
         // exception handling
         if(!$saved) return false;
