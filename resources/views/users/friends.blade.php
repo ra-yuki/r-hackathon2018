@@ -67,7 +67,7 @@
         {{-- tab content starts here --}}
         <div class="tab-content">
             {{-- Friends Main --}}
-            <div id="friend" class="tab-pane fade in active">
+            <div id="friend" class="tab-pane fade in active ft">
                 <h3>Friends</h3>
                 
                 {{-- ↓↓ 検索フォーム ↓↓ --}}
