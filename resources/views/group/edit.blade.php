@@ -3,6 +3,7 @@
 @section('head-plus')
 
     <link href="{{ asset('css/commons/buttons.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{secure_asset('css/commons/fileupload.css')}}">
 @endsection
 
 @section('content')
@@ -20,8 +21,31 @@
                                 <img src="{{ $group->getImageUrl() }}" style="width:70%;">
                             </h3>
                             
-                            <div class="form-group">
-                                <input type="file" name="fileToUpload" id="fileToUpload">
+                            <div class="form-group col-xs-offset-4">
+                                <!--<input type="file" name="fileToUpload" id="fileToUpload">-->
+                                 <div class="btn" id="btn">Choose a files</div>
+                                            <input name="fileToUpload" type="file" id="files"/>
+                                            <input type="text" id="filename" placeholder="No file chosen" readonly />
+                                            <script type="text/javascript">
+                                            $(function() {
+                                                 $('#files').css({
+                                                     'position': 'absolute',
+                                                     'top': '-9999px'
+                                                 }).change(function() {
+                                                     var val = $(this).val();
+                                                     var path = val.replace(/\\/g, '/');
+                                                     var match = path.lastIndexOf('/');
+                                                $('#filename').css("display","inline-block");
+                                                     $('#filename').val(match !== -1 ? val.substring(match + 1) : val);
+                                                 });
+                                                 $('#filename').bind('keyup, keydown, keypress', function() {
+                                                     return false;
+                                                 });
+                                                 $('#filename, #btn').click(function() {
+                                                     $('#files').trigger('click');
+                                                 });
+                                                });
+                                            </script>
                             </div>
                             
                             {{ csrf_field() }}

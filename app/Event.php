@@ -86,7 +86,7 @@ class Event extends Model
         // \Debugbar::info($availabilities);
         
         // Get the most favourable options
-        $favourables = Event::getMostFavourables($availabilities);
+        $favourables = Event::getMostFavourables($availabilities, $group);
         
         return $favourables;
     }
@@ -159,7 +159,7 @@ class Event extends Model
         return $res;
     }
     
-    public static function getMostFavourables($availabilities){
+    public static function getMostFavourables($availabilities, $group){
         // retrieve count of availables property
         $favourables = [];
         $max = 0;
@@ -178,6 +178,7 @@ class Event extends Model
         }
         
         if(count($favourables) == 0) return false;
+        if(count($favourables[0]->availables) < round(count($group->users)*0.5)) return false;
         
         return $favourables;
     }

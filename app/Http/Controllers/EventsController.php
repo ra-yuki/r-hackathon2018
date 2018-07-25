@@ -227,8 +227,8 @@ class EventsController extends Controller
         if($dateTo->getTimestamp() - $dateFrom->getTimestamp() < 0)
             return redirect()->back()->with('messageDanger', 'Invalid input found: dates')->withInput();
         
-        $timeFrom = new \DateTime($request->timeFrom);
-        $timeTo = new \DateTime($request->timeTo);
+        $timeFrom = new \DateTime($request->dateFrom. ' '. $request->timeFrom);
+        $timeTo = new \DateTime($request->dateTo. ' '. $request->timeTo);
         if($timeTo->getTimestamp() - $timeFrom->getTimestamp() < 0)
             return redirect()->back()->with('messageDanger', 'Invalid input found: times')->withInput();
             
@@ -334,8 +334,7 @@ class EventsController extends Controller
     
     function rescheduleWithGroup(Request $request, $id, $isRefresh = false){
         $event = Event::find($id);
-        // \Debugbar::info('$event');
-        // \Debugbar::info($event);
+        
         Event::where([
             ['eventPath', '=', $event->eventPath],
         ])->delete();
