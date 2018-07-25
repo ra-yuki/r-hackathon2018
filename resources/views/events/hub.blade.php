@@ -33,7 +33,7 @@
     </div>
     <div class="col-xs-12">
         <h4>You should make happen <span class="label label-primary">{{$events[0]->title}}</span> on one of the following dates.</h4>
-        <h4>Click <span class="btn" id="here"><span class="glyphicon glyphicon-ok-circle icon-big" aria-hidden="true"></span>&nbsp;'This day!'</span> to schedule the event.</h4>
+        <h4>Click <span class="btn" id="here"><span class="glyphicon glyphicon-ok-circle icon-big" aria-hidden="true"></span>&nbsp;This day!</span> to schedule the event.</h4>
     </div>
     <!--<h3>Best Available Dates <small>Choose the day you like to make happen!</small></h3>-->
     
