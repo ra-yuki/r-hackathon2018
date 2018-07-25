@@ -9,7 +9,6 @@ $toSet = explode(' ', $event->dateTimeToSelf);
     <link href="{{ asset('css/create.css') }}" rel="stylesheet">
     <link href="{{ asset('css/commons/buttons.css') }}" rel="stylesheet"
     <!--calender -->
- 
 @endsection
 
 @section('content')

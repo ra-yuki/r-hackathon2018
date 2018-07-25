@@ -79,8 +79,10 @@
         <!--   </div>-->
         <!--</div>-->
         
-        @if($event->fixed) {!! link_to_route('events.rescheduleWithGroup', 'Reschedule', ['id'=>$event->id],['class'=>'btn','id'=>'up']) !!}
+
+        @if(preg_match("/@[0-9]*/",$event->groups[0]->name, $output_array)==true) {!! link_to_route('events.edit', 'Edit', ['id'=>$event->id],['class'=>'btn','id'=>'up']) !!}
         @else {!! link_to_route('events.showRescheduleWithGroup', 'Reschedule', ['id'=>$event->id],['class'=>'btn','id'=>'up']) !!}
+
         @endif
         {!! Form::open(['route' => ['events.destroy', $event->id], 'method' => 'delete']) !!}
           <br>  <button class="btn" id="danger">Delete</button>
