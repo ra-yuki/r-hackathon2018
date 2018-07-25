@@ -28,6 +28,7 @@
 .no-decoration-black{
     text-decoration: none;
     color:black;
+    font-size: 30px;
 }
 
 .no-decoration:hover {
