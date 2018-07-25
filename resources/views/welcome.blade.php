@@ -31,6 +31,7 @@
                 </p> 
           </div>
         </div>
+        <p class="sc">SCROLL</p>
        <a href="#welcom"><span class="scroll"></span></a> 
     </div>
     

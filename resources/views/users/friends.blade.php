@@ -68,7 +68,7 @@
         <div class="tab-content">
             {{-- Friends Main --}}
             <div id="friend" class="tab-pane fade in active ft">
-                <h3>Friends</h3>
+                
                 
                 {{-- ↓↓ 検索フォーム ↓↓ --}}
                 <!--<form class="form-inline" action="{{route('friends.index')}}">-->
@@ -92,7 +92,7 @@
             
             {{-- Group Main --}}
             <div id="group" class="tab-pane fade">
-                <h3>Groups</h3>
+                
                 <p><a href="{{ route('makegroup.index') }}" class="no-decoration-black"><span class="glyphicon glyphicon-plus-sign"></span>&nbsp;Create a New Group</a></p>
                 @foreach ($groups as $group)
                     <?php $userNames = []; ?>
