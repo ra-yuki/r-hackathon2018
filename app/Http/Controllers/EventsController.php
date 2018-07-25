@@ -204,6 +204,34 @@ class EventsController extends Controller
     }
     
     function scheduleInPrivate(Request $request){
+        //*-- validation handling --*//
+        $validator = \Validator::make($request->all(), [
+            'title' => ['required'],
+            'description' => ['required'],
+            'dateFrom' => ['required'],
+            'dateTo' => ['required'],
+            'timeFrom' => ['required'],
+            'timeTo' => ['required'],
+        ]);
+        
+        if ($validator->fails()) {
+            return redirect()
+                        ->back()
+                        ->with('messageDanger', 'Make sure to fill all the fields!')
+                        ->withInput();
+        }
+        
+        $dateFrom = new \DateTime($request->dateFrom);
+        $dateTo = new \DateTime($request->dateTo);
+        if($dateTo->getTimestamp() - $dateFrom->getTimestamp() < 0)
+            return redirect()->back()->with('messageDanger', 'Invalid input found: dates')->withInput();
+        
+        $timeFrom = new \DateTime($request->timeFrom);
+        $timeTo = new \DateTime($request->timeTo);
+        if($timeTo->getTimestamp() - $timeFrom->getTimestamp() < 0)
+            return redirect()->back()->with('messageDanger', 'Invalid input found: times')->withInput();
+            
+        //*-- main --*//
         // add to events table
         $event = new Event();
         $event->dateTimeFromSelf = $request->dateFrom. " ". $request->timeFrom;
@@ -230,6 +258,34 @@ class EventsController extends Controller
     }
     
     function scheduleWithGroup(Request $request){
+        //*-- validation handling --*//
+        $validator = \Validator::make($request->all(), [
+            'title' => ['required'],
+            'description' => ['required'],
+            'groupId' => ['required'],
+            'dateFrom' => ['required'],
+            'dateTo' => ['required'],
+            'timeFrom' => ['required'],
+            'timeTo' => ['required'],
+        ]);
+        
+        if ($validator->fails()) {
+            return redirect()
+                        ->back()
+                        ->with('messageDanger', 'Make sure to fill all the fields!')
+                        ->withInput();
+        }
+        
+        $dateFrom = new \DateTime($request->dateFrom);
+        $dateTo = new \DateTime($request->dateTo);
+        if($dateTo->getTimestamp() - $dateFrom->getTimestamp() < 0)
+            return redirect()->back()->with('messageDanger', 'Invalid input found: dates')->withInput();
+        
+        $timeFrom = new \DateTime($request->timeFrom);
+        $timeTo = new \DateTime($request->timeTo);
+        if($timeTo->getTimestamp() - $timeFrom->getTimestamp() < 0)
+            return redirect()->back()->with('messageDanger', 'Invalid input found: times')->withInput();
+        
         // convert request to event obj
         $plan = Event::request2Event($request);
         // exception handling
