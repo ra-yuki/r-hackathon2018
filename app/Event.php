@@ -239,7 +239,7 @@ class Event extends Model
     //                      'availables': [(int) userId, ...]
     //                  ]]
     public static function getAvailabilitiesAll($options, $memberEvents){
-        \Debugbar::info($memberEvents);
+        // \Debugbar::info($memberEvents);
         $availableDatesOfMembers = Event::getAvailableDatesOfGroupMembers($options, $memberEvents);
         // \Debugbar::info('$availableDatesOfMembers');
         // \Debugbar::info($availableDatesOfMembers);
@@ -248,7 +248,7 @@ class Event extends Model
         
         // \Debugbar::info($availabilities);
         for($i=0; $i<$c; $i++){
-            \Debugbar::info($availableDatesOfMembers);
+            // \Debugbar::info($availableDatesOfMembers);
             foreach($availableDatesOfMembers as $id => $aDsOM){
                 if($aDsOM == false) continue; //skip if the user id has no available dates
                 
