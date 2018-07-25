@@ -10,33 +10,32 @@
        @include('commons.messages')
         <h1>Schedule Private Event</h1>
         <!--<p>&nbsp&nbspmake a personal event</p>-->
-        <br>
-        
         <div class="col-xs-12" >
+               
                 {{Form::open(['route' => 'events.scheduleInPrivate', 'method' => 'post'])}}
+                    
                     <div class="row">
                         {{Form::label('title')}}
-                      
+                   
                     </div>
                     <div class="row">
                         <div class="col-xs-5 col-sm-3 col-md-2 col-lg-2 waku">
                            {{Form::text('title',old('title'),['class' => 'form-control','placeholder' => 'ex.) Drive'])}}
                         </div>
                     </div>
-                    
                     <p></p>
-                    <div class="row">
-                        {{Form::label('Memo')}}
-                        <div class="hidden_box">
                    
+                    <div class="row">
+                        {{Form::label('memo')}} <i>(optional)</i>
+                       
                     </div>
                     <div class="row">
                         <div class="col-xs-12 col-sm-7 col-md-6 col-lg-6 waku">
                            {{Form::text('description',old('description'),['class' => 'form-control','placeholder' => 'ex.) Go to Atami with my family'])}}
                         </div>
                     </div>
-                    
                     <p></p>
+                    
                     <div class="row">
                         {{Form::label('date start')}}
                         <div class="hidden_box">
