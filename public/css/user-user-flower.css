@@ -19,12 +19,13 @@ body{
     
 }
 
-body{
-    background-color: #FFBEDA;
-}
+
 
 .navbar-default {
-    background-color:#FFBEDA;
+    background-image: url("/images/flower.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color:;
     border-color:white;
 }
 
