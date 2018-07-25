@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <aside class="col-xs-4">
+            <div class="col-xs-4">
                 <h3 class="panel-title">Group Name: {{ $group->name }}</h3>
                     @foreach($members as $member)
                         <p>{{$member->name}}</p>
