@@ -92,7 +92,7 @@
             
             {{-- Group Main --}}
             <div id="group" class="tab-pane fade">
-                
+                <br>
                 <p><a href="{{ route('makegroup.index') }}" class="no-decoration-black"><span class="glyphicon glyphicon-plus-sign"></span>&nbsp;Create a New Group</a></p>
                 @foreach ($groups as $group)
                     <?php $userNames = []; ?>
