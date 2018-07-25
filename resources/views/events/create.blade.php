@@ -34,7 +34,7 @@
                     <p></p>
                     
                     <div class="row">
-                        {{Form::label('memo')}}
+                        {{Form::label('memo')}} <i>(optional)</i>
                        
                     </div>
                     <div class="row">
@@ -137,12 +137,32 @@
                     
                     <!-- input field for polls -->
                     <!--<div class="row">-->
-                    <!--    <h3>Polls</h3>-->
-                    <!--    <a href="#" onclick="displayPolls(1)" class="btn btn-default">+</a> | <a href="#" onclick="displayPolls(-1)" class="btn btn-default">-</a>-->
-                    <!--    <div id="inputs-poll" class="row">-->
-                            <!-- heavily on inputsPoll.js -->
+                    <!--    <h3>Polls <small><i>(optional)</i></small></h3>-->
+                    <!--    <p>Title</p>-->
+                    <!--    <div class="input-group">-->
+                    <!--        <div class="col-xs-12">-->
+                    <!--            <input type="text" name="pollTitle" class="form-control" placeholder="Hotels">-->
+                    <!--        </div>-->
                     <!--    </div>-->
                     <!--</div>-->
+                    <!--@for($i=0; $i<3; $i++)-->
+                    <!--<div class="row">-->
+                    <!--    <div class="input-group">-->
+                    <!--        <p>URL{{$i+1}}</p>-->
+                    <!--        <div class="col-xs-3">-->
+                    <!--            <input type="text" name="linkTitle{{$i+1}}" class="form-control" placeholder="Twitter">-->
+                    <!--        </div>-->
+                    <!--        <div class="col-xs-9">-->
+                    <!--            <input type="text" name="link{{$i+1}}" class="form-control" placeholder="http://twitter.com">-->
+                    <!--        </div>-->
+                    <!--    </div>-->
+                    <!--</div>-->
+                    <!--@endfor-->
+                    
+                        <!--<a href="#" onclick="displayPolls(1)" class="btn btn-default">+</a> | <a href="#" onclick="displayPolls(-1)" class="btn btn-default">-</a>-->
+                    <!--    <div id="inputs-poll" class="row">-->
+                            <!-- heavily on inputsPoll.js -->
+                        <!--</div>-->
                     
                     <p></p>
                     <div class="row col-xs-2 col-xs-offset-3">
