@@ -47,7 +47,7 @@
 #edit{
     background-color:#f38181;
     color:black;
-    border-color:#d7eef2;
+    /*border-color:#d7eef2;*/
 }
 
 #danger{
@@ -62,7 +62,7 @@
 }
 
 .btn-edit {
-   background-color:#f38181; 
+   background-color:#ffd6a4; 
    color: black;    
 }
 
@@ -72,7 +72,7 @@
 }
 
 #cre{
-    background-color:#d7eef2;
+    background-color:#ffd6a4;
 }
 
 #theme{
@@ -98,6 +98,6 @@
 }
 
 #dg{
-     background-color:#f38181;
+     background-color:#ffd6a4;
     color: black;
 }

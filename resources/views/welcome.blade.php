@@ -3,6 +3,7 @@
 @section('head-plus')
     <link rel="stylesheet" href="{{secure_asset('css/commons/buttons.css')}}">
     <link rel="stylesheet" href="{{secure_asset('css/welcome.css')}}">
+     <link rel="shortcut icon" type="image/png" href="/images/favicon.png" />
     
 @endsection
 
@@ -55,17 +56,17 @@
             
             <div class="col-xs-12 col-md-4">
                 <p class="text-center"><img src="{{secure_asset('/images/customer.png')}}"></p>
-                <p class="text-center">Form a group with friends <br> that you would like to make plans with.</p>
+                <p class="text-center">Form a group with friends.</p>
             </div>
             
             <div class="col-xs-12 col-md-4">
                 <p class="text-center"><img src="{{secure_asset('/images/loupe.png')}}"></p>
-                <p class="text-center">It will automatically caluculate each others available days and you <br>will be able to select it.</p>
+                <p class="text-center">It will automatically caluculate the best day.</p>
             </div>
             
             <div class="col-xs-12 col-md-4">
                 <p class="text-center"><img src="{{secure_asset('/images/check-mark-button.png')}}"></p>
-                <p class="text-center">Click the confirm button <br>and your plans will be reflected on your Calendar.</p>
+                <p class="text-center">Click the "this day" button.</p>
             </div>
         </div>
         
