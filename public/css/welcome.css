@@ -211,5 +211,13 @@ a .scroll::after {
 }
 
 .scroll{
-  margin-top:580px;
+  margin-top:550px;
+}
+
+.sc{
+  font-size:25px;
+  text-align:center;
+  margin-top:10px;
+  font-family: 'Fredericka the Great', cursive;
+  font-family: 'Asap Condensed', sans-serif; 
 }
