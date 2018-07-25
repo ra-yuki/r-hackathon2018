@@ -16,7 +16,10 @@ class UserController extends Controller
         $res = [];
         if(!empty($keyword))
         {
-            $res = \App\User::where('name', 'like', "%$keyword%")->orderBy('name')->get();
+            $res = \App\User::where([
+                ['name', 'like', "%$keyword%"],
+                ['id', '<>', \Auth::user()->id],
+            ])->orderBy('name')->get();
         }
         
         return view('users.user', [
