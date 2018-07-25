@@ -5,14 +5,18 @@ td{
     word-wrap:break-word;
 }
 
+*{
+    font-size:15px;
+}
 table{
     table-layout: fixed;
 }
 
 #tableWrapper-top{
     background-color:white;
-    
 }
+
+
 
 .event{
     background-color:#d7eef2;
@@ -122,3 +126,4 @@ width:50px;
     background-color:#ddd;
      color:black;
 }
+

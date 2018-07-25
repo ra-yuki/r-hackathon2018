@@ -7,6 +7,7 @@
 
 @section('content')
    <div class="container" id="all">
+       @include('commons.messages')
         <h1>Schedule Private Event</h1>
         <!--<p>&nbsp&nbspmake a personal event</p>-->
         <br>
@@ -27,7 +28,7 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-5 col-sm-3 col-md-2 col-lg-2 waku">
-                           {{Form::text('title',null,['class' => 'form-control','placeholder' => 'ex.) Drive'])}}
+                           {{Form::text('title',old('title'),['class' => 'form-control','placeholder' => 'ex.) Drive'])}}
                         </div>
                     </div>
                     
@@ -46,7 +47,7 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-12 col-sm-7 col-md-6 col-lg-6 waku">
-                           {{Form::text('description',null,['class' => 'form-control','placeholder' => 'ex.) Go to Atami with my family'])}}
+                           {{Form::text('description',old('description'),['class' => 'form-control','placeholder' => 'ex.) Go to Atami with my family'])}}
                         </div>
                     </div>
                     
@@ -66,7 +67,11 @@
                     
                     <div class="row">
                         <div class="col-xs-7 col-sm-3 col-md-2 col-lg-2 waku">
-                            {{Form::date('dateFrom',$date,['class' => 'form-control'])}}
+                            @if($date != null)
+                                {{Form::date('dateFrom',$date,['class' => 'form-control'])}}
+                            @else
+                                {{Form::date('dateFrom',old('dateFrom'),['class' => 'form-control'])}}
+                            @endif
                         </div>
                     </div>
                     
@@ -85,7 +90,11 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-7 col-sm-3 col-md-2 col-lg-2 waku">
-                            {{Form::date('dateTo',$date,['class' => 'form-control'])}}
+                            @if($date != null)
+                                {{Form::date('dateTo',$date,['class' => 'form-control'])}}
+                            @else
+                                {{Form::date('dateTo',old('dateTo'),['class' => 'form-control'])}}
+                            @endif
                         </div>
                     </div>
                 
@@ -104,7 +113,7 @@
                     </div>
                     <div class="row">
                         <div class="input-group clockpicker col-xs-5 col-sm-3 col-md-2 col-lg-2 wakuwaku" data-placement="right" data-align="top" data-autoclose="true">
-                            <input type="time" class="form-control" value="00:00" name="timeFrom">
+                            <input type="time" class="form-control" value="{{old('timeFrom')}}" name="timeFrom">
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-time"></span>
                                 </span>
@@ -129,7 +138,7 @@
                     </div>
                     <div class="row">
                         <div class="input-group clockpicker  col-xs-5 col-sm-3 col-md-2 col-lg-2 wakuwaku" data-placement="right" data-align="top" data-autoclose="true">
-                            <input type="time" class="form-control" value="00:00" name="timeTo">
+                            <input type="time" class="form-control" value="{{old('timeTo')}}" name="timeTo">
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-time"></span>
                                 </span>

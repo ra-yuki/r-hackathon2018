@@ -1,14 +1,14 @@
 body{
-    background-color: #FFBEDA;
+    background-color: #FAEBD7;
 }
 
 .navbar-default {
-    background-color:#FFBEDA;
+    background-color:#FAEBD7;
     border-color:white;
 }
 
 .dropdown-menu {
-background-color: #FFBEDA;
+background-color: #FAEBD7;
 border: 1px solid black;
 border: 1px solid black(0, 0, 0, .15);
 -webkit-box-shadow: 0 6px 12px rgba(94, 136, 129, 0.35);
@@ -19,7 +19,7 @@ box-shadow: 0 6px 12px rgba(94, 136, 129, 0.35);
 .dropdown-menu>li>a:focus,
 .dropdown-menu>li>a:hover {
 color: #CCCCCC;
-background-color:#FFBEDA;
+background-color:#FAEBD7;
 }
 
 
@@ -27,5 +27,5 @@ background-color:#FFBEDA;
 .navbar-default .navbar-nav>.open>a:focus,
 .navbar-default .navbar-nav>.open>a:hover {
 color: black;
-background-color: #FFBEDA;
+background-color: #FAEBD7;
 }
