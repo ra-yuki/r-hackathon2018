@@ -31,6 +31,7 @@
                 </p> 
           </div>
         </div>
+        <p class="sc">SCROLL</p>
        <a href="#welcom"><span class="scroll"></span></a> 
     </div>
     
@@ -88,4 +89,4 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
 <script src="{{ secure_asset('js/test.js') }}"></script>
 @endsection
-
+ｃ
