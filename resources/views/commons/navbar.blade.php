@@ -45,6 +45,7 @@
           <ul class="dropdown-menu" id="dp">
             <li><a class="navbar-left" href="{{ route('profile.index') }}">Profile </a></li>
             <li><a class="navbar-left" href="{{route('settings.settings')}}" >Layouts</a></li>
+            <li><a class="navbar-left" href="{{ route('introduction.introduction') }}">Introduction </a></li>
             <li><a href="{{ route('logout.get') }}">Log out</a></li>
           </ul>
         </li>

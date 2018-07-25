@@ -69,6 +69,9 @@ Route::group(['middleware' => ['auth']], function () {
     //@endadded_yukiholi
 });
 
+     //introduction
+    Route::get('introduction', 'IntroductionController@index')->name('introduction.introduction');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
