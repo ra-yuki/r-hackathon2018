@@ -1,5 +1,5 @@
 .btn-grey {
-    color: #fff;
+    color: black;
     background-color:#d7eef2;
     border-color: #d7eef2;
 }
@@ -45,9 +45,8 @@
 
 
 #edit{
-    background-color:#f38181;
+    background-color:#ffd6a4;
     color:black;
-    /*border-color:#d7eef2;*/
 }
 
 #danger{
@@ -106,4 +105,8 @@
 #adf{
     background-color:#ffd6a4;
     color:black;
+}
+
+#cr{
+    background-color:#ffd6a4
 }

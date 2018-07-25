@@ -6,6 +6,8 @@
     display: inline-block;
 }
 
+
+
 .display-block {
     display: block;
 }
@@ -45,6 +47,16 @@
 #here{
     background-color:#ffd6a4;
     color:black;
+    font-size: 17px;
+    
+}
+
+.icon-big{
+    font-size: 20px;
+}
+
+#here:hover{
+    background-color:#FFAE4B;
 }
 
 #dn{
@@ -55,4 +67,6 @@
     background-color:#d7eef2; 
     color: black;
 }
+
+
 

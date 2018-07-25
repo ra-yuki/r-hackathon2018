@@ -34,7 +34,7 @@
                 </div>
                
                <br>
-               <p class="text-center"><button class="btn btn-default">Create</button></p>
+               <p class="text-center"><button class="btn" id="cr">Create</button></p>
             {!! Form::close() !!}
         </div>
     </div>
