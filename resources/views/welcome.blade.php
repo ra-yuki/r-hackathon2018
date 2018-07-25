@@ -3,6 +3,7 @@
 @section('head-plus')
     <link rel="stylesheet" href="{{secure_asset('css/commons/buttons.css')}}">
     <link rel="stylesheet" href="{{secure_asset('css/welcome.css')}}">
+     <link rel="shortcut icon" type="image/png" href="/images/favicon.png" />
     
 @endsection
 
