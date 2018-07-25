@@ -30,7 +30,7 @@
             
             <div class="row list">
                 <a href="{{route('events.showHub', ['eventPath' => $events[$i]->eventPath])}}" class="no-decoration-black">
-                    <div class="col-xs-10 bg-yellow py-05 ">
+                    <div class="col-xs-10 bg-yellow py-05 wakugumi ">
                         {{$events[$i]->title}}
                     </div>
                 </a>
@@ -38,7 +38,7 @@
         @else
             <div class="row list">
                 <a href="{{route('events.showHub', ['eventPath' => $events[$i]->eventPath])}}" class="no-decoration-black">
-                    <div class="col-xs-10 bg-yellow py-05 ">
+                    <div class="col-xs-10 bg-yellow py-05 wakugumi ">
                         {{$events[$i]->title}}
                     </div>
                 </a>
