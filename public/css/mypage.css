@@ -6,12 +6,20 @@
 }
 
 .list{
-    margin:5px 0px 5px 10px;
+    margin:5px 0px 5px 15px;
     /*background-color: #FFCB8B;*/
+   
     
 }
 
 #month{
     margin-bottom:0;
+    margin-left:10px;
 }
+
+.wakugumi{
+    border-radius:4px;
+    padding-left:7px; 
+}
+
 
