@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Event;
 use App\Group;
 use App\Poll;
+use App\Link;
 use App\Libraries\Vec2;
 use App\Libraries\OctopathHelper;
 use App\Libraries\Config;
@@ -281,8 +282,8 @@ class EventsController extends Controller
         if($dateTo->getTimestamp() - $dateFrom->getTimestamp() < 0)
             return redirect()->back()->with('messageDanger', 'Invalid input found: dates')->withInput();
         
-        $timeFrom = new \DateTime($request->timeFrom);
-        $timeTo = new \DateTime($request->timeTo);
+        $timeFrom = new \DateTime($request->dateFrom. ' '. $request->timeFrom);
+        $timeTo = new \DateTime($request->dateTo. ' '. $request->timeTo);
         if($timeTo->getTimestamp() - $timeFrom->getTimestamp() < 0)
             return redirect()->back()->with('messageDanger', 'Invalid input found: times')->withInput();
         
@@ -318,6 +319,15 @@ class EventsController extends Controller
         
         // \Debugbar::info('$res');
         // \Debugbar::info($res);
+        
+        //*-- Poll stuffs --*//
+        // $title = $request->pollTitle;
+        // $links = [];
+        // for($i=0; $i<3; $i++){
+        //     $links[$i] = new Link();
+        // }
+        // $eventPath = $res;
+        // Link::bulkSaveAndRegisterAsPoll($links, $title, $eventPath);
         
         return redirect()->route('events.showHub', ['eventPath' => $res])->with('message', 'Calculated the best dates for \''. $plan->title .'\'!');
     }
