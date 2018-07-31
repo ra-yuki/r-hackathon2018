@@ -19,7 +19,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a class="navbar-left" href="/mypage"><img src="{{secure_asset('images/home.png')}}" id="home"><br>home </a></li>
+        <li><a class="navbar-left" href="/mypage"><img src="{{secure_asset('images/home.png')}}" id="home"><br>my page </a></li>
           <!--<li class="dropdown">-->
           <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="{{secure_asset('/images/add-user (1) (1).png')}}" id="fr"><br>friends<span class="caret"></span></a>-->
           <!--<ul class="dropdown-menu" id="dp">-->

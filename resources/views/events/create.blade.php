@@ -34,7 +34,7 @@
                     <p></p>
                     
                     <div class="row">
-                        {{Form::label('memo')}} <i>(optional)</i>
+                        {{Form::label('memo')}}
                        
                     </div>
                     <div class="row">
