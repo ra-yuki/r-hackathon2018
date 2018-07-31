@@ -46,7 +46,7 @@
                    
                     <div class="row">
                         {{Form::label('Group Select') }}
-                        
+                        <a href="{{ route('makegroup.index') }}" style="margin-left:10px;"><span class="glyphicon glyphicon-plus-sign"></span>&nbsp;Create a New Group?</a>
                     </div>
                     <div class="row">
                         <div class="col-xs-4 col-sm-3 col-md-2 col-lg-2 waku">
