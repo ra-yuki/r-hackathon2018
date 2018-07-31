@@ -1,7 +1,16 @@
 <link rel="stylesheet" href="{{ secure_asset('css/commons/buttons.css') }}">
 
 <table class="table table-bordered">
-   <p><span class="label label-default" id="today">today</span>  <span class="label label-default" id="private">private event</span>  <span class="label" id="group">group event</span> <span class="label label-default" id="undifined">undecided event</span></p> 
+   <p>
+       <span class="label label-default" id="today">today</span>
+       <a href="{{route('events.scheduleInPrivate')}}">
+           <span class="label label-default" id="private">
+           private event
+        </span></a>
+        <a href="{{route('events.scheduleWithGroup')}}"><span class="label" id="group">
+           group event</span></a>
+        <span class="label label-default" id="undifined">undecided event</span>
+    </p> 
    <thead>
         <tr>
             {{--
