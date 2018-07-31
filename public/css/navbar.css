@@ -160,6 +160,20 @@ background-color: white;
 	margin-left: 8px;
 }
 
+#q{
+	width:35px;
+	height:35px;
+	/*text-align: center;*/
+    margin-right:10px;
+	
+}
+
+p{
+	margin-left:5px;
+    margin-top:1px;	
+}
+
+
 /*#home img{*/
 /*	margin-left: px;*/
 /*}*/
