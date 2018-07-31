@@ -156,5 +156,10 @@ background-color: white;
 #home{
 	width:35px;
 	height:35px;
-	margin-right:5px;
+	text-align: center;
+	margin-left: 8px;
 }
+
+/*#home img{*/
+/*	margin-left: px;*/
+/*}*/
